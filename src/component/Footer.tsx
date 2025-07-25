@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -8,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 const Navbar = () => {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const menuWrapperRef = useRef<HTMLDivElement>(null);
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -23,8 +22,8 @@ const Navbar = () => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
-        menuRef.current &&
-        !menuRef.current.contains(event.target as Node)
+        menuWrapperRef.current &&
+        !menuWrapperRef.current.contains(event.target as Node)
       ) {
         setMenuOpen(false);
       }
@@ -47,17 +46,14 @@ const Navbar = () => {
     <nav className="bg-blue-950 px-5 py-2 md:px-10 relative z-50">
       <div className="flex justify-between items-center">
         {/* Logo */}
-        <div className="flex">
-          <h1 className="text-xl text-white">
-            Tech <span className="text-sm font-light">Hike</span>
-          </h1>
-        </div>
+        <h1 className="text-xl text-white">
+          Tech <span className="text-sm font-light">Hike</span>
+        </h1>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
-
             return (
               <div key={link.name} className="flex flex-col items-center relative">
                 <Link
@@ -74,61 +70,59 @@ const Navbar = () => {
           })}
         </div>
 
-        {/* Mobile Menu Toggle Button */}
-        <button
-          className="md:hidden text-white"
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label="toggle menu"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        {/* Mobile Toggle and Menu Wrapper */}
+        <div ref={menuWrapperRef} className="md:hidden relative">
+          <button
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label="toggle menu"
+            className="text-white"
           >
-            {menuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
-        </button>
-      </div>
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {menuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div
-          ref={menuRef}
-          className="absolute top-14 right-1 bg-blue-950 py-4 rounded flex flex-col gap-2 md:hidden z-50 w-1/2 text-center shadow-md"
-        >
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className={`block py-2 transition text-sm ${
-                  isActive ? "text-blue-600" : "text-white"
-                }`}
-              >
-                {link.name}
-                <div className="h-px w-full bg-gradient-to-r from-transparent via-green-100 to-transparent mt-1" />
-              </Link>
-            );
-          })}
+          {menuOpen && (
+            <div className="absolute top-10 right-0 bg-blue-950 py-4 rounded flex flex-col gap-2 w-48 text-center shadow-md z-50">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className={`block py-2 transition text-sm ${
+                      isActive ? "text-blue-600" : "text-white"
+                    }`}
+                  >
+                    {link.name}
+                    <div className="h-px w-full bg-gradient-to-r from-transparent via-green-100 to-transparent mt-1" />
+                  </Link>
+                );
+              })}
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </nav>
   );
 };
