@@ -3,47 +3,69 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Navbar = () => {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
-  const navLink = [
+  const navLinks = [
     { name: "Home", href: "/" },
     { name: "Service", href: "/service" },
-    { nwme: "Contact", href: "/contact" },
-    { nwme: "Careers", href: "/careers" },
+    { name: "Contact", href: "/contact" },
+    { name: "Career", href: "/career" },
     { name: "Join Community", href: "/community" },
     { name: "Learning", href: "/learning" },
-    { name: "About", href: "/about" }, // 🔧 added missing "/"
+    { name: "About", href: "/about" },
   ];
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node)
+      ) {
+        setMenuOpen(false);
+      }
+    };
+
+    const handleResize = () => {
+      setMenuOpen(false);
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <nav className="bg-blue-950  px-5 p-2 md:px-10">
-      <div className="flex justify-between">
-        {/*logo*/}
+    <nav className="bg-blue-950 px-5 py-2 md:px-10 relative z-50">
+      <div className="flex justify-between items-center">
+        {/* Logo */}
         <div className="flex">
-          <h1 className="text-xl  text-white">
+          <h1 className="text-xl text-white">
             Tech <span className="text-sm font-light">Hike</span>
           </h1>
         </div>
-        {/*desktop menu*/}
 
+        {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6">
-          {navLink.map((linkObj) => {
-            const label = linkObj.name ?? linkObj.nwme ?? "Unnamed";
-            const isActive = pathname === linkObj.href;
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
 
             return (
-              <div key={label} className="flex flex-col items-center relative">
+              <div key={link.name} className="flex flex-col items-center relative">
                 <Link
-                  href={linkObj.href}
-                  className="transition  duration-300 ease-in-out text-white text-sm"
+                  href={link.href}
+                  className="transition duration-300 ease-in-out text-white text-sm"
                 >
-                  {label}
+                  {link.name}
                 </Link>
-
                 {isActive && (
                   <div className="mt-0.5 w-full h-0.5 bg-white rounded-full" />
                 )}
@@ -51,8 +73,8 @@ const Navbar = () => {
             );
           })}
         </div>
-        {/* Mobile menu button */}
 
+        {/* Mobile Menu Toggle Button */}
         <button
           className="md:hidden text-white"
           onClick={() => setMenuOpen((prev) => !prev)}
@@ -76,12 +98,37 @@ const Navbar = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
-                d="M4 6h16M4 12h16m-7 18h16"
+                d="M4 6h16M4 12h16M4 18h16"
               />
             )}
           </svg>
         </button>
       </div>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div
+          ref={menuRef}
+          className="absolute top-14 right-1 bg-blue-950 py-4 rounded flex flex-col gap-2 md:hidden z-50 w-1/2 text-center shadow-md"
+        >
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className={`block py-2 transition text-sm ${
+                  isActive ? "text-blue-600" : "text-white"
+                }`}
+              >
+                {link.name}
+                <div className="h-px w-full bg-gradient-to-r from-transparent via-green-100 to-transparent mt-1" />
+              </Link>
+            );
+          })}
+        </div>
+      )}
     </nav>
   );
 };
