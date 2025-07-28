@@ -36,7 +36,7 @@ const Slider = ({ slides }: SliderProps) => {
 
   useEffect(() => {
     if (isPaused) return;
-    const interval = setInterval(goToNext, 5000);
+    const interval = setInterval(goToNext, 7000); // 7 seconds per slide
     return () => clearInterval(interval);
   }, [isPaused]);
 
@@ -63,7 +63,7 @@ const Slider = ({ slides }: SliderProps) => {
       {slides.map((slide, index) => (
         <div
           key={index}
-          className={`absolute w-full h-full transition-opacity duration-700 ${
+          className={`absolute w-full h-full transition-opacity duration-[1500ms] ease-in-out ${
             index === currentIndex
               ? "opacity-100 z-10 pointer-events-auto"
               : "opacity-0 pointer-events-none"
