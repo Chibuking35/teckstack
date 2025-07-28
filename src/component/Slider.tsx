@@ -77,7 +77,7 @@ const Slider = ({ slides }: SliderProps) => {
           />
           <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-center text-white p-4">
             <h2 className="text-2xl md:text-4xl font-bold">{slide.title}</h2>
-            <p className="mt-2 text-sm md:text-lg w-[50%]">{slide.description}</p>
+            <p className="mt-2 text-sm md:text-lg w-[60%]">{slide.description}</p>
             <Link
               href={slide.link}
               className="mt-4 inline-block bg-white text-black px-4 py-2 rounded hover:bg-gray-100"
@@ -91,7 +91,7 @@ const Slider = ({ slides }: SliderProps) => {
       {/* Arrow left */}
       <button
         onClick={goToPrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full text-white hover:bg-black/70 opacity-0 group-hover:opacity-100 transition"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 p-2 rounded-full text-white hover:bg-black/80 transition z-20"
       >
         <ChevronLeft />
       </button>
@@ -99,13 +99,13 @@ const Slider = ({ slides }: SliderProps) => {
       {/* Arrow right */}
       <button
         onClick={goToNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full text-white hover:bg-black/70 opacity-0 group-hover:opacity-100 transition"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 p-2 rounded-full text-white hover:bg-black/80 transition z-20"
       >
         <ChevronRight />
       </button>
 
       {/* Dots */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
         {slides.map((_, i) => (
           <button
             key={i}
@@ -113,6 +113,7 @@ const Slider = ({ slides }: SliderProps) => {
             className={`w-3 h-3 rounded-full ${
               i === currentIndex ? "bg-white" : "bg-white/50"
             } hover:scale-110 transition`}
+            aria-label={`Go to slide ${i + 1}`}
           />
         ))}
       </div>
