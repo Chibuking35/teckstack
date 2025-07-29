@@ -4,10 +4,11 @@ import { Slides } from "@/lib/Slide";
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-white text-gray-900 px-4 md:px-8 pt-4 pb-4 flex flex-col items-center">
+    <div className="min-h-screen bg-white text-gray-900 px-4 md:px-8 py-5 flex flex-col items-center space-y-8">
       <Slider slides={Slides} />
       
-      <div className="flex flex-col md:text-left w-full">
+      <div className="flex flex-col justify-center items-center md:text-left w-full">
+        
         <div className="flex flex-row items-center space-x-2 md:space-x-4">
           <TextFadeIn className="text-4xl md:text-3xl font-light py-3">
             Go
