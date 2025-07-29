@@ -11,14 +11,14 @@ export const Slides = [
     title: "Advanced Cybersecurity Solutions",
     description:
       "Protect your data and systems with proactive cybersecurity strategies and threat prevention.",
-    link: "/cybersecurity", // Fixed typo
+    link: "/cybersecurity", 
   },
   {
     image: "/network.jpg",
     title: "Reliable IT and Networking Services",
     description:
       "Ensure connectivity, stability and support across your IT infrastructure.",
-    link: "/networking-services", // Adjusted from repeated typo
+    link: "/networking-services",
   },
   {
     image: "/data.jpg",
