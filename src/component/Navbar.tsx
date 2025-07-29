@@ -45,7 +45,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-blue-950 px-5 py-2 md:px-10 relative z-50">
+    <nav className="sticky top-0 z-50 shadow bg-blue-950 px-5 py-2 md:px-10 relative z-50">
       <div className="flex justify-between items-center">
         {/* Logo */}
         <h1 className="text-xl text-white">

@@ -4,7 +4,7 @@ import { Slides } from "@/lib/Slide";
 
 const Home = () => {
   return (
-    <div className=" min-h-screen bg-white text-gray-900 px-4 md:px-8 py-10 flex flex-col items-center justify-center">
+    <div className=" min-h-screen bg-white text-gray-900 px-4 md:px-8 md:py-10 py-4 flex flex-col items-center justify-center">
       {" "}
       <Slider slides={Slides} />
       <div className="flex flex-col md:space-x-4 md:text-left m-5">
