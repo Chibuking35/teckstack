@@ -65,7 +65,7 @@ const Navbar = () => {
                   {link.name}
                 </Link>
                 {isActive && (
-                  <div className="mt-0.5 w-full h-0.5 bg-white rounded-full" />
+                  <div className="mt-0.5 w-full h-0.4 bg-white rounded-full" />
                 )}
               </div>
             );

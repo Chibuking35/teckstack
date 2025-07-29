@@ -76,11 +76,13 @@ const Slider = ({ slides }: SliderProps) => {
             className="object-cover"
           />
           <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-center text-white p-4">
-            <h2 className="text-2xl md:text-4xl font-bold">{slide.title}</h2>
-            <p className="mt-2 text-sm md:text-lg w-[60%]">{slide.description}</p>
+            <h2 className="text-2xl md:text-4xl font-bold  text-sm ">{slide.title}</h2>
+            <p className="mt-2 text-sm md:text-lg w-[60%] m-0  md:w-[40%] md:text-center text-[9px] font-light ">
+              {slide.description}
+            </p>
             <Link
               href={slide.link}
-              className="mt-4 inline-block bg-white text-black px-4 py-2 rounded hover:bg-gray-100"
+              className="mt-4 inline-block bg-white text-xs md:text-sm py-1 px-2  text-black md:px-4 md:py-2 rounded hover:bg-gray-100"
             >
               Learn More
             </Link>
@@ -91,7 +93,7 @@ const Slider = ({ slides }: SliderProps) => {
       {/* Arrow left */}
       <button
         onClick={goToPrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 p-2 rounded-full text-white hover:bg-black/80 transition z-20"
+        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-black/60 p-2 rounded-full text-white hover:bg-black/80 transition z-20"
       >
         <ChevronLeft />
       </button>
@@ -99,18 +101,18 @@ const Slider = ({ slides }: SliderProps) => {
       {/* Arrow right */}
       <button
         onClick={goToNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 p-2 rounded-full text-white hover:bg-black/80 transition z-20"
+        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-black/60 p-2 rounded-full text-white hover:bg-black/80 transition z-20"
       >
         <ChevronRight />
       </button>
 
       {/* Dots */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1 md:gap-2 z-20">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => goToIndex(i)}
-            className={`w-3 h-3 rounded-full ${
+            className={`w-1 h-1 md:w-2 md:h-2 rounded-full ${
               i === currentIndex ? "bg-white" : "bg-white/50"
             } hover:scale-110 transition`}
             aria-label={`Go to slide ${i + 1}`}
