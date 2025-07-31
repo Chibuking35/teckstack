@@ -13,7 +13,7 @@ interface FlipCardProps {
 const FlipCard = ({
   front,
   back,
-  width = "w-64",
+  width = "w-full",
   height = "h-40",
   flipOnHover = false,
 }: FlipCardProps) => {

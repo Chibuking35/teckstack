@@ -21,7 +21,7 @@ const Home = () => {
           </TextFadeIn>
         </div>
 
-        <TextFadeIn className="text-justify text-[12px] md:text-[14px] font-light w-[90%]">
+        <TextFadeIn className="text-justify text-[12px] md:text-[14px] font-light w-full">
           <span className="font-bold text-[14px]">
             At Tech-Hike, we empower businesses to grow and adapt through
             innovative digital solutions.
@@ -34,31 +34,15 @@ const Home = () => {
         </TextFadeIn>
 
         {/* why choose tech-hike */}
-        <TextFadeIn className="text-justify text-[12px] md:text-[14px] font-light w-[90%]">
+        <TextFadeIn className="text-justify text-[12px] md:text-[14px] font-light w-full">
           <div className="mx-2 w-full p-2 ">
-            <h1 className="text-xl md:text-2xl text-center  text-black mt-10 mb-2 md:mb-5">
+            <h1 className="text-xl md:text-2xl text-center  font-bold text-black mt-13 mb-2 md:mb-5">
               why Choose Tech-Hike?
             </h1>
           </div>
 
-          <div className="m-4 grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center">
-            <div className="flex justify-center">
-              <FlipCard
-                flipOnHover={false}
-                front={
-                  <div className="w-full h-full flex flex-col justify-center items-center bg-[var(--maincolor)] text-white ">
-                    Front Side
-                  </div>
-                }
-                back={
-                  <div className="w-full h-full flex flex-col justify-center items-center bg-gray-300 text-black">
-                    Back Side
-                  </div>
-                }
-              />
-            </div>
-
-            <div className="flex justify-center">
+          <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="flex justify-center w-full">
               <FlipCard
                 flipOnHover={false}
                 front={
@@ -74,7 +58,7 @@ const Home = () => {
               />
             </div>
 
-            <div className="flex justify-center">
+            <div className="flex justify-center w-full">
               <FlipCard
                 flipOnHover={false}
                 front={
@@ -89,7 +73,24 @@ const Home = () => {
                 }
               />
             </div>
-            <div className="flex justify-center">
+
+            <div className="flex justify-center w-full">
+              <FlipCard
+                flipOnHover={false}
+                front={
+                  <div className="w-full h-full flex flex-col justify-center items-center bg-[var(--maincolor)] text-white">
+                    Front Side
+                  </div>
+                }
+                back={
+                  <div className="w-full h-full flex flex-col justify-center items-center bg-gray-300 text-black">
+                    Back Side
+                  </div>
+                }
+              />
+            </div>
+
+            <div className="flex justify-center w-full">
               <FlipCard
                 flipOnHover={false}
                 front={
