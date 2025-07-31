@@ -54,7 +54,7 @@ const Slider = ({ slides }: SliderProps) => {
 
   return (
     <div
-      className="relative w-full h-72 sm:h-96 overflow-hidden rounded-xl shadow-lg group"
+      className="relative w-full h-72 sm:h-96 overflow-hidden md:rounded-xl shadow-lg group"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}

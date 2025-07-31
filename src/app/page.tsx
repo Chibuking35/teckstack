@@ -6,9 +6,9 @@ import { div } from "framer-motion/client";
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-white text-gray-900 px-4 md:px-8 py-5 flex flex-col items-center space-y-8">
+    <div className="min-h-screen bg-white text-gray-900  md:px-8 py-5 flex flex-col items-center space-y-8">
       <Slider slides={Slides} />
-
+      <div className="px-4 flex justify-center item">
       <div className="flex flex-col justify-center items-center md:text-left w-full">
         {/* the welcome page*/}
         <div className="flex flex-row items-center space-x-2 md:space-x-4">
@@ -107,6 +107,7 @@ const Home = () => {
             </div>
           </div>
         </TextFadeIn>
+      </div>
       </div>
     </div>
   );
