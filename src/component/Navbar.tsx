@@ -33,8 +33,6 @@ const Navbar = () => {
       setMenuOpen(false);
     };
 
-
-
     document.addEventListener("mousedown", handleClickOutside);
     window.addEventListener("resize", handleResize);
 
@@ -45,7 +43,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 shadow bg-blue-950 px-5 py-2 md:px-10 relative z-50">
+    <nav className="sticky top-0 z-50 shadow bg-blue-950 px-5 py-2 md:px-10">
       <div className="flex justify-between items-center">
         {/* Logo */}
         <h1 className="text-xl text-white">
@@ -55,7 +53,7 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = pathname === link.href; // or use: pathname.startsWith(link.href)
             return (
               <div key={link.name} className="flex flex-col items-center relative">
                 <Link
@@ -65,14 +63,14 @@ const Navbar = () => {
                   {link.name}
                 </Link>
                 {isActive && (
-                  <div className="mt-0.5 w-full h-0.4 bg-white rounded-full" />
+                  <div className="mt-0.5 w-full h-[2px] bg-white rounded-full" />
                 )}
               </div>
             );
           })}
         </div>
 
-        {/* Mobile Toggle and Menu Wrapper */}
+        {/* Mobile Toggle and Menu */}
         <div ref={menuWrapperRef} className="md:hidden relative">
           <button
             onClick={() => setMenuOpen((prev) => !prev)}
@@ -106,14 +104,14 @@ const Navbar = () => {
           {menuOpen && (
             <div className="absolute top-10 right-0 bg-blue-950 py-4 rounded flex flex-col gap-2 w-48 text-center shadow-md z-50">
               {navLinks.map((link) => {
-                const isActive = pathname === link.href;
+                const isActive = pathname === link.href; // or use: pathname.startsWith(link.href)
                 return (
                   <Link
                     key={link.name}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
                     className={`block py-2 transition text-sm ${
-                      isActive ? "text-blue-600" : "text-white"
+                      isActive ? "text-blue-400" : "text-white"
                     }`}
                   >
                     {link.name}
