@@ -61,7 +61,7 @@ const FlipCard = ({
         className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d"
         animate={isFlipped ? "back" : "front"}
         variants={cardVariants}
-        transition={{ duration: 0.1 }}
+        transition={{ duration: 0.03 }}
         style={{ transformStyle: "preserve-3d" }}
       >
         {/*front page */}

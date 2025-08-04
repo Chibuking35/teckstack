@@ -76,7 +76,7 @@ const Slider = ({ slides }: SliderProps) => {
             className="object-cover"
           />
           <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-center text-white p-4">
-            <h2 className="text-2xl md:text-4xl font-bold  text-sm ">{slide.title}</h2>
+            <h2 className="text-2xl md:text-4xl font-bold ">{slide.title}</h2>
             <p className="mt-2 text-sm md:text-lg w-[60%] m-0  md:w-[40%] md:text-center text-11px] font-light ">
               {slide.description}
             </p>

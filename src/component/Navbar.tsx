@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -53,7 +54,7 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href; // or use: pathname.startsWith(link.href)
+            const isActive = pathname === link.href;
             return (
               <div key={link.name} className="flex flex-col items-center relative">
                 <Link
@@ -101,26 +102,34 @@ const Navbar = () => {
             </svg>
           </button>
 
-          {menuOpen && (
-            <div className="absolute top-10 right-0 bg-blue-950 py-4 rounded flex flex-col gap-2 w-48 text-center shadow-md z-50">
-              {navLinks.map((link) => {
-                const isActive = pathname === link.href; // or use: pathname.startsWith(link.href)
-                return (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className={`block py-2 transition text-sm ${
-                      isActive ? "text-blue-400" : "text-white"
-                    }`}
-                  >
-                    {link.name}
-                    <div className="h-px w-full bg-gradient-to-r from-transparent via-green-100 to-transparent mt-1" />
-                  </Link>
-                );
-              })}
-            </div>
-          )}
+          <AnimatePresence>
+            {menuOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.25, ease: "easeInOut" }}
+                className="absolute top-10 right-0 bg-blue-950 py-4 rounded flex flex-col gap-2 w-48 text-center shadow-md z-50"
+              >
+                {navLinks.map((link) => {
+                  const isActive = pathname === link.href;
+                  return (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      onClick={() => setMenuOpen(false)}
+                      className={`block py-2 transition text-sm ${
+                        isActive ? "text-blue-400" : "text-white"
+                      }`}
+                    >
+                      {link.name}
+                      <div className="h-px w-full bg-gradient-to-r from-transparent via-green-100 to-transparent mt-1" />
+                    </Link>
+                  );
+                })}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </nav>
