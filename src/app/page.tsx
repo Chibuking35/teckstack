@@ -2,7 +2,6 @@ import Slider from "@/component/Slider";
 import FlipCard from "@/component/FlipCard";
 import TextFadeIn from "@/component/TextFadeIn";
 import { Slides } from "@/lib/Slide";
-import { div } from "framer-motion/client";
 import { Handshake, Lightbulb, Settings, Shield } from "lucide-react";
 
 const Home = () => {
