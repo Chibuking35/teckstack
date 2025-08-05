@@ -167,14 +167,14 @@ const Home = () => {
   />
 
   {/* Gradient overlay (left side dark fade) */}
-  <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10" />
+  <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-black/60 via-black/40 to-transparent z-10" />
 
   {/* Text content – only within gradient area */}
-  <div className="absolute z-20 p-6 text-white w- max-w-xl w-[80%]">
-    <h2 className="text-2xl font-bold mb-3 border-b-4 border-blue-500 inline-block pb-1">
+  <div className="absolute z-20 p-6 text-white  max-w-xl w-[80%]">
+    <h2 className="md:text-2xl font-bold mb-3 border-b-4 border-blue-500 inline-block pb-1">
       Empowering Digital Progress
     </h2>
-    <p className=" mt-2 text-sm">
+    <p className=" md:mt-2 text-xs md:text-sm">
      We help businesses grow by delivering tailored software solutions, managing them seamlessly, and securing digital assets with industry-grade protection. At Tech-hike, we combine innovation, reliability, and security to move your vision forward.
     </p>
   </div>
