@@ -56,7 +56,10 @@ const Navbar = () => {
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
-              <div key={link.name} className="flex flex-col items-center relative">
+              <div
+                key={link.name}
+                className="flex flex-col items-center relative"
+              >
                 <Link
                   href={link.href}
                   className="transition duration-300 ease-in-out text-white text-sm"
@@ -123,7 +126,7 @@ const Navbar = () => {
                       }`}
                     >
                       {link.name}
-                      <div className="h-px w-full bg-gradient-to-r from-transparent via-green-100 to-transparent mt-1" />
+                      <div className="h-px w-full bg-blue-300 mt-1" />{" "}
                     </Link>
                   );
                 })}

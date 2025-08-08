@@ -53,7 +53,7 @@ const FlipCard = ({
     <div
       ref={cardRef}
       className={`relative ${width} ${height} perspective-1000 cursor-pointer`}
-      onClick={handleMouseEnter}
+      onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

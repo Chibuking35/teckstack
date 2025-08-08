@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+animation-pulse {
+  animation: blink is step-end infinite;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -25,3 +39,36 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+.oluaka {
+  font-family: "Oluaka", sans-serif;
+  height: 200px;
+  width: 200px;
+  background-color: blue;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+/* 
+.oluaka::before {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+
+  content: "";
+  background-color: green;
+  top: -10px;
+  z-index: -20;
+  right: -10px;
+}
+.oluaka::after {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  z-index: -10;
+  content: "";
+  background-color: green;
+  bottom: -10px;
+  left: -10px;
+} */

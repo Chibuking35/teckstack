@@ -4,11 +4,15 @@ import TextFadeIn from "@/component/TextFadeIn";
 import { Slides } from "@/lib/Slide";
 import { Handshake, Lightbulb, Settings, Shield } from "lucide-react";
 import Image from "next/image";
+import CounterCard from "@/component/counterCard";
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-white text-gray-900 md:px-8 flex flex-col items-center md:mt-6">
-      <Slider slides={Slides} />
+    <div className="min-h-screen bg-white text-gray-900  flex flex-col items-center md:py-8">
+      <TextFadeIn className="w-full md:px-5">
+        <Slider slides={Slides} />
+      </TextFadeIn>
+
       <div className="px-4 flex justify-center mt-15">
         <div className="flex flex-col justify-center items-center md:text-left w-full">
           {/* Welcome Section */}
@@ -49,23 +53,26 @@ const Home = () => {
                   front={
                     <div className="w-full h-full flex flex-col justify-center items-center bg-[var(--maincolor)] text-white p-5">
                       <Lightbulb className="m-3" size={50} />
-                      <h1 className="text-center text-lg font-light">
+                      <h1 className="text-center text-lg font-light  ">
                         Innovative
                       </h1>
                     </div>
                   }
                   back={
                     <div className="w-full h-full flex flex-col justify-center items-center bg-gray-300 p-5">
-                      <h2 className="font-bold text-lg mb-3 text-gray-700">
-                        Innovative
-                      </h2>
-                      <p className="text-justify font-light text-gray-700">
-                        We stay ahead of trends, delivering cutting-edge IT and
-                        digital solutions that are strategically designed and
-                        tailored to meet your unique business needs, ensuring
-                        you stay competitive in today’s fast-paced digital
-                        landscape.
-                      </p>
+                      <div className="md:m-3">
+                        <h1 className="text-center md:mt-3 font-bold text-lg md:text-sm mb-3 md:mb-0 text-gray-700">
+                          Innovative
+                        </h1>
+
+                        <p className="text-justify md:text-[13px] font-light text-gray-700 md:mb-4">
+                          We stay ahead of trends, delivering cutting-edge IT
+                          and digital solutions that are strategically designed
+                          and tailored to meet your unique business needs,
+                          ensuring you stay competitive in today's fast-paced
+                          digital landscape.
+                        </p>
+                      </div>
                     </div>
                   }
                 />
@@ -85,15 +92,17 @@ const Home = () => {
                   }
                   back={
                     <div className="w-full h-full flex flex-col justify-center items-center bg-gray-300 p-5">
-                      <h1 className="font-bold text-lg mb-3 text-gray-700 md:text-[20px]">
-                        Enterprise Grade Security
-                      </h1>
-                      <p className="text-justify font-light text-gray-700">
-                        Your data and infrastructure are safeguarded by advanced
-                        cybersecurity protocols, real-time threat detection, and
-                        24/7 monitoring to ensure maximum protection and peace
-                        of mind.
-                      </p>
+                      <div className="md:m-3">
+                        <h1 className="text-center md:mt-3 font-bold text-lg md:text-sm mb-3 md:mb-0 text-gray-700">
+                          Enterprise Grade Security
+                        </h1>
+                        <p className="text-justify md:text-[13px] mt-2 font-light text-gray-700 md:mb-4">
+                          Your data and infrastructure are safeguarded by
+                          advanced cybersecurity protocols, real-time threat
+                          detection, and 24/7 monitoring to ensure maximum
+                          protection and peace of mind.
+                        </p>
+                      </div>
                     </div>
                   }
                 />
@@ -113,15 +122,17 @@ const Home = () => {
                   }
                   back={
                     <div className="w-full h-full flex flex-col justify-center items-center bg-gray-300 p-5 md:p-7">
-                      <h2 className="font-bold text-lg mb-3 text-gray-700">
-                        Customized Solutions
-                      </h2>
-                      <p className="text-justify font-light text-gray-700">
-                        We develop flexible and scalable systems that are
-                        precisely tailored to your business objectives, avoiding
-                        generic templates in favor of bespoke and future-ready
-                        solutions.
-                      </p>
+                      <div className="md:m-3">
+                        <h2 className="text-center md:mt-3 font-bold text-lg md:text-sm mb-3 md:mb-0 text-gray-700">
+                          Customized Solutions
+                        </h2>
+                        <p className="text-justify md:text-[13px] mt-2 font-light text-gray-700 md:mb-4">
+                          We develop flexible and scalable systems that are
+                          precisely tailored to your business objectives,
+                          avoiding generic templates in favor of bespoke and
+                          future-ready solutions.
+                        </p>
+                      </div>
                     </div>
                   }
                 />
@@ -141,14 +152,16 @@ const Home = () => {
                   }
                   back={
                     <div className="w-full h-full flex flex-col justify-center items-center bg-gray-300 p-5 md:p-7">
-                      <h2 className="font-bold text-lg mb-3 text-gray-700">
-                        Expert Assistance & Guidance
-                      </h2>
-                      <p className="text-justify font-light text-gray-700">
-                        Our expert support team is always available to guide
-                        you, troubleshoot issues, and ensure your operations run
-                        smoothly and efficiently.
-                      </p>
+                      <div className="md:m-3">
+                        <h2 className="text-center md:mt-3 font-bold text-lg md:text-sm mb-3 md:mb-0 text-gray-700">
+                          Expert Assistance & Guidance
+                        </h2>
+                        <p className="text-justify md:text-[13px] mt-2 font-light text-gray-700 md:mb-4">
+                          Our expert support team is always available to guide
+                          you, troubleshoot issues, and ensure your operations
+                          run smoothly and efficiently.
+                        </p>
+                      </div>
                     </div>
                   }
                 />
@@ -157,31 +170,46 @@ const Home = () => {
           </TextFadeIn>
         </div>
       </div>
-      <TextFadeIn className="w-full my-20 ">
-      <div className="relative h-96 w-full overflow-hidden my-2 flex items-center justify-start">
-  <Image
-    src="/photo.jpg"
-    alt="background photo"
-    fill
-    className="object-cover z-0 md:rounded"
-  />
+      <TextFadeIn className="w-full my-10 ">
+        <div className="relative h-96 w-full overflow-hidden my-2 flex items-center justify-start">
+          <Image
+            src="/photo.jpg"
+            alt="background photo"
+            fill
+            className="object-cover z-0 md:rounded"
+          />
 
-  {/* Gradient overlay (left side dark fade) */}
-  <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-black/60 via-black/40 to-transparent z-10" />
+          {/* Gradient overlay (left side dark fade) */}
+          <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-black/60 via-black/40 to-transparent z-10" />
 
-  {/* Text content – only within gradient area */}
-  <div className="absolute z-20 p-6 text-white  max-w-xl w-[80%]">
-    <h2 className="md:text-2xl font-bold mb-3 border-b-4 border-blue-500 inline-block pb-1">
-      Empowering Digital Progress
-    </h2>
-    <p className=" md:mt-2 text-xs md:text-sm">
-     We help businesses grow by delivering tailored software solutions, managing them seamlessly, and securing digital assets with industry-grade protection. At Tech-hike, we combine innovation, reliability, and security to move your vision forward.
-    </p>
-  </div>
-</div>
-
-
+          {/* Text content – only within gradient area */}
+          <div className="absolute z-20 p-6 text-white  max-w-xl w-[80%]">
+            <h2 className="md:text-sm font-bold mb-3  pb-1 border-b-3 border-blue-950">
+              Empowering Digital Progress
+            </h2>
+            <p className=" md:mt-2 text-xs md:text-sm">
+              We help businesses grow by delivering tailored software solutions,
+              managing them seamlessly, and securing digital assets with
+              industry-grade protection. At Tech-hike, we combine innovation,
+              reliability, and security to move your vision forward.
+            </p>
+          </div>
+        </div>
       </TextFadeIn>
+      {/* counters*/}
+
+      <TextFadeIn className="w-full px-4 py-10 bg-gray-200 h-fit justify-center items-center">
+        <div className="  gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center">
+          <CounterCard endNumber={700} label="projects Completed" />
+          <CounterCard endNumber={250} label="Happy Clients" />
+          <CounterCard endNumber={20} label="Award" />
+          <CounterCard endNumber={13} label="Years of Experience" />
+        </div>
+      </TextFadeIn>
+
+      {/* <div className="absoulte">
+      <div className="oluaka">Oluaka</div>
+    </div> */}
     </div>
   );
 };
