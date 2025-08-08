@@ -69,8 +69,8 @@ const Home = () => {
                           We stay ahead of trends, delivering cutting-edge IT
                           and digital solutions that are strategically designed
                           and tailored to meet your unique business needs,
-                          ensuring you stay competitive in today's fast-paced
-                          digital landscape.
+                          ensuring you stay competitive in today&apos;s
+                          fast-paced digital landscape.
                         </p>
                       </div>
                     </div>
