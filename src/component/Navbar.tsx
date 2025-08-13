@@ -126,7 +126,7 @@ const Navbar = () => {
                       }`}
                     >
                       {link.name}
-                      <div className="h-px w-full bg-blue-300 mt-1" />{" "}
+                      
                     </Link>
                   );
                 })}

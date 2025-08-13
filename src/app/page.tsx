@@ -2,16 +2,75 @@ import Slider from "@/component/Slider";
 import FlipCard from "@/component/FlipCard";
 import TextFadeIn from "@/component/TextFadeIn";
 import { Slides } from "@/lib/Slide";
-import { Handshake, Lightbulb, Settings, Shield } from "lucide-react";
+import {
+  AppWindow,
+  Handshake,
+  Lightbulb,
+  Settings,
+  Shield,
+  ShieldCheck,
+} from "lucide-react";
 import Image from "next/image";
 import CounterCard from "@/component/counterCard";
+import IconGrid, { GridItem } from "@/component/IconGrid";
 
 const Home = () => {
+  const features: GridItem[] = [
+    {
+      imageSrc: "/softwareS.jpg",
+      header: "Software Development",
+      description: "We build custom software that streamlines your business and turns your ideas into impactful digital solutions.",
+      icons: <AppWindow className="flex" />,
+    },
+    {
+      imageSrc: "/cyberS.jpg",
+      header: "Cybersecurity Solutions",
+      description: "Advanced cybersecurity solutions that safeguard your data, protect your systems, and keep your business secure.",
+      icons: <ShieldCheck /> ,
+    },
+    {
+      imageSrc: "/networkS.jpg",
+      header: "Networking",
+      description: "Whe specializes in building a custom sofware for clients",
+      icons: <ShieldCheck />,
+    },
+    {
+      imageSrc: "/cyber.jpg",
+      header: "Software Development",
+      description: "Whe specializes in building a custom sofware for clients",
+      icons: <AppWindow className="flex" />,
+    },
+    {
+      imageSrc: "/cyber.jpg",
+      header: "Software Development",
+      description: "Whe specializes in building a custom sofware for clients",
+      icons: <AppWindow className="flex" />,
+    },
+    {
+      imageSrc: "/cyber.jpg",
+      header: "Software Development",
+      description: "Whe specializes in building a custom sofware for clients",
+      icons: <AppWindow className="flex" />,
+    },
+    {
+      imageSrc: "/cyber.jpg",
+      header: "Software Development",
+      description: "Whe specializes in building a custom sofware for clients",
+      icons: <AppWindow className="flex" />,
+    },
+    {
+      imageSrc: "/cyber.jpg",
+      header: "Software Development",
+      description: "Whe specializes in building a custom sofware for clients",
+      icons: <AppWindow className="flex" />,
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-white text-gray-900  flex flex-col items-center md:py-8">
-      <TextFadeIn className="w-full md:px-5">
+      <div className="w-full md:px-5">
         <Slider slides={Slides} />
-      </TextFadeIn>
+      </div>
 
       <div className="px-4 flex justify-center mt-15">
         <div className="flex flex-col justify-center items-center md:text-left w-full">
@@ -170,7 +229,7 @@ const Home = () => {
           </TextFadeIn>
         </div>
       </div>
-      <TextFadeIn className="w-full my-10 ">
+      <TextFadeIn className="w-full m-0 mt-10 md:mt-20">
         <div className="relative h-96 w-full overflow-hidden my-2 flex items-center justify-start">
           <Image
             src="/photo.jpg"
@@ -198,18 +257,31 @@ const Home = () => {
       </TextFadeIn>
       {/* counters*/}
 
-      <TextFadeIn className="w-full px-4 py-10 bg-gray-200 h-fit justify-center items-center">
-        <div className="  gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center">
+      <div className="w-full px-4 py-10 bg-gray-200 h-fit justify-center items-center">
+        <TextFadeIn className="  gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center">
           <CounterCard endNumber={700} label="projects Completed" />
           <CounterCard endNumber={250} label="Happy Clients" />
           <CounterCard endNumber={20} label="Award" />
           <CounterCard endNumber={13} label="Years of Experience" />
-        </div>
-      </TextFadeIn>
+        </TextFadeIn>
+      </div>
 
       {/* <div className="absoulte">
       <div className="oluaka">Oluaka</div>
     </div> */}
+
+      <div
+        className="bg-[var(--maincolor)] p-3 w-full h-fit
+    "
+      > <div className="flex justify-center items-center">
+          <h1 className="text-center flex text-xl mb-5 mt-3 border-b-3 border-white text-white">
+            Our Services
+          </h1></div>
+        <TextFadeIn>
+         
+          <IconGrid items={features} />
+        </TextFadeIn>
+      </div>
     </div>
   );
 };

@@ -112,7 +112,7 @@ const Slider = ({ slides }: SliderProps) => {
           <button
             key={i}
             onClick={() => goToIndex(i)}
-            className={`w-1 h-1 md:w-2 md:h-2 rounded-full ${
+            className={`w-1 h-1 md:w-2 md:h-2 rounded-full  cursor-pointer ${
               i === currentIndex ? "bg-white" : "bg-white/50"
             } hover:scale-110 transition`}
             aria-label={`Go to slide ${i + 1}`}
