@@ -4,6 +4,11 @@ import TextFadeIn from "@/component/TextFadeIn";
 import { Slides } from "@/lib/Slide";
 import {
   AppWindow,
+  Bot,
+  ChartNoAxesCombined,
+  CirclePoundSterling,
+  Cloudy,
+  EthernetPort,
   Handshake,
   Lightbulb,
   Settings,
@@ -19,50 +24,57 @@ const Home = () => {
     {
       imageSrc: "/softwareS.jpg",
       header: "Software Development",
-      description: "We build custom software that streamlines your business and turns your ideas into impactful digital solutions.",
+      description:
+        "We build custom software that streamlines your business and turns your ideas into impactful digital solutions.",
       icons: <AppWindow className="flex" />,
     },
     {
       imageSrc: "/cyberS.jpg",
       header: "Cybersecurity Solutions",
-      description: "Advanced cybersecurity solutions that safeguard your data, protect your systems, and keep your business secure.",
-      icons: <ShieldCheck /> ,
+      description:
+        "Advanced cybersecurity solutions that safeguard your data, protect your systems, and keep your business secure.",
+      icons: <ShieldCheck />,
     },
     {
       imageSrc: "/networkS.jpg",
       header: "Networking",
-      description: "Whe specializes in building a custom sofware for clients",
-      icons: <ShieldCheck />,
+      description:
+        "Reliable networking solutions that keep your business connected, fast, and secure",
+      icons: <EthernetPort />,
     },
     {
-      imageSrc: "/cyber.jpg",
-      header: "Software Development",
-      description: "Whe specializes in building a custom sofware for clients",
-      icons: <AppWindow className="flex" />,
+      imageSrc: "/dataS.jpg",
+      header: "Data Analytics",
+      description:
+        "Data analytics solutions that turn raw information into actionable insights for smarter decisions.",
+      icons: <ChartNoAxesCombined />,
     },
     {
-      imageSrc: "/cyber.jpg",
+      imageSrc: "/cloudS.jpg",
       header: "Software Development",
       description: "Whe specializes in building a custom sofware for clients",
-      icons: <AppWindow className="flex" />,
+      icons: <Cloudy />,
     },
     {
-      imageSrc: "/cyber.jpg",
-      header: "Software Development",
-      description: "Whe specializes in building a custom sofware for clients",
-      icons: <AppWindow className="flex" />,
+      imageSrc: "/machineS.jpg",
+      header: "Machine Learning",
+      description:
+        "Machine learning solutions that unlock patterns, automate processes, and drive smarter business outcomes.",
+      icons: <Bot />,
     },
     {
-      imageSrc: "/cyber.jpg",
-      header: "Software Development",
-      description: "Whe specializes in building a custom sofware for clients",
-      icons: <AppWindow className="flex" />,
+      imageSrc: "/digitalS.jpg",
+      header: "Digital Marketing",
+      description:
+        "Digital learning solutions that make knowledge accessible, engaging, and tailored to your growth.",
+      icons: <CirclePoundSterling />,
     },
     {
-      imageSrc: "/cyber.jpg",
-      header: "Software Development",
-      description: "Whe specializes in building a custom sofware for clients",
-      icons: <AppWindow className="flex" />,
+      imageSrc: "/digitalS.jpg",
+      header: "Digital Marketing",
+      description:
+        "Digital learning solutions that make knowledge accessible, engaging, and tailored to your growth.",
+      icons: <CirclePoundSterling />,
     },
   ];
 
@@ -273,12 +285,23 @@ const Home = () => {
       <div
         className="bg-[var(--maincolor)] p-3 w-full h-fit
     "
-      > <div className="flex justify-center items-center">
-          <h1 className="text-center flex text-xl mb-5 mt-3 border-b-3 border-white text-white">
-            Our Services
-          </h1></div>
+      >
+        {" "}
+        <div className="flex justify-center items-center flex-col px-6">
+          <TextFadeIn>
+            {" "}
+            <h1 className="text-center flex text-xl mb-5 mt-3 border-b-3 border-white text-white justify-center items-center ">
+              Our Services
+            </h1>
+          </TextFadeIn>
+
+          <TextFadeIn>
+            <p className=" text-white font-thin tracking-wide text-justify  py-10 text-[12px]">
+            We believe that innovation becomes stronger when driven by collaboration. That is why we are open to partnering with any tech company that shares our vision for growth, creativity, and excellence. Through these partnerships, we are able to combine expertise, explore new opportunities, and leverage a wider range of technologies. This collaborative approach not only strengthens the solutions we provide but also creates room for greater impact, allowing us to deliver more value to businesses and their customers while shaping the future of technology together
+            </p>
+          </TextFadeIn>
+        </div>
         <TextFadeIn>
-         
           <IconGrid items={features} />
         </TextFadeIn>
       </div>
