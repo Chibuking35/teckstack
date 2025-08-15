@@ -19,6 +19,7 @@ import {
 import Image from "next/image";
 import CounterCard from "@/component/counterCard";
 import IconGrid, { GridItem } from "@/component/IconGrid";
+import RequestQuoteForm from "@/component/RequestQuote";
 
 const Home = () => {
   const features: GridItem[] = [
@@ -34,7 +35,7 @@ const Home = () => {
       imageSrc: "/cyberS.jpg",
       header: "Cybersecurity Solutions",
       description:
-        "Advanced cybersecurity solutions that safeguard your data, protect your systems, and keep your business secure.",
+        "Advanced cybersecurity solutions that safeguard your data, protect your systems, and keep your business safe.",
       icons: <ShieldCheck />,
     url: "/cybersecurity"
     },
@@ -326,6 +327,14 @@ const Home = () => {
 
       <div className="w-full py-10 md:py-2 bg-white h-fit justify-center items-center">
 
+        <TextFadeIn>
+          <div className="flex justify-center items-center px-3 py-20">
+          <h1 className="text-center text-2xl md:text-3xl font-bold mb-5 border-b-2 border-blue-950 text-blue-950">
+            Request a Quote
+          </h1></div>
+        </TextFadeIn>
+
+      <RequestQuoteForm />
       </div>
     </div>
   );
