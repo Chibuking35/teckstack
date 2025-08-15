@@ -8,6 +8,7 @@ import {
   ChartNoAxesCombined,
   CirclePoundSterling,
   Cloudy,
+  Database,
   EthernetPort,
   Handshake,
   Lightbulb,
@@ -25,8 +26,9 @@ const Home = () => {
       imageSrc: "/softwareS.jpg",
       header: "Software Development",
       description:
-        "We build custom software that streamlines your business and turns your ideas into impactful digital solutions.",
+        "Custom software solutions that streamline processes, boost efficiency, and bring your ideas to life.",
       icons: <AppWindow className="flex" />,
+      url: "/software-development"
     },
     {
       imageSrc: "/cyberS.jpg",
@@ -34,6 +36,7 @@ const Home = () => {
       description:
         "Advanced cybersecurity solutions that safeguard your data, protect your systems, and keep your business secure.",
       icons: <ShieldCheck />,
+    url: "/cybersecurity"
     },
     {
       imageSrc: "/networkS.jpg",
@@ -41,6 +44,7 @@ const Home = () => {
       description:
         "Reliable networking solutions that keep your business connected, fast, and secure",
       icons: <EthernetPort />,
+      url: "/networking-services"
     },
     {
       imageSrc: "/dataS.jpg",
@@ -48,12 +52,15 @@ const Home = () => {
       description:
         "Data analytics solutions that turn raw information into actionable insights for smarter decisions.",
       icons: <ChartNoAxesCombined />,
+      url: "/data-analytics",
     },
     {
       imageSrc: "/cloudS.jpg",
-      header: "Software Development",
-      description: "Whe specializes in building a custom sofware for clients",
+      header: "Cloud Computing",
+      description:
+        "Cloud computing solutions that enhance flexibility, improve scalability, and keep your business connected anywhere.",
       icons: <Cloudy />,
+      url: "/cloud-computing",
     },
     {
       imageSrc: "/machineS.jpg",
@@ -61,6 +68,7 @@ const Home = () => {
       description:
         "Machine learning solutions that unlock patterns, automate processes, and drive smarter business outcomes.",
       icons: <Bot />,
+      url: "/machine-learning",
     },
     {
       imageSrc: "/digitalS.jpg",
@@ -68,13 +76,15 @@ const Home = () => {
       description:
         "Digital learning solutions that make knowledge accessible, engaging, and tailored to your growth.",
       icons: <CirclePoundSterling />,
+      url: "/digital-marketing",
     },
     {
-      imageSrc: "/digitalS.jpg",
-      header: "Digital Marketing",
+      imageSrc: "/database.jpg",
+      header: "Database Management",
       description:
-        "Digital learning solutions that make knowledge accessible, engaging, and tailored to your growth.",
-      icons: <CirclePoundSterling />,
+        "Database management solutions that organize, secure, and optimize your data for reliable access and performance.",
+      icons: <Database />,
+      url: "/database-management"
     },
   ];
 
@@ -283,27 +293,39 @@ const Home = () => {
     </div> */}
 
       <div
-        className="bg-[var(--maincolor)] p-3 w-full h-fit
+        className="bg-[var(--maincolor)] p-3 md:px-10 w-full h-fit py-30
     "
       >
         {" "}
-        <div className="flex justify-center items-center flex-col px-6">
+        <div className="flex justify-center items-center flex-col px-2 ">
           <TextFadeIn>
             {" "}
-            <h1 className="text-center flex text-xl mb-5 mt-3 border-b-3 border-white text-white justify-center items-center ">
+            <h1 className="text-center flex text-xl mb-5  border-b-3 border-white text-white justify-center items-center ">
               Our Services
             </h1>
           </TextFadeIn>
 
           <TextFadeIn>
             <p className=" text-white font-thin tracking-wide text-justify  py-10 text-[12px]">
-            We believe that innovation becomes stronger when driven by collaboration. That is why we are open to partnering with any tech company that shares our vision for growth, creativity, and excellence. Through these partnerships, we are able to combine expertise, explore new opportunities, and leverage a wider range of technologies. This collaborative approach not only strengthens the solutions we provide but also creates room for greater impact, allowing us to deliver more value to businesses and their customers while shaping the future of technology together
+              We believe that innovation becomes stronger when driven by
+              collaboration. That is why we are open to partnering with any tech
+              company that shares our vision for growth, creativity, and
+              excellence. Through these partnerships, we are able to combine
+              expertise, explore new opportunities, and leverage a wider range
+              of technologies. This collaborative approach not only strengthens
+              the solutions we provide but also creates room for greater impact,
+              allowing us to deliver more value to businesses and their
+              customers while shaping the future of technology together
             </p>
           </TextFadeIn>
         </div>
         <TextFadeIn>
           <IconGrid items={features} />
         </TextFadeIn>
+      </div>
+
+      <div className="w-full py-10 md:py-2 bg-white h-fit justify-center items-center">
+
       </div>
     </div>
   );

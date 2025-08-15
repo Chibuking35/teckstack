@@ -1,14 +1,17 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type GridCardprops = {
   imageSrc: string;
   header: string;
   description: string;
   icons?: React.ReactNode;
+  url: string;
 };
 
-const GridCard = ({ imageSrc, header, description, icons }: GridCardprops) => {
+const GridCard = ({ imageSrc, header, description, icons, url }: GridCardprops) => {
   return (
+    <Link href={url} className="block">
     <div className="relative flex flex-col items-center bg-white rounded-lg overflow-hidden">
       <div className="w-full h-40 relative">
         <Image src={imageSrc} alt={header} fill className="object-cover" />
@@ -26,7 +29,7 @@ const GridCard = ({ imageSrc, header, description, icons }: GridCardprops) => {
       <div className="p-4 text-center">
         <p className="text-gray-600 md:text-sm">{description} </p>
       </div>
-    </div>
+    </div></Link>
   );
 };
 
