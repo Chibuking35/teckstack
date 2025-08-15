@@ -328,7 +328,7 @@ const Home = () => {
       <div className="w-full py-10 md:py-2 bg-white h-fit justify-center items-center">
 
         <TextFadeIn>
-          <div className="flex justify-center items-center px-3 py-20">
+          <div className="flex justify-center items-center px-3 md:mb-3 mb-2 mt-9">
           <h1 className="text-center text-2xl md:text-3xl font-bold mb-5 border-b-2 border-blue-950 text-blue-950">
             Request a Quote
           </h1></div>
