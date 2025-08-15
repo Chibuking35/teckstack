@@ -42,6 +42,7 @@ export default function RequestQuoteForm() {
   const [filePreview, setFilePreview] = useState<string | null>(null);
   const [fileObject, setFileObject] = useState<File | null>(null);
   const [phoneValue, setPhoneValue] = useState("");
+  const [descFocused, setDescFocused] = useState(false);
   const [phoneFocused, setPhoneFocused] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("ng");
 
@@ -53,12 +54,10 @@ export default function RequestQuoteForm() {
 
     let digits = value.replace(/\D/g, "");
 
-    // Remove leading zero for Nigeria
     if (data.countryCode === "ng" && digits.startsWith("0")) {
       digits = digits.slice(1);
     }
 
-    // Format number with dashes
     if (digits.length > 6) {
       digits = `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
     } else if (digits.length > 3) {
@@ -226,23 +225,29 @@ export default function RequestQuoteForm() {
               {fieldErrors["phone"] && <p className="text-red-600 text-xs mt-1">{fieldErrors["phone"]}</p>}
             </div>
 
-            {floatingInput("service", "text", "Service Needed")}
-            <div className="relative w-full mb-4">
+            {floatingInput("service", "text", "Service Needed", undefined, undefined, "mb-10 md:mb-12")}
+
+            {/* Description */}
+            <div className="relative w-full mb-8">
+              <label
+                htmlFor="description"
+                className={`absolute left-2 transition-all duration-200
+      ${descFocused ? "-top-8 text-blue-600 text-sm" : "-top-6 text-gray-400 text-sm"}`}
+              >
+                Project Description
+              </label>
               <textarea
                 name="description"
                 id="description"
                 placeholder=" "
-                className="peer w-full border-b border-gray-300 p-2 pt-9 focus:outline-none focus:border-blue-600 text-sm"
+                className="peer w-full border-b border-gray-300 p-3 pt-9 focus:outline-none focus:border-blue-600 text-sm resize-none"
+                rows={4}
+                onFocus={() => setDescFocused(true)}
+                onBlur={() => setDescFocused(false)}
               />
-              <label
-                htmlFor="description"
-                className="absolute left-2 top-2 text-gray-400 text-sm transition-all duration-200
-                           peer-placeholder-shown:top-9 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base
-                           peer-focus:top-2 peer-focus:text-blue-600 peer-focus:text-sm"
-              >
-                Project Description
-              </label>
-              {fieldErrors["description"] && <p className="text-red-600 text-xs mt-1">{fieldErrors["description"]}</p>}
+              {fieldErrors["description"] && (
+                <p className="text-red-600 text-xs mt-1">{fieldErrors["description"]}</p>
+              )}
             </div>
 
             {floatingInput("budget", "text", "Budget (whole number)", budgetValue, handleBudgetChange)}

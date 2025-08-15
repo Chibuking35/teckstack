@@ -5,7 +5,7 @@ const resend = new Resend(process.env.RESEND_API_KEY!);
 
 export async function POST(req: Request) {
   try {
-    // Parse as FormData since a file may be uploaded
+    // Parse FormData since a file may be uploaded
     const formData = await req.formData();
 
     const name = formData.get("name") as string;
@@ -18,6 +18,15 @@ export async function POST(req: Request) {
     const company = (formData.get("company") as string) || "";
     const contactMethod = formData.get("contactMethod") as string;
     const file = formData.get("file") as File | null;
+
+    // Format phone with dashes if needed
+    const formatPhoneNumber = (value: string) => {
+      const digits = value.replace(/\D/g, "");
+      if (digits.length <= 3) return digits;
+      if (digits.length <= 6) return `${digits.slice(0, 3)}-${digits.slice(3)}`;
+      return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+    };
+    const formattedPhone = formatPhoneNumber(phone);
 
     // Prepare attachments array if a file exists
     const attachments = [];
@@ -41,7 +50,7 @@ export async function POST(req: Request) {
         <h2>New Quote Request</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Phone:</strong> ${formattedPhone}</p>
         <p><strong>Service:</strong> ${service}</p>
         <p><strong>Description:</strong> ${description}</p>
         <p><strong>Budget:</strong> ${budget}</p>
@@ -52,7 +61,7 @@ export async function POST(req: Request) {
       attachments, // attach file if exists
     });
 
-    // Send confirmation email to user (optional)
+    // Send confirmation email to user
     await resend.emails.send({
       from: "Tech-hike <onboarding@resend.dev>",
       to: email,
