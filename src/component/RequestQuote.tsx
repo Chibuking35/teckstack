@@ -18,10 +18,7 @@ const requestQuoteSchema = z.object({
   }, "Budget must be a non-negative whole number"),
   timeline: z.string().min(1, "Timeline / Deadline is required"),
   company: z.string().optional(),
-  contactMethod: z.enum(
-    ["email", "phone"],
-    "Select a preferred contact method"
-  ),
+  contactMethod: z.enum(["email", "phone"], "Select a preferred contact method"),
   terms: z
     .boolean()
     .refine((val) => val === true, "You must agree to the Terms & Privacy Policy."),
@@ -35,31 +32,30 @@ export default function RequestQuoteForm() {
   const [filePreview, setFilePreview] = useState<string | null>(null);
   const [fileObject, setFileObject] = useState<File | null>(null);
   const [phoneValue, setPhoneValue] = useState("");
-  const [countryCode, setCountryCode] = useState("+234");
   const [phoneFocused, setPhoneFocused] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("ng");
 
   // Handle phone input changes
   const handlePhoneChange = (value: string, data: any) => {
-    // Update country code only if the country changes
     if (data.countryCode !== selectedCountry) {
-      setCountryCode(`+${data.dialCode}`);
       setSelectedCountry(data.countryCode);
     }
 
-    // Remove leading zero for Nigeria
     let digits = value.replace(/\D/g, "");
+
+    // Remove leading zero for Nigeria
     if (data.countryCode === "ng" && digits.startsWith("0")) {
       digits = digits.slice(1);
     }
 
-    // Format with dashes
-    const len = digits.length;
-    let formatted = digits;
-    if (len >= 4 && len < 7) formatted = `${digits.slice(0, 3)}-${digits.slice(3)}`;
-    if (len >= 7) formatted = `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+    // Format number with dashes (simple example, can be customized per country)
+    if (digits.length > 6) {
+      digits = `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+    } else if (digits.length > 3) {
+      digits = `${digits.slice(0, 3)}-${digits.slice(3)}`;
+    }
 
-    setPhoneValue(formatted);
+    setPhoneValue(digits);
   };
 
   const handleBudgetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,6 +70,7 @@ export default function RequestQuoteForm() {
       setFileObject(null);
       return;
     }
+
     const allowedTypes = ["image/jpeg", "image/png", "application/pdf"];
     if (!allowedTypes.includes(file.type)) {
       setPopupMessage("Only JPG, PNG, or PDF files are allowed.");
@@ -81,6 +78,7 @@ export default function RequestQuoteForm() {
       setFileObject(null);
       return;
     }
+
     setFileObject(file);
     if (file.type.startsWith("image/")) {
       setFilePreview(URL.createObjectURL(file));
@@ -139,7 +137,6 @@ export default function RequestQuoteForm() {
         setFilePreview(null);
         setFileObject(null);
         setPhoneValue("");
-        setCountryCode("+234");
         setFieldErrors({});
         setSelectedCountry("ng");
       } else {
