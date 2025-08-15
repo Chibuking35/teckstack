@@ -24,6 +24,16 @@ const requestQuoteSchema = z.object({
     .refine((val) => val === true, "You must agree to the Terms & Privacy Policy."),
 });
 
+// Type for react-phone-input-2 data object
+interface PhoneInputData {
+  dialCode: string;
+  countryCode: string;
+  name?: string;
+  format?: string;
+  priority?: number;
+  areaCodes?: string[] | null;
+}
+
 export default function RequestQuoteForm() {
   const [loading, setLoading] = useState(false);
   const [popupMessage, setPopupMessage] = useState<string | null>(null);
@@ -36,7 +46,7 @@ export default function RequestQuoteForm() {
   const [selectedCountry, setSelectedCountry] = useState("ng");
 
   // Handle phone input changes
-  const handlePhoneChange = (value: string, data: any) => {
+  const handlePhoneChange = (value: string, data: PhoneInputData) => {
     if (data.countryCode !== selectedCountry) {
       setSelectedCountry(data.countryCode);
     }
@@ -48,7 +58,7 @@ export default function RequestQuoteForm() {
       digits = digits.slice(1);
     }
 
-    // Format number with dashes (simple example, can be customized per country)
+    // Format number with dashes
     if (digits.length > 6) {
       digits = `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
     } else if (digits.length > 3) {
@@ -103,7 +113,9 @@ export default function RequestQuoteForm() {
       budget: budgetValue.replace(/\D/g, ""),
       timeline: (form.elements.namedItem("timeline") as HTMLInputElement).value,
       company: (form.elements.namedItem("company") as HTMLInputElement).value || "",
-      contactMethod: (form.elements.namedItem("contactMethod") as HTMLSelectElement).value as "email" | "phone",
+      contactMethod: (form.elements.namedItem("contactMethod") as HTMLSelectElement).value as
+        | "email"
+        | "phone",
       terms: (form.elements.namedItem("terms") as HTMLInputElement).checked,
     };
 
