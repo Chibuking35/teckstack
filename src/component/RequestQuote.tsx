@@ -128,7 +128,7 @@ export default function RequestQuoteForm() {
       setFieldErrors(errors);
 
       const allEmpty = Object.values(rawData).every((val) => val === "" || val === false);
-      if (allEmpty) setPopupMessage("Please fill out the form.");
+      if (allEmpty) setPopupMessage("Please complete the form to continue.");
 
       setLoading(false);
       return;
@@ -142,7 +142,7 @@ export default function RequestQuoteForm() {
       const res = await fetch("/api/request-quote", { method: "POST", body: formData });
 
       if (res.ok) {
-        setPopupMessage("✅ Your request has been received! Check your email for details.");
+        setPopupMessage("Your request is being reviewed. Please check your email for confirmation.");
         form.reset();
         setBudgetValue("");
         setFilePreview(null);
@@ -312,34 +312,35 @@ export default function RequestQuoteForm() {
       </div>
 
       {/* Popup */}
-      <AnimatePresence>
-        {popupMessage && (
-          <motion.div
-            className="fixed inset-0 flex items-center justify-center bg-white/50 bg-opacity-50 backdrop-blur-sm z-50"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setPopupMessage(null)}
-          >
-            <motion.div
-              className="bg-gray-200 p-6 rounded-xl shadow-lg max-w-sm text-center"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <p className="mb-4">{popupMessage}</p>
-              <button
-                onClick={() => setPopupMessage(null)}
-                className="bg-blue-950 text-white px-4 py-2 rounded hover:bg-blue-900"
-              >
-                Close
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+     <AnimatePresence>
+  {popupMessage && (
+    <motion.div
+      className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50" 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={() => setPopupMessage(null)} // Close when clicking outside
+    >
+      <motion.div
+        className="bg-gray-200 p-6 rounded-xl shadow-lg max-w-sm text-center"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.8, opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+      >
+        <p className="mb-4">{popupMessage}</p>
+        <button
+          onClick={() => setPopupMessage(null)}
+          className="bg-blue-950 text-sm text-white px-4 py-1 rounded hover:bg-blue-900"
+        >
+          Close
+        </button>
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
+
     </div>
   );
 }
