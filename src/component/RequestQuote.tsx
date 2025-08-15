@@ -76,9 +76,8 @@ export default function RequestQuoteForm() {
       budget: budgetValue.replace(/\D/g, ""),
       timeline: (form.elements.namedItem("timeline") as HTMLInputElement).value,
       company: (form.elements.namedItem("company") as HTMLInputElement).value || "",
-      contactMethod: (form.elements.namedItem("contactMethod") as HTMLSelectElement).value as
-        | "email"
-        | "phone",
+      contactMethod: (form.elements.namedItem("contactMethod") as HTMLSelectElement)
+        .value as "email" | "phone",
       terms: (form.elements.namedItem("terms") as HTMLInputElement).checked,
     };
 
@@ -132,7 +131,7 @@ export default function RequestQuoteForm() {
     type: string,
     placeholder: string,
     value?: string,
-    onChange?: (e: any) => void
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   ) => (
     <div className="relative w-full mb-4">
       <input
@@ -160,6 +159,7 @@ export default function RequestQuoteForm() {
 
   return (
     <div className="relative">
+      {/* Form layout */}
       <div className="flex flex-col md:flex-row max-w-4xl mx-auto bg-white rounded shadow overflow-hidden">
         <div className="w-full md:w-1/2 p-6">
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -234,10 +234,7 @@ export default function RequestQuoteForm() {
                 {fileObject ? "Change File" : "Upload picture or pdf"}
               </label>
 
-              {fileObject && (
-                <p className="mt-2 text-gray-700">{fileObject.name}</p>
-              )}
-
+              {fileObject && <p className="mt-2 text-gray-700">{fileObject.name}</p>}
               {filePreview && (
                 <img
                   src={filePreview}
