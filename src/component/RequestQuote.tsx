@@ -18,7 +18,10 @@ const requestQuoteSchema = z.object({
   }, "Budget must be a non-negative whole number"),
   timeline: z.string().min(1, "Timeline / Deadline is required"),
   company: z.string().optional(),
-  contactMethod: z.enum(["email", "phone"], "Select a preferred contact method"),
+  contactMethod: z.enum(
+    ["email", "phone"],
+    "Select a preferred contact method"
+  ),
   terms: z
     .boolean()
     .refine((val) => val === true, "You must agree to the Terms & Privacy Policy."),
@@ -32,6 +35,32 @@ export default function RequestQuoteForm() {
   const [filePreview, setFilePreview] = useState<string | null>(null);
   const [fileObject, setFileObject] = useState<File | null>(null);
   const [phoneValue, setPhoneValue] = useState("");
+  const [countryCode, setCountryCode] = useState("+234");
+  const [phoneFocused, setPhoneFocused] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState("ng");
+
+  // Handle phone input changes
+  const handlePhoneChange = (value: string, data: any) => {
+    // Update country code only if the country changes
+    if (data.countryCode !== selectedCountry) {
+      setCountryCode(`+${data.dialCode}`);
+      setSelectedCountry(data.countryCode);
+    }
+
+    // Remove leading zero for Nigeria
+    let digits = value.replace(/\D/g, "");
+    if (data.countryCode === "ng" && digits.startsWith("0")) {
+      digits = digits.slice(1);
+    }
+
+    // Format with dashes
+    const len = digits.length;
+    let formatted = digits;
+    if (len >= 4 && len < 7) formatted = `${digits.slice(0, 3)}-${digits.slice(3)}`;
+    if (len >= 7) formatted = `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+
+    setPhoneValue(formatted);
+  };
 
   const handleBudgetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value.replace(/\D/g, "");
@@ -76,8 +105,7 @@ export default function RequestQuoteForm() {
       budget: budgetValue.replace(/\D/g, ""),
       timeline: (form.elements.namedItem("timeline") as HTMLInputElement).value,
       company: (form.elements.namedItem("company") as HTMLInputElement).value || "",
-      contactMethod: (form.elements.namedItem("contactMethod") as HTMLSelectElement)
-        .value as "email" | "phone",
+      contactMethod: (form.elements.namedItem("contactMethod") as HTMLSelectElement).value as "email" | "phone",
       terms: (form.elements.namedItem("terms") as HTMLInputElement).checked,
     };
 
@@ -102,10 +130,7 @@ export default function RequestQuoteForm() {
       Object.entries(rawData).forEach(([key, value]) => formData.append(key, value as string));
       if (fileObject) formData.append("file", fileObject);
 
-      const res = await fetch("/api/request-quote", {
-        method: "POST",
-        body: formData,
-      });
+      const res = await fetch("/api/request-quote", { method: "POST", body: formData });
 
       if (res.ok) {
         setPopupMessage("✅ Your request has been received! Check your email for details.");
@@ -114,7 +139,9 @@ export default function RequestQuoteForm() {
         setFilePreview(null);
         setFileObject(null);
         setPhoneValue("");
+        setCountryCode("+234");
         setFieldErrors({});
+        setSelectedCountry("ng");
       } else {
         setPopupMessage("Something went wrong. Please try again.");
       }
@@ -131,9 +158,10 @@ export default function RequestQuoteForm() {
     type: string,
     placeholder: string,
     value?: string,
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void,
+    extraClass?: string
   ) => (
-    <div className="relative w-full mb-4">
+    <div className={`relative w-full mb-4 ${extraClass || ""}`}>
       <input
         type={type}
         name={id}
@@ -151,44 +179,45 @@ export default function RequestQuoteForm() {
       >
         {placeholder}
       </label>
-      {fieldErrors[id] && (
-        <p className="text-red-600 text-xs mt-1">{fieldErrors[id]}</p>
-      )}
+      {fieldErrors[id] && <p className="text-red-600 text-xs mt-1">{fieldErrors[id]}</p>}
     </div>
   );
 
   return (
     <div className="relative">
-      {/* Form layout */}
       <div className="flex flex-col md:flex-row max-w-4xl mx-auto bg-white rounded shadow overflow-hidden">
         <div className="w-full md:w-1/2 p-6">
           <form onSubmit={handleSubmit} className="space-y-4">
-            {floatingInput("name", "text", "Full Name")}
-            {floatingInput("email", "email", "Email Address")}
+            {floatingInput("name", "text", "Full Name", undefined, undefined, "mb-10 md:mb-12")}
+            {floatingInput("email", "email", "Email Address", undefined, undefined, "mb-10 md:mb-12")}
 
-            <div className="relative w-full mb-4 gap-4">
+            {/* Phone Input */}
+            <div className="relative w-full mb-8">
+              <label
+                htmlFor="phone"
+                className={`absolute left-2 transition-all duration-200
+      ${phoneFocused ? "-top-8 text-blue-600 text-sm" : "-top-6 text-gray-400 text-sm"}`}
+              >
+                Phone Number
+              </label>
               <PhoneInput
-                country={"us"}
+                country="ng"
                 value={phoneValue}
-                onChange={setPhoneValue}
-                enableSearch={true}
+                onChange={handlePhoneChange}
+                enableSearch
                 inputProps={{
                   name: "phone",
                   className:
-                    "w-full border-b border-gray-300 p-2 pt-9 focus:outline-none focus:border-blue-600 text-sm",
+                    "w-full border-b pl-14 border-gray-300 p-3 pt-9 focus:outline-none focus:border-blue-600 text-sm",
                   placeholder: " ",
+                  onFocus: () => setPhoneFocused(true),
+                  onBlur: () => setPhoneFocused(false),
                 }}
               />
-              <label className="absolute left-2 top-2 text-gray-400 text-sm transition-all duration-200">
-                Phone Number
-              </label>
-              {fieldErrors["phone"] && (
-                <p className="text-red-600 text-xs mt-1">{fieldErrors["phone"]}</p>
-              )}
+              {fieldErrors["phone"] && <p className="text-red-600 text-xs mt-1">{fieldErrors["phone"]}</p>}
             </div>
 
             {floatingInput("service", "text", "Service Needed")}
-
             <div className="relative w-full mb-4">
               <textarea
                 name="description"
@@ -204,46 +233,27 @@ export default function RequestQuoteForm() {
               >
                 Project Description
               </label>
-              {fieldErrors["description"] && (
-                <p className="text-red-600 text-xs mt-1">{fieldErrors["description"]}</p>
-              )}
+              {fieldErrors["description"] && <p className="text-red-600 text-xs mt-1">{fieldErrors["description"]}</p>}
             </div>
 
-            {floatingInput(
-              "budget",
-              "text",
-              "Budget (whole number)",
-              budgetValue,
-              handleBudgetChange
-            )}
+            {floatingInput("budget", "text", "Budget (whole number)", budgetValue, handleBudgetChange)}
             {floatingInput("timeline", "text", "Timeline / Deadline")}
             {floatingInput("company", "text", "Company / Organization Name")}
 
+            {/* File Upload */}
             <div className="relative w-full mb-4">
-              <input
-                type="file"
-                name="file"
-                id="fileInput"
-                className="hidden"
-                onChange={handleFileChange}
-              />
+              <input type="file" name="file" id="fileInput" className="hidden" onChange={handleFileChange} />
               <label
                 htmlFor="fileInput"
                 className="inline-block bg-blue-950 text-white text-sm px-4 py-3 rounded cursor-pointer hover:bg-blue-900"
               >
                 {fileObject ? "Change File" : "Upload picture or pdf"}
               </label>
-
               {fileObject && <p className="mt-2 text-gray-700">{fileObject.name}</p>}
-              {filePreview && (
-                <img
-                  src={filePreview}
-                  alt="File Preview"
-                  className="max-h-40 mt-2 border rounded"
-                />
-              )}
+              {filePreview && <img src={filePreview} alt="File Preview" className="max-h-40 mt-2 border rounded" />}
             </div>
 
+            {/* Contact Method */}
             <div className="relative w-full mb-4">
               <select
                 name="contactMethod"
@@ -253,18 +263,14 @@ export default function RequestQuoteForm() {
                 <option value="email">Email</option>
                 <option value="phone">Phone</option>
               </select>
-              {fieldErrors["contactMethod"] && (
-                <p className="text-red-600 text-xs mt-1">{fieldErrors["contactMethod"]}</p>
-              )}
+              {fieldErrors["contactMethod"] && <p className="text-red-600 text-xs mt-1">{fieldErrors["contactMethod"]}</p>}
             </div>
 
             <label className="flex items-center space-x-2 mb-4">
               <input type="checkbox" name="terms" />
               <span>I agree to the Terms & Privacy Policy</span>
             </label>
-            {fieldErrors["terms"] && (
-              <p className="text-red-600 text-xs mt-1">{fieldErrors["terms"]}</p>
-            )}
+            {fieldErrors["terms"] && <p className="text-red-600 text-xs mt-1">{fieldErrors["terms"]}</p>}
 
             <button
               type="submit"
@@ -291,6 +297,7 @@ export default function RequestQuoteForm() {
         </div>
       </div>
 
+      {/* Popup */}
       <AnimatePresence>
         {popupMessage && (
           <motion.div
