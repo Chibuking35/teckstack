@@ -70,20 +70,19 @@ const TestimonialCarousel = () => {
           What Our Clients Say
         </h1>
         <p className="text-gray-600 mt-3 max-w-md mx-auto md:mx-0">
-          We're proud to have worked with amazing businesses and individuals.
-          Here's what some of them had to say about their experience with Tech
+          We&apos;re proud to have worked with amazing businesses and individuals.
+          Here&apos;s what some of them had to say about their experience with Tech
           Hike.
         </p>
         <div className="mt-6 flex justify-center md:justify-start">
-        <div className="justify-center items-baseline flex gap-3">
-                    <div className="flex ">
-                      {" "}
-                      <Image src="/tecklogo.png" alt="logo" width={40} height={40} />
-                    </div>
-                    <h1 className="text-gray-600 text-thin text-center text-2xl">
-                      Tech Hick
-                    </h1>
-                  </div>
+          <div className="justify-center items-baseline flex gap-3">
+            <div className="flex">
+              <Image src="/tecklogo.png" alt="logo" width={40} height={40} />
+            </div>
+            <h1 className="text-gray-600 text-thin text-center text-2xl">
+              Tech Hick
+            </h1>
+          </div>
         </div>
       </div>
 
