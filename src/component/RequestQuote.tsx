@@ -18,10 +18,16 @@ const requestQuoteSchema = z.object({
   }, "Budget must be a non-negative whole number"),
   timeline: z.string().min(1, "Timeline / Deadline is required"),
   company: z.string().optional(),
-  contactMethod: z.enum(["email", "phone"], "Select a preferred contact method"),
+  contactMethod: z.enum(
+    ["email", "phone"],
+    "Select a preferred contact method"
+  ),
   terms: z
     .boolean()
-    .refine((val) => val === true, "You must agree to the Terms & Privacy Policy."),
+    .refine(
+      (val) => val === true,
+      "You must agree to the Terms & Privacy Policy."
+    ),
 });
 
 // Type for react-phone-input-2 data object
@@ -59,7 +65,10 @@ export default function RequestQuoteForm() {
     }
 
     if (digits.length > 6) {
-      digits = `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+      digits = `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(
+        6,
+        10
+      )}`;
     } else if (digits.length > 3) {
       digits = `${digits.slice(0, 3)}-${digits.slice(3)}`;
     }
@@ -108,13 +117,16 @@ export default function RequestQuoteForm() {
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
       phone: phoneValue,
       service: (form.elements.namedItem("service") as HTMLInputElement).value,
-      description: (form.elements.namedItem("description") as HTMLTextAreaElement).value,
+      description: (
+        form.elements.namedItem("description") as HTMLTextAreaElement
+      ).value,
       budget: budgetValue.replace(/\D/g, ""),
       timeline: (form.elements.namedItem("timeline") as HTMLInputElement).value,
-      company: (form.elements.namedItem("company") as HTMLInputElement).value || "",
-      contactMethod: (form.elements.namedItem("contactMethod") as HTMLSelectElement).value as
-        | "email"
-        | "phone",
+      company:
+        (form.elements.namedItem("company") as HTMLInputElement).value || "",
+      contactMethod: (
+        form.elements.namedItem("contactMethod") as HTMLSelectElement
+      ).value as "email" | "phone",
       terms: (form.elements.namedItem("terms") as HTMLInputElement).checked,
     };
 
@@ -127,7 +139,9 @@ export default function RequestQuoteForm() {
       });
       setFieldErrors(errors);
 
-      const allEmpty = Object.values(rawData).every((val) => val === "" || val === false);
+      const allEmpty = Object.values(rawData).every(
+        (val) => val === "" || val === false
+      );
       if (allEmpty) setPopupMessage("Please complete the form to continue.");
 
       setLoading(false);
@@ -136,13 +150,20 @@ export default function RequestQuoteForm() {
 
     try {
       const formData = new FormData();
-      Object.entries(rawData).forEach(([key, value]) => formData.append(key, value as string));
+      Object.entries(rawData).forEach(([key, value]) =>
+        formData.append(key, value as string)
+      );
       if (fileObject) formData.append("file", fileObject);
 
-      const res = await fetch("/api/request-quote", { method: "POST", body: formData });
+      const res = await fetch("/api/request-quote", {
+        method: "POST",
+        body: formData,
+      });
 
       if (res.ok) {
-        setPopupMessage("Your request is being reviewed. Please check your email for confirmation.");
+        setPopupMessage(
+          "Your request is being reviewed. Please check your email for confirmation."
+        );
         form.reset();
         setBudgetValue("");
         setFilePreview(null);
@@ -187,7 +208,9 @@ export default function RequestQuoteForm() {
       >
         {placeholder}
       </label>
-      {fieldErrors[id] && <p className="text-red-600 text-xs mt-1">{fieldErrors[id]}</p>}
+      {fieldErrors[id] && (
+        <p className="text-red-600 text-xs mt-1">{fieldErrors[id]}</p>
+      )}
     </div>
   );
 
@@ -196,15 +219,33 @@ export default function RequestQuoteForm() {
       <div className="flex flex-col md:flex-row max-w-4xl mx-auto bg-white rounded shadow overflow-hidden">
         <div className="w-full md:w-1/2 p-6">
           <form onSubmit={handleSubmit} className="space-y-4">
-            {floatingInput("name", "text", "Full Name", undefined, undefined, "mb-10 md:mb-12")}
-            {floatingInput("email", "email", "Email Address", undefined, undefined, "mb-10 md:mb-12")}
+            {floatingInput(
+              "name",
+              "text",
+              "Full Name",
+              undefined,
+              undefined,
+              "mb-10 md:mb-12"
+            )}
+            {floatingInput(
+              "email",
+              "email",
+              "Email Address",
+              undefined,
+              undefined,
+              "mb-10 md:mb-12"
+            )}
 
             {/* Phone Input */}
             <div className="relative w-full mb-8">
               <label
                 htmlFor="phone"
                 className={`absolute left-2 transition-all duration-200
-      ${phoneFocused ? "-top-8 text-blue-600 text-sm" : "-top-6 text-gray-400 text-sm"}`}
+      ${
+        phoneFocused
+          ? "-top-8 text-blue-600 text-sm"
+          : "-top-6 text-gray-400 text-sm"
+      }`}
               >
                 Phone Number
               </label>
@@ -222,17 +263,32 @@ export default function RequestQuoteForm() {
                   onBlur: () => setPhoneFocused(false),
                 }}
               />
-              {fieldErrors["phone"] && <p className="text-red-600 text-xs mt-1">{fieldErrors["phone"]}</p>}
+              {fieldErrors["phone"] && (
+                <p className="text-red-600 text-xs mt-1">
+                  {fieldErrors["phone"]}
+                </p>
+              )}
             </div>
 
-            {floatingInput("service", "text", "Service Needed", undefined, undefined, "mb-10 md:mb-12")}
+            {floatingInput(
+              "service",
+              "text",
+              "Service Needed",
+              undefined,
+              undefined,
+              "mb-10 md:mb-12"
+            )}
 
             {/* Description */}
             <div className="relative w-full mb-8">
               <label
                 htmlFor="description"
                 className={`absolute left-2 transition-all duration-200
-      ${descFocused ? "-top-8 text-blue-600 text-sm" : "-top-6 text-gray-400 text-sm"}`}
+      ${
+        descFocused
+          ? "-top-8 text-blue-600 text-sm"
+          : "-top-6 text-gray-400 text-sm"
+      }`}
               >
                 Project Description
               </label>
@@ -246,25 +302,47 @@ export default function RequestQuoteForm() {
                 onBlur={() => setDescFocused(false)}
               />
               {fieldErrors["description"] && (
-                <p className="text-red-600 text-xs mt-1">{fieldErrors["description"]}</p>
+                <p className="text-red-600 text-xs mt-1">
+                  {fieldErrors["description"]}
+                </p>
               )}
             </div>
 
-            {floatingInput("budget", "text", "Budget (whole number)", budgetValue, handleBudgetChange)}
+            {floatingInput(
+              "budget",
+              "text",
+              "Budget (whole number)",
+              budgetValue,
+              handleBudgetChange
+            )}
             {floatingInput("timeline", "text", "Timeline / Deadline")}
             {floatingInput("company", "text", "Company / Organization Name")}
 
             {/* File Upload */}
             <div className="relative w-full mb-4">
-              <input type="file" name="file" id="fileInput" className="hidden" onChange={handleFileChange} />
+              <input
+                type="file"
+                name="file"
+                id="fileInput"
+                className="hidden"
+                onChange={handleFileChange}
+              />
               <label
                 htmlFor="fileInput"
                 className="inline-block bg-blue-950 text-white text-sm px-4 py-3 rounded cursor-pointer hover:bg-blue-900"
               >
                 {fileObject ? "Change File" : "Upload picture or pdf"}
               </label>
-              {fileObject && <p className="mt-2 text-gray-700">{fileObject.name}</p>}
-              {filePreview && <img src={filePreview} alt="File Preview" className="max-h-40 mt-2 border rounded" />}
+              {fileObject && (
+                <p className="mt-2 text-gray-700">{fileObject.name}</p>
+              )}
+              {filePreview && (
+                <img
+                  src={filePreview}
+                  alt="File Preview"
+                  className="max-h-40 mt-2 border rounded"
+                />
+              )}
             </div>
 
             {/* Contact Method */}
@@ -273,18 +351,34 @@ export default function RequestQuoteForm() {
                 name="contactMethod"
                 className="peer w-full border-b border-gray-300 p-2 pt-6 focus:outline-none focus:border-blue-600 text-sm"
               >
-                <option value="">Preferred Contact Method</option>
-                <option value="email">Email</option>
-                <option value="phone">Phone</option>
+                <option value="" className="text-gray-400">
+                  Preferred Contact Method
+                </option>
+                <option value="email" className="text-gray-400">
+                  Email
+                </option>
+                <option value="phone" className="text-gray-400">
+                  Phone
+                </option>
               </select>
-              {fieldErrors["contactMethod"] && <p className="text-red-600 text-xs mt-1">{fieldErrors["contactMethod"]}</p>}
+              {fieldErrors["contactMethod"] && (
+                <p className="text-red-600 text-xs mt-1">
+                  {fieldErrors["contactMethod"]}
+                </p>
+              )}
             </div>
 
             <label className="flex items-center space-x-2 mb-4">
               <input type="checkbox" name="terms" />
-              <span>I agree to the Terms & Privacy Policy</span>
+              <span className="text-gray-400">
+                I agree to the Terms & Privacy Policy
+              </span>
             </label>
-            {fieldErrors["terms"] && <p className="text-red-600 text-xs mt-1">{fieldErrors["terms"]}</p>}
+            {fieldErrors["terms"] && (
+              <p className="text-red-600 text-xs mt-1">
+                {fieldErrors["terms"]}
+              </p>
+            )}
 
             <button
               type="submit"
@@ -312,35 +406,34 @@ export default function RequestQuoteForm() {
       </div>
 
       {/* Popup */}
-     <AnimatePresence>
-  {popupMessage && (
-    <motion.div
-      className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50" 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={() => setPopupMessage(null)} // Close when clicking outside
-    >
-      <motion.div
-        className="bg-gray-200 p-6 rounded-xl shadow-lg max-w-sm text-center"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.8, opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
-      >
-        <p className="mb-4">{popupMessage}</p>
-        <button
-          onClick={() => setPopupMessage(null)}
-          className="bg-blue-950 text-sm text-white px-4 py-1 rounded hover:bg-blue-900"
-        >
-          Close
-        </button>
-      </motion.div>
-    </motion.div>
-  )}
-</AnimatePresence>
-
+      <AnimatePresence>
+        {popupMessage && (
+          <motion.div
+            className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setPopupMessage(null)} // Close when clicking outside
+          >
+            <motion.div
+              className="bg-gray-200 p-6 rounded-xl shadow-lg max-w-sm text-center"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+            >
+              <p className="mb-4">{popupMessage}</p>
+              <button
+                onClick={() => setPopupMessage(null)}
+                className="bg-blue-950 text-sm text-white px-4 py-1 rounded hover:bg-blue-900"
+              >
+                Close
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
