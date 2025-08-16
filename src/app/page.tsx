@@ -20,6 +20,7 @@ import Image from "next/image";
 import CounterCard from "@/component/counterCard";
 import IconGrid, { GridItem } from "@/component/IconGrid";
 import RequestQuoteForm from "@/component/RequestQuote";
+import TestimonialCarousel from "@/component/TestimonialCarousel";
 
 const Home = () => {
   const features: GridItem[] = [
@@ -335,6 +336,10 @@ const Home = () => {
         </TextFadeIn>
 
       <RequestQuoteForm />
+      </div>
+
+      <div className="py-25  w-full  bg-gray-200 px-10 md:px-20">
+      <TestimonialCarousel/>
       </div>
     </div>
   );
