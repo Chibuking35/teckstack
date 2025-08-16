@@ -6,15 +6,15 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 const Footer = () => {
   return (
     <div className="bg-blue-950 p-3 pt-7 px-8 pb-2 w-full md:px-10">
-      <div className="flex flex-col md:flex-row  gap-4 py-10">
+      <div className="flex flex-col md:flex-row  gap-4 py-10 opacity-70">
         {/* first */}
         <div className="flex-1 justify-center items-center gap-3 flex-col">
-          <div className="justify-center items-center flex gap-3">
+          <div className="justify-center items-baseline flex gap-3">
             <div className="flex ">
               {" "}
               <Image src="/tecklogo.png" alt="logo" width={40} height={40} />
             </div>
-            <h1 className="text-gray-400 text-thin text-center text-4xl">
+            <h1 className="text-gray-400 text-thin text-center text-2xl">
               Tech Hick
             </h1>
           </div>
