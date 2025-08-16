@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -47,10 +48,12 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 shadow bg-blue-950 px-5 py-2 md:px-10">
       <div className="flex justify-between items-center">
         {/* Logo */}
-        <h1 className="text-xl text-white">
-          Tech <span className="text-sm font-light">Hike</span>
+        <div className="flex flex-row gap-2 justify-center items-center">
+          <Image src="/teckwhite.png" alt="logo" width={25} height={25} />
+        <h1 className="text-xl text-white flex items-center">
+          Tech <span className="ml-2 text-sm font-light ">Hike</span>
         </h1>
-
+</div>
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => {
