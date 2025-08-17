@@ -103,7 +103,7 @@ const TestimonialCarousel = () => {
               initial="enter"
               animate="center"
               exit="exit"
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.4 }}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={1}
@@ -116,7 +116,7 @@ const TestimonialCarousel = () => {
                   prevTestimonial();
                 }
               }}
-              className="bg-gray-800 rounded-2xl shadow-lg p-6 w-full max-w-md md:max-w-lg flex-col cursor-grab active:cursor-grabbing"
+              className="bg-gray-800 rounded-2xl shadow-lg p-6 w-full max-w-md md:max-w-lg flex flex-col justify-between cursor-grab active:cursor-grabbing min-h-[420px]"
             >
               {/* header picture */}
               <Image
@@ -128,7 +128,7 @@ const TestimonialCarousel = () => {
               />
 
               {/* message */}
-              <p className="text-gray-300 text-base mt-4 flex-1 text-center">
+              <p className="text-gray-300 text-base mt-4 text-center flex-grow">
                 {testimonial.text}
               </p>
 
