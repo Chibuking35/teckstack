@@ -10,28 +10,28 @@ const testimonials = [
   {
     headerImage: "/data.jpg",
     headerText: "Awesome service and support",
-    text: "Tech Hike transformed our online presence. Their team was professional, creative, and delivered beyond expectations!",
-    name: "Chibueze",
-    role: "CEO, Tech Hike",
-    profileImage: "/digitalS.jpg",
+    text: "\u201C Tech Hike built my business website in just few weeks. The process was smooth, professional, and efficient. I highly recommend their services\u201D",
+    name: "Sarah Johnson",
+    role: "Startup Founder",
+    profileImage: "/profile1.jpg",
     rating: 5,
   },
   {
-    headerImage: "/data.jpg",
+    headerImage: "/bgcyber.jpg",
     headerText: "Outstanding design",
-    text: "Their design ideas elevated our branding and helped us stand out. Highly recommend Tech Hike!",
-    name: "Sarah",
-    role: "Marketing Lead",
-    profileImage: "/digitalS.jpg",
+    text: "\u201CThanks to Tech Hike, my website is secure. Their cybersecurity support gave me peace of mind knowing my business and customers are protected\u201D",
+    name: "Michael Adewale",
+    role: "Small Business Owner",
+    profileImage: "/profile2.jpg",
     rating: 5,
   },
   {
-    headerImage: "/data.jpg",
+    headerImage: "/bgnetwork.jpg",
     headerText: "Professional and reliable",
-    text: "A seamless experience from start to finish. Reliable, efficient, and creative team!",
-    name: "Michael",
-    role: "Founder, Bright Solutions",
-    profileImage: "/digitalS.jpg",
+    text: "\u201CWorking with Tech Hike and their tech partners made our project smooth and efficient. Their collaboration brought real value\u201D",
+    name: "David Wong",
+    role: "IT Manager",
+    profileImage: "/profile3.jpg",
     rating: 4,
   },
 ];
@@ -47,6 +47,11 @@ const variants = {
     opacity: 0,
   }),
 };
+
+// Swipe helpers
+const swipeConfidenceThreshold = 10000;
+const swipePower = (offset: number, velocity: number) =>
+  Math.abs(offset) * velocity;
 
 const TestimonialCarousel = () => {
   const [[current, direction], setCurrent] = useState<[number, number]>([0, 0]);
@@ -99,7 +104,19 @@ const TestimonialCarousel = () => {
               animate="center"
               exit="exit"
               transition={{ duration: 0.4 }}
-              className="bg-gray-800 rounded-2xl shadow-lg p-6 w-full max-w-md md:max-w-lg flex-col"
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={1}
+              onDragEnd={(_, { offset, velocity }) => {
+                const swipe = swipePower(offset.x, velocity.x);
+
+                if (swipe < -swipeConfidenceThreshold) {
+                  nextTestimonial();
+                } else if (swipe > swipeConfidenceThreshold) {
+                  prevTestimonial();
+                }
+              }}
+              className="bg-gray-800 rounded-2xl shadow-lg p-6 w-full max-w-md md:max-w-lg flex-col cursor-grab active:cursor-grabbing"
             >
               {/* header picture */}
               <Image
@@ -122,9 +139,9 @@ const TestimonialCarousel = () => {
                   alt={testimonial.name}
                   width={50}
                   height={50}
-                  className="rounded-full border border-gray-600"
+                  className="rounded-full border border-gray-600 object-cover h-12 w-12"
                 />
-                <div className="text-center">
+                <div className="text-left">
                   <h3 className="text-white font-semibold">{testimonial.name}</h3>
                   <span className="text-gray-400 text-sm">
                     {testimonial.role}

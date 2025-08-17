@@ -43,7 +43,7 @@ const Footer = () => {
         {/* second */}
         <div className="flex-1 md:pl-5">
           <div className="flex flex-col items-start text-left text-gray-400 text-sm">
-            <h1 className="text-xl my-4 ">Navigation</h1>
+            <h1 className="text-xl my-4 font-bold">Navigation</h1>
             <Link href="/" className="block">
               Home
             </Link>
@@ -59,7 +59,7 @@ const Footer = () => {
         {/* third */}
         <div className="flex-1">
           <div className="flex flex-col items-start text-left text-gray-400 text-sm">
-            <h1 className="text-xl my-4">Services</h1>
+            <h1 className="text-xl my-4 font-bold">Services</h1>
 
             <Link href="/software-development">Software Development</Link>
             <Link href="/cybersecurity-soulution">Cybersecurity Solution</Link>
@@ -73,7 +73,7 @@ const Footer = () => {
         {/* fouth */}
         <div className="felx-1">
           <div className="flex flex-col items-start text-left text-gray-400">
-            <h1 className="text-xl my-4">Contact us</h1>
+            <h1 className="text-xl my-4 font-bold">Contact us</h1>
             <p className="font-light text-sm">
               <span className="font-bold">Email: </span>techhike@gmail.com
             </p>
