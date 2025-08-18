@@ -145,7 +145,7 @@ const TeamMembers = () => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <div className="relative h-[59rem] md:h-[600px] overflow-visible flex items-center justify-center">
+      <div className="relative h-[59rem] md:h-[500px] lg:h-[600px] overflow-visible flex items-center justify-center">
         <Image
           src="/techb.jpg"
           alt="background"
@@ -332,19 +332,9 @@ const TeamMembers = () => {
                       </ul>
                     </div>
                   )}
-                </motion.div>
-              </AnimatePresence>
-
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={member.socials.facebook}
-                  variants={fadeVariant}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  transition={{ duration: 0.5 }}
-                  className="flex gap-4 justify-center items-center mt-10"
-                >
+              
+<div className="flex gap-4 justify-start items-center mt-4 md:mt-2 lg:mt-10">
+             
                   <Link href={member.socials.facebook}>
                     <FaFacebook className="text-amber-300" size={20} />
                   </Link>
@@ -353,7 +343,7 @@ const TeamMembers = () => {
                   </Link>
                   <Link href={member.socials.instagram}>
                     <FaInstagram className="text-amber-300" size={20} />
-                  </Link>
+                  </Link></div>
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -368,13 +358,51 @@ const TeamMembers = () => {
               animate="visible"
               exit="exit"
               transition={{ duration: 0.5 }}
-              className="absolute -bottom-7 left-18 z-40"
+              className="absolute -bottom-7 left-18 z-50 hidden lg:block"
             >
               <Image
                 src={member.profileImg}
                 alt="profile"
                 width={350}
                 height={350}
+                className="object-cover"
+              />
+            </motion.div>
+          </AnimatePresence>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={member.profileImg}
+              variants={profileSwipeVariant(swipeDirection)}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              transition={{ duration: 0.5 }}
+              className="absolute -bottom-7 left-18 z-50 md:hidden block"
+            >
+              <Image
+                src={member.profileImg}
+                alt="profile"
+                width={350}
+                height={350}
+                className="object-cover"
+              />
+            </motion.div>
+          </AnimatePresence>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={member.profileImg}
+              variants={profileSwipeVariant(swipeDirection)}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              transition={{ duration: 0.5 }}
+              className="absolute -bottom-5 left-13 z-50 hidden md:block lg:hidden"
+            >
+              <Image
+                src={member.profileImg}
+                alt="profile"
+                width={270}
+                height={270}
                 className="object-cover"
               />
             </motion.div>
