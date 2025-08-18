@@ -33,7 +33,7 @@ export default function WordCase() {
   }, [interval, words.length]);
 
   return (
-    <section className="w-full  flex items-center justify-center md:justify-start px-4 py-6  bg-white">
+    <section className="w-full  flex items-center justify-center md:justify-start px-6 py-12  bg-white">
       <div className="text-center max-w-4xl">
         <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-blue-950">
           We work with
