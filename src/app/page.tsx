@@ -1,4 +1,5 @@
 import Slider from "@/component/Slider";
+import WordCase from "@/component/WordCase";
 import FlipCard from "@/component/FlipCard";
 import TextFadeIn from "@/component/TextFadeIn";
 import { Slides } from "@/lib/Slide";
@@ -255,7 +256,7 @@ const Home = () => {
         </div>
       </div>
       <TextFadeIn className="w-full m-0 mt-10 md:mt-20">
-        <div className="relative h-96 w-full overflow-hidden my-2 flex items-center justify-start">
+        <div className="relative h-96 md:h-[30rem] w-full overflow-hidden my-2 flex items-center justify-start">
           <Image
             src="/photo.jpg"
             alt="background photo"
@@ -268,7 +269,7 @@ const Home = () => {
 
           {/* Text content – only within gradient area */}
           <div className="absolute z-20 p-6 text-white  max-w-xl w-[80%]">
-            <h2 className="md:text-sm font-bold mb-3  pb-1 border-b-3 border-blue-950">
+            <h2 className="md:text-sm font-bold mb-3  pb-1 border-b-3 border-amber-300">
               Empowering Digital Progress
             </h2>
             <p className=" md:mt-2 text-xs md:text-sm">
@@ -278,8 +279,15 @@ const Home = () => {
               reliability, and security to move your vision forward.
             </p>
           </div>
+
+         
         </div>
       </TextFadeIn>
+
+      <div>
+ <WordCase/>
+
+      </div>
       {/* counters*/}
 
       <div className="w-full px-4 py-10 bg-gray-200 h-fit justify-center items-center">
@@ -344,6 +352,7 @@ const Home = () => {
       </div> 
       
       {/* <TeamMembers/> */}
+      
 
 <TeamMembers/>
 
