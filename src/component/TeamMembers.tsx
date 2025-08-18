@@ -131,7 +131,7 @@ const TeamMembers = () => {
         <Image src="/techb.jpg" alt="background" fill className="object-cover z-0" />
         <div className="absolute inset-0 bg-black/50 z-10" />
 
-        <div className="relative z-20 w-[95%] h-[80%] flex items-center justify-center">
+        <div className="relative z-20 w-[93%] h-[80%] flex items-center justify-center">
           <div className="relative w-full h-full">
             <Image src="/pics.jpg" alt="team" fill className="object-cover" />
             <div className="absolute inset-0 bg-black/40" />
