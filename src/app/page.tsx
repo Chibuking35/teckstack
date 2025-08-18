@@ -284,10 +284,10 @@ const Home = () => {
         </div>
       </TextFadeIn>
 
-      <div>
+      <TextFadeIn className="w-full">
  <WordCase/>
-
-      </div>
+    </TextFadeIn>
+    
       {/* counters*/}
 
       <div className="w-full px-4 py-10 bg-gray-200 h-fit justify-center items-center">
