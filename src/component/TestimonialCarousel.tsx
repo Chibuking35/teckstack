@@ -128,7 +128,9 @@ const TestimonialCarousel = () => {
               />
 
               {/* message */}
-              <p className="text-gray-300 text-base mt-4 text-center flex-grow text-sm">
+              <p className="text-gray-300 
+              
+              mt-4 text-center flex-grow text-sm">
                 {testimonial.text}
               </p>
 
