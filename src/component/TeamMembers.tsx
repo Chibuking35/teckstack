@@ -190,11 +190,11 @@ const TeamMembers = () => {
                       transition={{ duration: 0.5 }}
                     >
                       <div className="text-justify">
-                        {activeTab === "education" && <p className="mt-2 text-xs font-thin text-gray-300">{member.education}</p>}
+                        {activeTab === "education" && <p className="mt-2 text-sm font-thin text-gray-300">{member.education}</p>}
                         {activeTab === "bio" && <p className="mt-2 text-xs font-thin text-gray-300">{member.bio}</p>}
                         {activeTab === "skills" && (
                           <div>
-                            <p className="mt-2 text-xs font-thin text-gray-300">
+                            <p className="mt-2 text-sm font-thin text-gray-300">
                               I have developed strong technical and creative skills through hands-on experience
                               and academic training. My expertise covers both frontend and backend development,
                               as well as design.
