@@ -4,19 +4,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaArrowLeft, FaArrowRight, FaCircle, FaFacebook, FaInstagram } from "react-icons/fa";
+import {
+  FaArrowLeft,
+  FaArrowRight,
+  FaCircle,
+  FaFacebook,
+  FaInstagram,
+} from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 
 const team = [
   {
     name: "Chibueze Nwigwe",
     role: "Software Developer",
-    education: `I am a passionate software developer currently studying Software Engineering,
-      with hands-on experience in building scalable web applications and working with modern frameworks.
-      My academic journey has strengthened my problem-solving skills and given me a solid foundation
-      in algorithms, database management, and system design. Beyond academics, I actively engage
-      in personal and team projects that focus on real-world applications of AI, cloud computing,
-      and full-stack development.`,
+    education: `I am a passionate software developer studying Software Engineering, 
+    with experience building scalable web applications using modern frameworks. My academic
+     journey has strengthened my problem-solving skills and foundation in algorithms, databases, and system design.
+      I also work on personal and team projects applying AI, cloud computing, and full-stack development.`,
     bio: `I am a passionate software developer currently pursuing a degree in Software Engineering
       at Oluaka Institute of Technology. With a strong foundation in full-stack development
       and a growing interest in emerging technologies such as AI and cloud computing,
@@ -39,7 +43,15 @@ const team = [
     bio: `As a data analyst, I specialize in turning raw data into actionable insights that drive strategic decisions.
       I am passionate about uncovering trends, patterns, and correlations from complex datasets.
       I focus on continuous learning, applying emerging analytical techniques, and creating impactful reports that help organizations optimize performance and achieve their goals.`,
-    skills: ["SQL", "Python", "Excel", "Power BI", "Tableau", "Data Visualization", "Statistical Analysis"],
+    skills: [
+      "SQL",
+      "Python",
+      "Excel",
+      "Power BI",
+      "Tableau",
+      "Data Visualization",
+      "Statistical Analysis",
+    ],
     socials: {
       facebook: "https://web.facebook.com/?_rdc=1&_rdr#",
       twitter: "https://x.com/",
@@ -50,15 +62,19 @@ const team = [
   {
     name: "Brian",
     role: "Cyber Security Specialist",
-    education: `I am a cybersecurity enthusiast with a strong foundation in network security, ethical hacking, and risk assessment.
-      I have hands-on experience in protecting systems and networks from cyber threats, performing vulnerability assessments,
-      and implementing security protocols. My academic journey has strengthened my problem-solving skills and given me a solid
-      understanding of encryption, firewall management, and incident response.`,
+    education: `I am a cybersecurity enthusiast with a strong foundation in network security, ethical hacking, and risk assessment. I have experience protecting systems from cyber threats, performing vulnerability assessments, and implementing security protocols. My studies have strengthened my problem-solving skills and understanding of encryption, firewalls, and incident response.`,
     bio: `As a cybersecurity specialist, I focus on safeguarding digital assets and ensuring the integrity and confidentiality
       of information systems. I am passionate about identifying potential threats, mitigating risks, and implementing
       security best practices. My goal is to help organizations maintain secure systems while staying ahead of evolving
       cyber threats.`,
-    skills: ["Network Security", "Ethical Hacking", "Penetration Testing", "Firewalls", "Encryption", "Incident Response"],
+    skills: [
+      "Network Security",
+      "Ethical Hacking",
+      "Penetration Testing",
+      "Firewalls",
+      "Encryption",
+      "Incident Response",
+    ],
     socials: {
       facebook: "https://web.facebook.com/?_rdc=1&_rdr#",
       twitter: "https://x.com/",
@@ -84,7 +100,9 @@ const profileSwipeVariant = (direction: "left" | "right") => ({
 const TeamMembers = () => {
   const [activeTab, setActiveTab] = useState("skills");
   const [activeMemberIndex, setActiveMemberIndex] = useState(0);
-  const [swipeDirection, setSwipeDirection] = useState<"left" | "right">("left");
+  const [swipeDirection, setSwipeDirection] = useState<"left" | "right">(
+    "left"
+  );
 
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
@@ -128,7 +146,12 @@ const TeamMembers = () => {
       onTouchEnd={handleTouchEnd}
     >
       <div className="relative h-[59rem] md:h-[600px] overflow-visible flex items-center justify-center">
-        <Image src="/techb.jpg" alt="background" fill className="object-cover z-0" />
+        <Image
+          src="/techb.jpg"
+          alt="background"
+          fill
+          className="object-cover z-0"
+        />
         <div className="absolute inset-0 bg-black/50 z-10" />
 
         <div className="relative z-20 w-[93%] h-[80%] flex items-center justify-center">
@@ -146,7 +169,9 @@ const TeamMembers = () => {
                     <button
                       key={tab}
                       className={`${
-                        activeTab === tab ? "text-gray-600 border-l-2 border-amber-300" : "text-gray-600"
+                        activeTab === tab
+                          ? "text-gray-600 border-l-2 border-amber-300"
+                          : "text-gray-600"
                       } [writing-mode:vertical-lr]`}
                       onClick={() => setActiveTab(tab)}
                     >
@@ -158,8 +183,15 @@ const TeamMembers = () => {
 
               <div className="flex flex-col items-start gap-1">
                 <div className="flex items-baseline gap-2">
-                  <Image src="/tecklogo.png" alt="logo" width={40} height={40} />
-                  <h1 className="text-gray-400 text-2xl font-thin text-center">Tech Hick</h1>
+                  <Image
+                    src="/tecklogo.png"
+                    alt="logo"
+                    width={40}
+                    height={40}
+                  />
+                  <h1 className="text-gray-400 text-2xl font-thin text-center">
+                    Tech Hick
+                  </h1>
                 </div>
                 {/* Mobile info & tabs */}
                 <div className="text-left block md:hidden">
@@ -173,7 +205,9 @@ const TeamMembers = () => {
                       transition={{ duration: 0.5 }}
                     >
                       <div className="h-[3px] bg-amber-300 w-[50%] mt-2 mb-2" />
-                      <h1 className="text-2xl font-bold text-white">{member.name}</h1>
+                      <h1 className="text-2xl font-bold text-white">
+                        {member.name}
+                      </h1>
                       <p className="text-sm text-gray-400">{member.role}</p>
                     </motion.div>
                   </AnimatePresence>
@@ -190,18 +224,30 @@ const TeamMembers = () => {
                       transition={{ duration: 0.5 }}
                     >
                       <div className="text-justify">
-                        {activeTab === "education" && <p className="mt-2 text-sm font-thin text-gray-300">{member.education}</p>}
-                        {activeTab === "bio" && <p className="mt-2 text-xs font-thin text-gray-300">{member.bio}</p>}
+                        {activeTab === "education" && (
+                          <p className="mt-2 text-sm font-thin text-gray-300">
+                            {member.education}
+                          </p>
+                        )}
+                        {activeTab === "bio" && (
+                          <p className="mt-2 text-xs font-thin text-gray-300">
+                            {member.bio}
+                          </p>
+                        )}
                         {activeTab === "skills" && (
                           <div>
                             <p className="mt-2 text-sm font-thin text-gray-300">
-                              I have developed strong technical and creative skills through hands-on experience
-                              and academic training. My expertise covers both frontend and backend development,
-                              as well as design.
+                              I have developed strong technical and creative
+                              skills through hands-on experience and academic
+                              training. My expertise covers both frontend and
+                              backend development, as well as design.
                             </p>
                             <ul className="flex flex-wrap mt-4 text-xs font-thin text-gray-300 gap-2">
                               {member.skills.map((skill) => (
-                                <li key={skill} className="flex items-center gap-1">
+                                <li
+                                  key={skill}
+                                  className="flex items-center gap-1"
+                                >
                                   <FaCircle className="text-[6px] text-amber-300" />
                                   {skill}
                                 </li>
@@ -215,7 +261,10 @@ const TeamMembers = () => {
                           <FaFacebook className="text-amber-300" size={20} />
                         </Link>
                         <Link href={member.socials.twitter}>
-                          <FaSquareXTwitter className="text-amber-300" size={20} />
+                          <FaSquareXTwitter
+                            className="text-amber-300"
+                            size={20}
+                          />
                         </Link>
                         <Link href={member.socials.instagram}>
                           <FaInstagram className="text-amber-300" size={20} />
@@ -240,7 +289,9 @@ const TeamMembers = () => {
                 >
                   <div className="text-left">
                     <div className="h-[3px] bg-amber-300 w-[50%] mt-7 mb-4" />
-                    <h1 className="text-2xl font-bold text-white">{member.name}</h1>
+                    <h1 className="text-2xl font-bold text-white">
+                      {member.name}
+                    </h1>
                     <p className="text-sm text-gray-400">{member.role}</p>
                   </div>
                 </motion.div>
@@ -256,13 +307,22 @@ const TeamMembers = () => {
                   transition={{ duration: 0.5 }}
                   className="max-w-xl mt-10 rounded-xl shadow-lg text-justify"
                 >
-                  {activeTab === "education" && <p className="mt-2 text-xs font-thin text-gray-300">{member.education}</p>}
-                  {activeTab === "bio" && <p className="mt-2 text-xs font-thin text-gray-300">{member.bio}</p>}
+                  {activeTab === "education" && (
+                    <p className="mt-2 text-xs font-thin text-gray-300">
+                      {member.education}
+                    </p>
+                  )}
+                  {activeTab === "bio" && (
+                    <p className="mt-2 text-xs font-thin text-gray-300">
+                      {member.bio}
+                    </p>
+                  )}
                   {activeTab === "skills" && (
                     <div>
                       <p className="mt-2 text-xs font-thin text-gray-300">
-                        I have developed strong technical and creative skills through hands-on experience
-                        and academic training. My expertise covers both frontend and backend development,
+                        I have developed strong technical and creative skills
+                        through hands-on experience and academic training. My
+                        expertise covers both frontend and backend development,
                         as well as design.
                       </p>
                       <ul className="list-disc list-inside mt-2 text-xs font-thin text-gray-300">
@@ -310,16 +370,28 @@ const TeamMembers = () => {
               transition={{ duration: 0.5 }}
               className="absolute -bottom-7 left-18 z-40"
             >
-              <Image src={member.profileImg} alt="profile" width={350} height={350} className="object-cover" />
+              <Image
+                src={member.profileImg}
+                alt="profile"
+                width={350}
+                height={350}
+                className="object-cover"
+              />
             </motion.div>
           </AnimatePresence>
 
           {/* Navigation Buttons */}
           <div className="absolute top-150 md:top-80 -right-4 -translate-y-1/2 z-50 flex flex-col">
-            <button className="p-2 bg-amber-400 shadow-lg hover:bg-amber-500" onClick={handlePrev}>
+            <button
+              className="p-2 bg-amber-400 shadow-lg hover:bg-amber-500"
+              onClick={handlePrev}
+            >
               <FaArrowLeft />
             </button>
-            <button className="p-2 bg-amber-400 shadow-lg hover:bg-amber-500" onClick={handleNext}>
+            <button
+              className="p-2 bg-amber-400 shadow-lg hover:bg-amber-500"
+              onClick={handleNext}
+            >
               <FaArrowRight />
             </button>
           </div>
