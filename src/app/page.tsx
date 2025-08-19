@@ -32,7 +32,7 @@ const Home = () => {
       description:
         "Custom software solutions that streamline processes, boost efficiency, and bring your ideas to life.",
       icons: <AppWindow className="flex" />,
-      url: "/software-development"
+      url: "/software-development",
     },
     {
       imageSrc: "/cyberS.jpg",
@@ -40,7 +40,7 @@ const Home = () => {
       description:
         "Advanced cybersecurity solutions that safeguard your data, protect your systems, and keep your business safe.",
       icons: <ShieldCheck />,
-    url: "/cybersecurity"
+      url: "/cybersecurity",
     },
     {
       imageSrc: "/networkS.jpg",
@@ -48,7 +48,7 @@ const Home = () => {
       description:
         "Reliable networking solutions that keep your business connected, fast, and secure",
       icons: <EthernetPort />,
-      url: "/networking-services"
+      url: "/networking-services",
     },
     {
       imageSrc: "/dataS.jpg",
@@ -88,7 +88,7 @@ const Home = () => {
       description:
         "Database management solutions that organize, secure, and optimize your data for reliable access and performance.",
       icons: <Database />,
-      url: "/database-management"
+      url: "/database-management",
     },
   ];
 
@@ -279,15 +279,10 @@ const Home = () => {
               reliability, and security to move your vision forward.
             </p>
           </div>
-
-         
         </div>
+        <WordCase />
       </TextFadeIn>
 
-      <TextFadeIn className="w-full">
- <WordCase/>
-    </TextFadeIn>
-    
       {/* counters*/}
 
       <div className="w-full px-4 py-10 bg-gray-200 h-fit justify-center items-center">
@@ -336,26 +331,69 @@ const Home = () => {
       </div>
 
       <div className="w-full py-20 md:py-20 bg-white h-fit justify-center items-center">
-
         <TextFadeIn>
           <div className="flex justify-center items-center px-3 md:mb-3 mb-2 mt-9">
-          <h1 className="text-center text-2xl md:text-3xl font-bold mb-5 border-b-2 border-blue-950 text-blue-950">
-            Request a Quote
-          </h1></div>
+            <h1 className="text-center text-2xl md:text-3xl font-bold mb-5 border-b-2 border-blue-950 text-blue-950">
+              Request a Quote
+            </h1>
+          </div>
         </TextFadeIn>
 
-      <RequestQuoteForm />
+        <RequestQuoteForm />
       </div>
 
       <div className="py-25  w-full  bg-gray-200 px-10 md:px-20">
-      <TestimonialCarousel/>
-      </div> 
-      
+        <TestimonialCarousel />
+      </div>
+
       {/* <TeamMembers/> */}
-      
 
-<TeamMembers/>
+      <div className="w-full py-10 px-6 flex flex-col justify-center items-center gap-6">
+        <h1 className="flex text-blue-950 text-3xl font-bold text-left md:text-center ">
+          We equip your business with the expertise to achieve greater success
+        </h1>
+        <p className="flex text-base font-light text-gray-500 text-justify">
+          Our team is composed of experienced professionals in software
+          development, networking, cybersecurity, and data analysis. With a
+          strong track record of delivering reliable and innovative solutions,
+          we combine technical expertise with strategic insight to meet the
+          unique needs of every client. By leveraging our diverse skills, we
+          ensure your projects are executed with precision, security, and
+          long-term value.{" "}
+        </p>
+      </div>
+      <TeamMembers />
 
+      <div className="flex w-full p-6 py-30 md:p-10 flex-col md:flex-row mt-7 md:mt-24">
+        <div className="flex-1 ">
+          <div className="relative flex p-4 w-full h-[27rem] ">
+            <Image
+              src="/career.jpg"
+              alt=""
+              fill
+              className="object-cover rounded-2xl z-0 "
+            />{" "}
+          </div>
+        </div>
+        <div className="flex-1">
+          <div className="flex flex-col gap-6 md:px-7 md:py-0 py-6">
+            <h1 className=" text-2xl text-blue-950 font-bold">Career</h1>
+            <p className="text-base text-justify text-gray-500">
+              We are guided by innovation, excellence, and a strong commitment
+              to solving real-world problems through technology. Our diverse
+              team of experts thrives on collaboration, creativity, and
+              precision, consistently delivering solutions that not only address
+              today's challenges but also shape the future of digital
+              innovation.
+            </p>
+            <div className="flex justify-start">
+              <button className="px-4 py-2 bg-blue-950 flex rounded  text-white text-sm">
+                Work with us
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
