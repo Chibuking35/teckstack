@@ -383,7 +383,7 @@ const Home = () => {
               to solving real-world problems through technology. Our diverse
               team of experts thrives on collaboration, creativity, and
               precision, consistently delivering solutions that not only address
-              today's challenges but also shape the future of digital
+              today&apos;s challenges but also shape the future of digital
               innovation.
             </p>
             <div className="flex justify-start">
