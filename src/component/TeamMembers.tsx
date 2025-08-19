@@ -172,7 +172,7 @@ const TeamMembers = () => {
                         activeTab === tab
                           ? "text-gray-600 border-l-2 border-amber-300"
                           : "text-gray-600"
-                      } [writing-mode:vertical-lr]`}
+                      } [writing-mode:vertical-rl]`}
                       onClick={() => setActiveTab(tab)}
                     >
                       {tab.charAt(0).toUpperCase() + tab.slice(1)}

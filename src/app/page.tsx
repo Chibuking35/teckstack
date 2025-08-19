@@ -298,37 +298,7 @@ const Home = () => {
       <div className="oluaka">Oluaka</div>
     </div> */}
 
-      <div
-        className="bg-[var(--maincolor)] p-3 md:px-10 w-full h-fit py-30
-    "
-      >
-        {" "}
-        <div className="flex justify-center items-center flex-col px-2 ">
-          <TextFadeIn>
-            {" "}
-            <h1 className="text-center flex text-xl mb-5  border-b-3 border-white text-white justify-center items-center ">
-              Our Services
-            </h1>
-          </TextFadeIn>
-
-          <TextFadeIn>
-            <p className=" text-white font-thin tracking-wide text-justify  py-10 text-[12px]">
-              We believe that innovation becomes stronger when driven by
-              collaboration. That is why we are open to partnering with any tech
-              company that shares our vision for growth, creativity, and
-              excellence. Through these partnerships, we are able to combine
-              expertise, explore new opportunities, and leverage a wider range
-              of technologies. This collaborative approach not only strengthens
-              the solutions we provide but also creates room for greater impact,
-              allowing us to deliver more value to businesses and their
-              customers while shaping the future of technology together
-            </p>
-          </TextFadeIn>
-        </div>
-        <TextFadeIn>
-          <IconGrid items={features} />
-        </TextFadeIn>
-      </div>
+   
 
       <div className="w-full py-20 md:py-20 bg-white h-fit justify-center items-center">
         <TextFadeIn>
