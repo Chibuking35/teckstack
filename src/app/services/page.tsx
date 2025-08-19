@@ -81,7 +81,7 @@ const Services = () => {
     },
   ];
   return (
-    <div className="w-full min-h-[100vh]  ">
+    <div className="w-full min-h-[100vh]  bg-white">
       <div className="relative w-full h-[10rem] md:h-[15rem]">
         <Image
           src="/serviceb.jpg"
