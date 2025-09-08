@@ -12,6 +12,8 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { IoMdArrowDropright } from "react-icons/io";
 
 const Services = () => {
   const features: GridItem[] = [
@@ -135,21 +137,74 @@ const Services = () => {
           </div>
         </div>
       </div>
-
-      <div className="flex w-full  mt-20  bg-gray-300">
-        <div
-          className=" p-3 md:px-10 w-full h-fit py-5 md:py-30
-    "
-        >
+      <TextFadeIn className="flex-col flex justify-center py-10 items-center bg-blue-950 mt-4 md:mt-20 md:py-12">
+        <h1 className="flex text-2xl text-gray-200  font-bold">Services</h1>
+        <p className="flex py-2 px-3 md:px-20 text-base text-center text-gray-400 font-light">
           {" "}
-          <div className="flex justify-center items-center flex-col px-2 "></div>
-          <TextFadeIn>
-            <IconGrid items={features} />
-          </TextFadeIn>
-        </div>
+          Our team delivers trusted technology solutions designed to help
+          businesses grow and stay secure. From software development to
+          networking, IT support, and cybersecurity, we provide reliable
+          services that make your operations more efficient and your systems
+          more resilient. We focus on quality, innovation, and long-term results
+          for every client.
+        </p>
+      </TextFadeIn>
+      <div className="flex w-full py-15  m-0 bg-gray-300 flex-col">
+        <TextFadeIn>
+          <IconGrid items={features} />
+        </TextFadeIn>
       </div>
 
-      <div className="w-full min-h-[20rem] bg-white"></div>
+      <div className="w-full  bg-white p-5  md:p-20">
+        <div className="flex flex-col md:flex-row gap-5 md:gap-10 w-full min-h-[50rem]">
+          <div className="flex-1 relative w-full  md:h-[20rem md:h-[30rem]">
+            <Image
+              src="/database.jpg"
+              alt=""
+              fill
+              className="object-cover z-0"
+            />
+
+            <div className="absolute z-10 bottom-0 w-full h-[70%] bg-blue-500 opacity-80" />
+            <div className="absolute z-20 bottom-0 w-full p-5 h-[70%]">
+              <h1 className="font-bold text-3xl  text-white mb-2">
+                Start A Good Plan
+              </h1>
+              <p className="text-white font-medium mb-3">
+                Every successful journey begins with a well-thought-out plan.
+                Taking time to outline your goals, resources, and possible
+                challenges helps you stay focused and organized. A good plan
+                acts as a roadmap,
+              </p>
+              <Link
+                href="/read-more"
+                className="flex flex-rowv justify-start items-center cursor-pointer"
+              >
+                <h3 className="font-bold text-2xl text-white flex underline">
+                  Read More
+                </h3>{" "}
+                <IoMdArrowDropright className="flex text-white" size={30} />
+              </Link>
+            </div>
+          </div>
+          <div className="flex-1 relative w-full md:h-[20rem] h-[30rem]">
+            <Image
+              src="/database.jpg"
+              alt=""
+              fill
+              className="object-cover z-0"
+            />
+          </div>
+          <div className="flex-1 relative md:h-[20rem] h-[30rem]">
+            <Image
+              src="/database.jpg"
+              alt=""
+              fill
+              className="object-cover z-0"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
