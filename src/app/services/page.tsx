@@ -156,21 +156,16 @@ const Services = () => {
       </div>
 
       <div className="w-full  bg-white p-5  md:p-20">
-        <div className="flex flex-col md:flex-row gap-5 md:gap-10 w-full min-h-[50rem]">
-          <div className="flex-1 relative w-full  md:h-[20rem md:h-[30rem]">
-            <Image
-              src="/database.jpg"
-              alt=""
-              fill
-              className="object-cover z-0"
-            />
+        <div className="md:flex hidden flex-col md:flex-row gap-5 md:gap-10 w-full ">
+          {/* the first box */}
+
+          <div className="flex-1 relative w-full  md:h-[20rem md:h-[15rem]">
+            <Image src="/plan.jpg" alt="" fill className="object-cover z-0" />
 
             <div className="absolute z-10 bottom-0 w-full h-[70%] bg-blue-500 opacity-80" />
             <div className="absolute z-20 bottom-0 w-full p-5 h-[70%]">
-              <h1 className="font-bold text-3xl  text-white mb-2">
-                Start A Good Plan
-              </h1>
-              <p className="text-white font-medium mb-3">
+              <h1 className="font-bold   text-white mb-2">Start A Good Plan</h1>
+              <p className="text-white text-xs mb-3">
                 Every successful journey begins with a well-thought-out plan.
                 Taking time to outline your goals, resources, and possible
                 challenges helps you stay focused and organized. A good plan
@@ -180,28 +175,36 @@ const Services = () => {
                 href="/read-more"
                 className="flex flex-rowv justify-start items-center cursor-pointer"
               >
-                <h3 className="font-bold text-2xl text-white flex underline">
+                <h3 className="font-bold  text-white flex underline">
                   Read More
                 </h3>{" "}
                 <IoMdArrowDropright className="flex text-white" size={30} />
               </Link>
             </div>
           </div>
-          <div className="flex-1 relative w-full md:h-[20rem] h-[30rem]">
-            <Image
-              src="/database.jpg"
-              alt=""
-              fill
-              className="object-cover z-0"
-            />
+
+          {/* the second box */}
+
+          <div className="flex-1 relative w-full  md:h-[20rem md:h-[15rem]">
+            <Image src="/exp.jpg" alt="" fill className="object-cover z-0" />
+
+            <div className="absolute z-10 bottom-0 w-full h-[20%] bg-blue-500 opacity-80" />
+
+            <h1 className="font-bold   text-white mb-2 absolute z-40 bottom-0.5 left-10 ">
+              Set Clear Goals
+            </h1>
           </div>
-          <div className="flex-1 relative md:h-[20rem] h-[30rem]">
-            <Image
-              src="/database.jpg"
-              alt=""
-              fill
-              className="object-cover z-0"
-            />
+
+          {/* the third box */}
+
+          <div className="flex-1 relative w-full  md:h-[20rem md:h-[15rem]">
+            <Image src="/disc.jpg" alt="" fill className="object-cover z-0" />
+
+            <div className="absolute z-10 bottom-0 w-full h-[20%] bg-blue-500 opacity-80" />
+
+            <h1 className="font-bold  left-10  absolute z-50 bottom-0.5  text-white mb-2 ">
+              Connect with Experts
+            </h1>
           </div>
         </div>
       </div>
