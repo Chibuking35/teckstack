@@ -84,7 +84,7 @@ const Services = () => {
   ];
   return (
     <div className="w-full min-h-[100vh]  bg-white">
-      <div className="relative w-full h-[10rem] md:h-[15rem]">
+      <div className="relative w-full h-[9rem] md:h-[10rem]">
         <Image
           src="/serviceb.jpg"
           alt=""
@@ -162,10 +162,12 @@ const Services = () => {
           <div className="flex-1 relative w-full  md:h-[20rem md:h-[15rem]">
             <Image src="/plan.jpg" alt="" fill className="object-cover z-0" />
 
-            <div className="absolute z-10 bottom-0 w-full h-[70%] bg-blue-500 opacity-80" />
+            <div className="absolute z-10 bottom-0 w-full h-[70%] bg-blue-950 opacity-80" />
             <div className="absolute z-20 bottom-0 w-full p-5 h-[70%]">
-              <h1 className="font-bold   text-white mb-2">Start A Good Plan</h1>
-              <p className="text-white text-xs mb-3">
+              <h1 className="font-bold   text-gray-400 mb-2 text-sm">
+                Start A Good Plan
+              </h1>
+              <p className="text-gray-400 md:text-[8px] lg:text-xs mb-3">
                 Every successful journey begins with a well-thought-out plan.
                 Taking time to outline your goals, resources, and possible
                 challenges helps you stay focused and organized. A good plan
@@ -175,10 +177,10 @@ const Services = () => {
                 href="/read-more"
                 className="flex flex-rowv justify-start items-center cursor-pointer"
               >
-                <h3 className="font-bold  text-white flex underline">
+                <h3 className="font-bold  text-gray-400 flex underline text-sm">
                   Read More
                 </h3>{" "}
-                <IoMdArrowDropright className="flex text-white" size={30} />
+                <IoMdArrowDropright className="flex  text-gray-400" size={13} />
               </Link>
             </div>
           </div>
@@ -188,9 +190,9 @@ const Services = () => {
           <div className="flex-1 relative w-full  md:h-[20rem md:h-[15rem]">
             <Image src="/exp.jpg" alt="" fill className="object-cover z-0" />
 
-            <div className="absolute z-10 bottom-0 w-full h-[20%] bg-blue-500 opacity-80" />
+            <div className="absolute z-10 bottom-0 w-full h-[20%] bg-blue-950 opacity-80" />
 
-            <h1 className="font-bold   text-white mb-2 absolute z-40 bottom-0.5 left-10 ">
+            <h1 className="font-bold text-sm   text-gray-400 mb-2 absolute z-40 bottom-0.5 left-10 ">
               Set Clear Goals
             </h1>
           </div>
@@ -200,13 +202,105 @@ const Services = () => {
           <div className="flex-1 relative w-full  md:h-[20rem md:h-[15rem]">
             <Image src="/disc.jpg" alt="" fill className="object-cover z-0" />
 
-            <div className="absolute z-10 bottom-0 w-full h-[20%] bg-blue-500 opacity-80" />
+            <div className="absolute z-10 bottom-0 w-full h-[20%] bg-blue-950 opacity-80" />
 
-            <h1 className="font-bold  left-10  absolute z-50 bottom-0.5  text-white mb-2 ">
+            <h1 className="font-bold text-[12px] lg:text-sm left-10  absolute z-30 bottom-0.5  text-gray-400 mb-2 ">
               Connect with Experts
             </h1>
           </div>
         </div>
+      </div>
+
+      <div className="py-5 md:py-7  md:px-10 justify-center items-center">
+        {/* the heading */}
+
+        <div className="flex justify-center flex-col items-center p-4">
+          <h1 className="font-bold  text-xl text-blue-950 ">Why Choose us?</h1>
+          <p className="font-light text-sm md:w-120 mt-3 text-gray-400 text-center">
+            Creativity is at the heart of everything we do. By combining fresh
+            ideas with innovative technology, we design solutions that inspire,
+            engage, and drive real business growth.
+          </p>
+        </div>
+        {/* the body and image  */}
+
+        <div className=" mt-20 flex w-[80%] mx-auto flex-col md:flex-row gap-10 md:gap-3">
+          {/* Left text section */}
+
+          {/* content */}
+          <div className="flex-1 ">
+            {/* number one  */}
+            <div className="flex flex-row pr-4 mb-5">
+              <h1 className="mr-4 font-bold text-2xl text-blue-950">01</h1>
+              <div className="flex flex-col justify-start items-start">
+                <h3 className="text-lg font-bold text-blue-950">
+                  Creative and Responsive Software
+                </h3>
+                <p className="text-gray-400 text-xs">
+                  We build creative and responsive software solutions tailored
+                  to your business needs, ensuring seamless performance,
+                  scalability, and an engaging user experience.
+                </p>
+              </div>
+            </div>
+            {/* number two  */}
+            <div className="flex flex-row pr-4 mb-5">
+              <h1 className="mr-4 font-bold text-2xl text-blue-950">02</h1>
+              <div className="flex flex-col justify-start items-start">
+                <h3 className="text-lg font-bold text-blue-950">
+                  Advanced Security Solutions
+                </h3>
+                <p className="text-gray-400 text-xs ">
+                  We embed cybersecurity into every stage of our process,
+                  delivering enterprise-grade solutions that protect sensitive
+                  data, defend against evolving threats, safeguard critical
+                  operations, and ensure business continuity with confidence and
+                  resilience.
+                </p>
+              </div>
+            </div>
+            {/* number three  */}
+            <div className="flex flex-row pr-4 mb-5">
+              <h1 className="mr-4 font-bold text-2xl text-blue-950">03</h1>
+              <div className="flex flex-col justify-start items-start">
+                <h3 className="text-lg font-bold text-blue-950">Professional & Detailed</h3>
+                <p className="text-gray-400 text-xs">
+                  We deliver software development solutions that combine
+                  creativity, innovation, and technical expertise to build
+                  applications that enhance productivity, streamline operations,
+                  and drive measurable business results.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right images section */}
+          <div className="flex-1">
+            <div className="relative w-full h-[400px]">
+              {/* Top image */}
+              <Image
+                src="/why.jpg"
+                alt="Top"
+                width={300}
+                height={300}
+                className="absolute left-0 z-30 rounded"
+              />
+
+              {/* Bottom image */}
+              <Image
+                src="/why2.jpg"
+                alt="Bottom"
+                width={400}
+                height={400}
+                className="absolute md:bottom-15 lg:bottom-7 left-10 right-0 z-20 opacity-20 rounded"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="md:px-30 px-5 p-5 w-[80%] justify-center">
+       <Link className="" href='/contact'> <button className="flex bg-blue-950 px-4 py-3 text-white text-sm cursor-pointer rounded ">Start a Project</button></Link>
       </div>
     </div>
   );
