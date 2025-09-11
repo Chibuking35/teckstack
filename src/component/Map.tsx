@@ -44,7 +44,7 @@ const GoogleMap = () => {
 
   return (
     <div className="bg-white">
-      <div style={{ height: "300px" }} ref={mapRef} />
+      <div style={{ height: "300px" }} ref={mapRef} className=" rounded md:rounded-2xl"/>
     </div>
   );
 };

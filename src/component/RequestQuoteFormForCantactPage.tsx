@@ -223,8 +223,8 @@ export default function RequestQuoteFormForCantactPage() {
     <div className="relative">
       <div className="flex flex-col md:flex-row p-5 md:p-30 mx-auto bg-white rounded shadow overflow-hidden gap-8">
         {/* flex 1 */}
-        <div className="flex-1">
-          <div className=" h-full pr-10 md:pl-2 p-2">
+        <div className="flex-1 mb-30 md:mb-0">
+          <div className=" h-full pr-10 md:pl-2 p-2 ">
             <h3 className="text-sm font-light mb-10">Lets talk</h3>
             <h1 className=" mb-10 text-2xl first-letter:text-4xl first-letter:font-bold first-letter:float-left first-letter:mr-1 first-letter:leading-[0.8] text-blue-950">
               We are always ready to assist you and provide clear answers to

@@ -21,7 +21,7 @@ const Contact =()=>{
 <div className="mt-5 md:mt-8" >
 
 <RequestQuoteFormForCantactPage/></div>
-<div>
+<div className="py-10 pt-30 md:pt-5 px-3 md:px-10 bg-gray-100">
 
     <GoogleMap/>
 </div>
