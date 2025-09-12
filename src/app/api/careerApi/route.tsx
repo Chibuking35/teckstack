@@ -21,20 +21,21 @@ export async function POST(req: Request) {
       );
     }
 
-    // Convert resume file to Base64 for email attachment
-    let attachments = [];
+    // ✅ Convert resume file to Base64 for email attachment
+    const attachments: { filename: string; content: string; encoding: string }[] = [];
     if (resume) {
       const buffer = Buffer.from(await resume.arrayBuffer());
       attachments.push({
         filename: resume.name,
         content: buffer.toString("base64"),
+        encoding: "base64", // ✅ required
       });
     }
 
-    // Send email with attachment
+    // ✅ Send email with attachment
     const data = await resend.emails.send({
-      from: "Tech-hike <onboarding@resend.dev>",
-      to: "cnwigwe525@gmail.com",
+      from: "Your Name <careers@yourdomain.com>", // ⚠️ must be a verified domain in Resend
+      to: "cnwigwe525@gmail.com", // test recipient
       subject: `New Application for ${position}`,
       html: `
         <h2>New Application Received</h2>
@@ -44,14 +45,14 @@ export async function POST(req: Request) {
         <p><strong>Portfolio:</strong> ${portfolio || "N/A"}</p>
         <p><strong>Motivation:</strong> ${motivation || "N/A"}</p>
       `,
-      attachments, // ✅ includes resume
+      attachments,
     });
 
     return NextResponse.json({ success: true, data });
   } catch (error) {
     console.error("Resend error:", error);
     return NextResponse.json(
-      { error: "Failed to send email" },
+      { error: "Failed to send email", details: String(error) },
       { status: 500 }
     );
   }
