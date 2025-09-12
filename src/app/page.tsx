@@ -23,6 +23,8 @@ import IconGrid, { GridItem } from "@/component/IconGrid";
 import RequestQuoteForm from "@/component/RequestQuote";
 import TestimonialCarousel from "@/component/TestimonialCarousel";
 import TeamMembers from "@/component/TeamMembers";
+import Link from "next/link";
+import Services from "@/component/Service";
 
 const Home = () => {
   const features: GridItem[] = [
@@ -150,7 +152,7 @@ const Home = () => {
                           Innovative
                         </h1>
 
-                        <p className="text-justify md:text-[13px] font-light text-gray-700 md:mb-4">
+                        <p className="text-justify md:text-[11px] lg:text-[13px] font-light text-gray-700 md:mb-4">
                           We stay ahead of trends, delivering cutting-edge IT
                           and digital solutions that are strategically designed
                           and tailored to meet your unique business needs,
@@ -181,7 +183,7 @@ const Home = () => {
                         <h1 className="text-center md:mt-3 font-bold text-lg md:text-sm mb-3 md:mb-0 text-gray-700">
                           Enterprise Grade Security
                         </h1>
-                        <p className="text-justify md:text-[13px] mt-2 font-light text-gray-700 md:mb-4">
+                        <p className="text-justify md:text-[11px] lg:text-[13px] mt-2 font-light text-gray-700 md:mb-4">
                           Your data and infrastructure are safeguarded by
                           advanced cybersecurity protocols, real-time threat
                           detection, and 24/7 monitoring to ensure maximum
@@ -211,7 +213,7 @@ const Home = () => {
                         <h2 className="text-center md:mt-3 font-bold text-lg md:text-sm mb-3 md:mb-0 text-gray-700">
                           Customized Solutions
                         </h2>
-                        <p className="text-justify md:text-[13px] mt-2 font-light text-gray-700 md:mb-4">
+                        <p className="text-justify md:text-[11px] lg:text-[13px] mt-2 font-light text-gray-700 md:mb-4">
                           We develop flexible and scalable systems that are
                           precisely tailored to your business objectives,
                           avoiding generic templates in favor of bespoke and
@@ -241,7 +243,7 @@ const Home = () => {
                         <h2 className="text-center md:mt-3 font-bold text-lg md:text-sm mb-3 md:mb-0 text-gray-700">
                           Expert Assistance & Guidance
                         </h2>
-                        <p className="text-justify md:text-[13px] mt-2 font-light text-gray-700 md:mb-4">
+                        <p className="text-justify md:text-[11px] lg:text-[13px] mt-2 font-light text-gray-700 md:mb-4">
                           Our expert support team is always available to guide
                           you, troubleshoot issues, and ensure your operations
                           run smoothly and efficiently.
@@ -255,6 +257,11 @@ const Home = () => {
           </TextFadeIn>
         </div>
       </div>
+
+
+
+<Services/>
+
       <TextFadeIn className="w-full m-0 mt-10 md:mt-20">
         <div className="relative h-96 md:h-[30rem] w-full overflow-hidden my-2 flex items-center justify-start">
           <Image
@@ -338,7 +345,7 @@ const Home = () => {
         <div className="flex-1 ">
           <div className="relative flex p-4 w-full h-[27rem] ">
             <Image
-              src="/career.jpg"
+              src="/why2.jpg"
               alt=""
               fill
               className="object-cover rounded-2xl z-0 "
@@ -357,9 +364,10 @@ const Home = () => {
               innovation.
             </p>
             <div className="flex justify-start">
-              <button className="px-4 py-2 bg-blue-950 flex rounded  text-white text-sm">
-                Work with us
-              </button>
+              <Link href='/contact'>
+              <button className="px-4 py-2 bg-blue-950 flex rounded  text-white text-sm cursor-pointer">
+                Join Our team
+              </button></Link>
             </div>
           </div>
         </div>

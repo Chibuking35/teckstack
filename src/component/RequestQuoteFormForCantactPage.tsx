@@ -221,7 +221,7 @@ export default function RequestQuoteFormForCantactPage() {
 
   return (
     <div className="relative">
-      <div className="flex flex-col md:flex-row p-5 md:p-30 mx-auto bg-white rounded shadow overflow-hidden gap-8">
+      <div className="flex flex-col md:flex-row p-5 md:p-10 lg:p-30 mx-auto bg-white rounded shadow overflow-hidden gap-8">
         {/* flex 1 */}
         <div className="flex-1 mb-30 md:mb-0">
           <div className=" h-full pr-10 md:pl-2 p-2 ">

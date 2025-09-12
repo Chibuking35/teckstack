@@ -1,7 +1,18 @@
 "use client";
-
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
+import { z } from "zod";
+
+// Zod schema
+const schema = z.object({
+  fullName: z.string().min(2, "Full name is required"),
+  email: z.string().email("Invalid email address"),
+  position: z.string().min(2, "Position is required"),
+  portfolio: z.string().url("Invalid URL").optional().or(z.literal("")),
+  motivation: z.string().min(10, "Please provide at least 10 characters"),
+  resume: z.instanceof(File, { message: "Resume file is required" }),
+});
 
 const Career = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +23,9 @@ const Career = () => {
     motivation: "",
     resume: null as File | null,
   });
+
+  const [popupMessage, setPopupMessage] = useState<string | null>(null);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -26,11 +40,68 @@ const Career = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Your application has been submitted!");
-  };
+
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  // Validate form with Zod
+  const validation = schema.safeParse(formData);
+
+  if (!validation.success) {
+    const newErrors: Record<string, string> = {};
+    validation.error.issues.forEach((err) => {
+      const field = err.path[0] as string;
+      newErrors[field] = err.message;
+    });
+    setErrors(newErrors);
+    return;
+  }
+
+  // Clear errors if validation passes
+  setErrors({});
+
+  try {
+    // Prepare FormData for API (since we’re sending a file)
+    const body = new FormData();
+    body.append("fullName", formData.fullName);
+    body.append("email", formData.email);
+    body.append("position", formData.position);
+    if (formData.portfolio) body.append("portfolio", formData.portfolio);
+    if (formData.motivation) body.append("motivation", formData.motivation);
+    if (formData.resume) body.append("resume", formData.resume);
+
+    // Send request to backend API
+    const res = await fetch("/api/careerApi", {
+      method: "POST",
+      body,
+    });
+
+    const result = await res.json();
+
+    if (!res.ok) {
+      setPopupMessage(` Failed: ${result.error || "Something went wrong."}`);
+      return;
+    }
+
+    // Show success popup
+    setPopupMessage(
+      ` Thank you ${formData.fullName}, your application for ${formData.position} has been submitted!`
+    );
+
+    // Reset form
+    setFormData({
+      fullName: "",
+      email: "",
+      position: "",
+      portfolio: "",
+      motivation: "",
+      resume: null,
+    });
+  } catch (err) {
+    console.error("Submit error:", err);
+    setPopupMessage(" Something went wrong. Please try again.");
+  }
+};
 
   return (
     <div className="w-full min-h-screen bg-white">
@@ -43,9 +114,7 @@ const Career = () => {
           className="object-cover object-[30%_10%] z-10 absolute"
         />
         <div className="inset-0 bg-black/70 z-20 absolute" />
-        <div className="absolute z-30 text-2xl text-white font-bold">
-          Career
-        </div>
+        <div className="absolute z-30 text-2xl text-white font-bold">Career</div>
       </div>
 
       {/* Heading */}
@@ -65,12 +134,12 @@ const Career = () => {
 
       {/* Flex Section */}
       <div className="flex flex-col md:flex-row mt-15 p-10">
-        {/* Job Roles */}
+       {/* Job Roles */}
         <div className="xl:flex-1/2 flex-1 md:mr-10 mb-10 md:mt-0">
           <div className="flex flex-col gap-4 bg-gray-100 p-4 rounded-lg">
             {/* UI/UX */}
             <div className="flex justify-between items-center bg-white p-3 rounded-md shadow-sm">
-              <h1 className="font-medium text-gray-500">UI/UX Designer</h1>
+              <h1 className="font-medium text-gray-400">UI/UX Designer</h1>
               <span className="text-sm text-green-600 font-semibold">
                 Filled
               </span>
@@ -78,19 +147,19 @@ const Career = () => {
 
             {/* Frontend */}
             <div className="flex justify-between items-center bg-white p-3 rounded-md shadow-sm">
-              <h1 className="font-medium text-gray-500">Frontend Developer</h1>
+              <h1 className="font-medium text-gray-400">Frontend Developer</h1>
               <span className="text-sm text-green-600 font-semibold">Open</span>
             </div>
 
             {/* Backend */}
             <div className="flex justify-between items-center bg-white p-3 rounded-md shadow-sm">
-              <h1 className="font-medium text-gray-500">Backend Developer</h1>
+              <h1 className="font-medium text-gray-400">Backend Developer</h1>
               <span className="text-sm text-red-600 font-semibold">Closed</span>
             </div>
 
             {/* Mobile Developer */}
             <div className="flex justify-between items-center bg-white p-3 rounded-md shadow-sm">
-              <h1 className="font-medium text-gray-500">
+              <h1 className="font-medium text-gray-400">
                 Mobile App Developer
               </h1>
               <span className="text-sm text-green-600 font-semibold">Open</span>
@@ -98,25 +167,25 @@ const Career = () => {
 
             {/* DevOps Engineer */}
             <div className="flex justify-between items-center bg-white p-3 rounded-md shadow-sm">
-              <h1 className="font-medium text-gray-800">DevOps Engineer</h1>
+              <h1 className="font-medium text-gray-400">DevOps Engineer</h1>
               <span className="text-sm text-green-600 font-semibold">Open</span>
             </div>
 
             {/* Cloud Engineer */}
             <div className="flex justify-between items-center bg-white p-3 rounded-md shadow-sm">
-              <h1 className="font-medium text-gray-500">Cloud Engineer</h1>
+              <h1 className="font-medium text-gray-400">Cloud Engineer</h1>
               <span className="text-sm text-red-600 font-semibold">Closed</span>
             </div>
 
             {/* Data Scientist */}
             <div className="flex justify-between items-center bg-white p-3 rounded-md shadow-sm">
-              <h1 className="font-medium text-gray-500">Data Scientist</h1>
+              <h1 className="font-medium text-gray-400">Data Scientist</h1>
               <span className="text-sm text-green-600 font-semibold">Open</span>
             </div>
 
             {/* Cybersecurity Analyst */}
             <div className="flex justify-between items-center bg-white p-3 rounded-md shadow-sm">
-              <h1 className="font-medium text-gray-500">
+              <h1 className="font-medium text-gray-400">
                 Cybersecurity Analyst
               </h1>
               <span className="text-sm text-red-600 font-semibold">Closed</span>
@@ -124,7 +193,7 @@ const Career = () => {
 
             {/* QA Engineer */}
             <div className="flex justify-between items-center bg-white p-3 rounded-md shadow-sm">
-              <h1 className="font-medium text-gray-500">
+              <h1 className="font-medium text-gray-400">
                 QA Engineer &#40;Tester&#41;
               </h1>
               <span className="text-sm text-green-600 font-semibold">Open</span>
@@ -132,7 +201,7 @@ const Career = () => {
 
             {/* Product Manager */}
             <div className="flex justify-between items-center bg-white p-3 rounded-md shadow-sm">
-              <h1 className="font-medium text-gray-500">Product Manager</h1>
+              <h1 className="font-medium text-gray-400">Product Manager</h1>
               <span className="text-sm text-green-600 font-semibold">
                 Filled
               </span>
@@ -140,7 +209,7 @@ const Career = () => {
 
             {/* Networking Engineer */}
             <div className="flex justify-between items-center bg-white p-3 rounded-md shadow-sm">
-              <h1 className="font-medium text-gray-500">Networking Engineer</h1>
+              <h1 className="font-medium text-gray-400">Networking Engineer</h1>
               <span className="text-sm text-green-600 font-semibold">Open</span>
             </div>
           </div>
@@ -148,7 +217,7 @@ const Career = () => {
 
         {/* Application Form */}
         <div className="flex-1 ">
-          <div className="flex flex-col gap-0 bg-gray-100 px-3 py-9 rounded-md shadow-sm mb-9 md:mb-0">
+          <div className="flex flex-col gap-0 bg-gray-100 px-3 py-8 rounded-md shadow-sm mb-9 md:mb-0">
             <div className="flex justify-center items-center py-7">
               <h1 className="text-blue-950 text-2xl">Join Our Team</h1>
             </div>
@@ -165,20 +234,15 @@ const Career = () => {
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
-                    required
                     placeholder=" "
                     className="peer w-full border-b-2 border-gray-300 bg-transparent py-2 px-1 text-sm focus:border-blue-500 focus:outline-none"
                   />
-                  <label
-                    className="
-    absolute left-1 top-2 text-gray-500 text-sm transition-all
-    peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm
-    peer-focus:-top-3 peer-focus:text-xs peer-focus:text-blue-600
-    peer-[&:not(:placeholder-shown)]:-top-3 peer-[&:not(:placeholder-shown)]:text-xs
-  "
-                  >
+                  <label className="absolute left-1 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-3 peer-focus:text-xs peer-focus:text-blue-600 peer-[&:not(:placeholder-shown)]:-top-3 peer-[&:not(:placeholder-shown)]:text-xs">
                     Full Name
                   </label>
+                  {errors.fullName && (
+                    <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>
+                  )}
                 </div>
 
                 {/* Email */}
@@ -188,20 +252,15 @@ const Career = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    required
                     placeholder=" "
                     className="peer w-full border-b-2 border-gray-300 bg-transparent py-2 px-1 text-sm focus:border-blue-500 focus:outline-none"
                   />
-                  <label
-                    className="
-    absolute left-1 top-2 text-gray-500 text-sm transition-all
-    peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm
-    peer-focus:-top-3 peer-focus:text-xs peer-focus:text-blue-600
-    peer-[&:not(:placeholder-shown)]:-top-3 peer-[&:not(:placeholder-shown)]:text-xs
-  "
-                  >
+                  <label className="absolute left-1 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-3 peer-focus:text-xs peer-focus:text-blue-600 peer-[&:not(:placeholder-shown)]:-top-3 peer-[&:not(:placeholder-shown)]:text-xs">
                     Email Address
                   </label>
+                  {errors.email && (
+                    <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                  )}
                 </div>
 
                 {/* Position */}
@@ -214,16 +273,12 @@ const Career = () => {
                     placeholder=" "
                     className="peer w-full border-b-2 border-gray-300 bg-transparent py-2 px-1 text-sm focus:border-blue-500 focus:outline-none"
                   />
-                  <label
-                    className="
-    absolute left-1 top-2 text-gray-500 text-sm transition-all
-    peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm
-    peer-focus:-top-3 peer-focus:text-xs peer-focus:text-blue-600
-    peer-[&:not(:placeholder-shown)]:-top-3 peer-[&:not(:placeholder-shown)]:text-xs
-  "
-                  >
+                  <label className="absolute left-1 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-3 peer-focus:text-xs peer-focus:text-blue-600 peer-[&:not(:placeholder-shown)]:-top-3 peer-[&:not(:placeholder-shown)]:text-xs">
                     Position Applying For
                   </label>
+                  {errors.position && (
+                    <p className="text-red-500 text-xs mt-1">{errors.position}</p>
+                  )}
                 </div>
 
                 {/* Portfolio */}
@@ -236,16 +291,12 @@ const Career = () => {
                     placeholder=" "
                     className="peer w-full border-b-2 border-gray-300 bg-transparent py-2 px-1 text-sm focus:border-blue-500 focus:outline-none"
                   />
-                  <label
-                    className="
-    absolute left-1 top-2 text-gray-500 text-sm transition-all
-    peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm
-    peer-focus:-top-3 peer-focus:text-xs peer-focus:text-blue-600
-    peer-[&:not(:placeholder-shown)]:-top-3 peer-[&:not(:placeholder-shown)]:text-xs
-  "
-                  >
+                  <label className="absolute left-1 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-3 peer-focus:text-xs peer-focus:text-blue-600 peer-[&:not(:placeholder-shown)]:-top-3 peer-[&:not(:placeholder-shown)]:text-xs">
                     Portfolio / LinkedIn / GitHub
                   </label>
+                  {errors.portfolio && (
+                    <p className="text-red-500 text-xs mt-1">{errors.portfolio}</p>
+                  )}
                 </div>
 
                 {/* Motivation */}
@@ -258,21 +309,17 @@ const Career = () => {
                     placeholder=" "
                     className="peer w-full border-b-2 border-gray-300 bg-transparent py-2 px-1 text-sm focus:border-blue-500 focus:outline-none"
                   />
-                  <label
-                    className="
-    absolute left-1 top-2 text-gray-500 text-sm transition-all
-    peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm
-    peer-focus:-top-3 peer-focus:text-xs peer-focus:text-blue-600
-    peer-[&:not(:placeholder-shown)]:-top-3 peer-[&:not(:placeholder-shown)]:text-xs
-  "
-                  >
+                  <label className="absolute left-1 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-3 peer-focus:text-[11px] peer-focus:text-blue-600 peer-[&:not(:placeholder-shown)]:-top-3 peer-[&:not(:placeholder-shown)]:text-[11px]">
                     Why do you want to join our team?
                   </label>
+                  {errors.motivation && (
+                    <p className="text-red-500 text-xs mt-1">{errors.motivation}</p>
+                  )}
                 </div>
 
-                {/* Resume Upload (Custom) */}
+                {/* Resume Upload */}
                 <div className="mb-6">
-                  <label className="block text-xs font-medium text-gray-600 mb-3 italic ">
+                  <label className="block text-xs font-medium text-gray-600 mb-3 italic">
                     Upload Resume / CV
                   </label>
                   <div className="flex items-center gap-4 flex-col">
@@ -287,7 +334,7 @@ const Career = () => {
                       />
                     </label>
                     {formData.resume && (
-                      <div className="text-sm text-gray-700 flex  w-full">
+                      <div className="text-sm text-gray-700 flex w-full">
                         <p className="font-medium flex-1">
                           {formData.resume.name}
                         </p>
@@ -297,6 +344,9 @@ const Career = () => {
                       </div>
                     )}
                   </div>
+                  {errors.resume && (
+                    <p className="text-red-500 text-xs mt-1">{errors.resume}</p>
+                  )}
                 </div>
 
                 {/* Submit */}
@@ -311,6 +361,36 @@ const Career = () => {
           </div>
         </div>
       </div>
+
+      {/* Popup */}
+      <AnimatePresence>
+        {popupMessage && (
+          <motion.div
+            className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setPopupMessage(null)}
+          >
+            <motion.div
+              className="bg-gray-200 p-6 rounded-xl shadow-lg max-w-sm text-center"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <p className="mb-4">{popupMessage}</p>
+              <button
+                onClick={() => setPopupMessage(null)}
+                className="bg-blue-950 text-sm text-white px-4 py-1 rounded hover:bg-blue-900"
+              >
+                Close
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

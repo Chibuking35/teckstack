@@ -292,7 +292,7 @@ const Services = () => {
                 alt="Bottom"
                 width={400}
                 height={400}
-                className="absolute md:bottom-15 lg:bottom-7 left-10 right-0 z-20 opacity-20 rounded"
+                className="absolute bottom-0 md:bottom-15 lg:bottom-7 left-10 right-0 z-20 opacity-20 rounded"
               />
             </div>
           </div>
