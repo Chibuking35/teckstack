@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import CounterCard from "@/component/counterCard";
-import IconGrid, { GridItem } from "@/component/IconGrid";
+import  { GridItem } from "@/component/IconGrid";
 import RequestQuoteForm from "@/component/RequestQuote";
 import TestimonialCarousel from "@/component/TestimonialCarousel";
 import TeamMembers from "@/component/TeamMembers";

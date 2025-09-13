@@ -40,68 +40,67 @@ const Career = () => {
     }
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+    // Validate form with Zod
+    const validation = schema.safeParse(formData);
 
-  // Validate form with Zod
-  const validation = schema.safeParse(formData);
-
-  if (!validation.success) {
-    const newErrors: Record<string, string> = {};
-    validation.error.issues.forEach((err) => {
-      const field = err.path[0] as string;
-      newErrors[field] = err.message;
-    });
-    setErrors(newErrors);
-    return;
-  }
-
-  // Clear errors if validation passes
-  setErrors({});
-
-  try {
-    // Prepare FormData for API (since we’re sending a file)
-    const body = new FormData();
-    body.append("fullName", formData.fullName);
-    body.append("email", formData.email);
-    body.append("position", formData.position);
-    if (formData.portfolio) body.append("portfolio", formData.portfolio);
-    if (formData.motivation) body.append("motivation", formData.motivation);
-    if (formData.resume) body.append("resume", formData.resume);
-
-    // Send request to backend API
-    const res = await fetch("/api/careerApi", {
-      method: "POST",
-      body,
-    });
-
-    const result = await res.json();
-
-    if (!res.ok) {
-      setPopupMessage(` Failed: ${result.error || "Something went wrong."}`);
+    if (!validation.success) {
+      const newErrors: Record<string, string> = {};
+      validation.error.issues.forEach((err) => {
+        const field = err.path[0] as string;
+        newErrors[field] = err.message;
+      });
+      setErrors(newErrors);
       return;
     }
 
-    // Show success popup
-    setPopupMessage(
-      ` Thank you ${formData.fullName}, your application for ${formData.position} has been submitted!`
-    );
+    // Clear errors if validation passes
+    setErrors({});
 
-    // Reset form
-    setFormData({
-      fullName: "",
-      email: "",
-      position: "",
-      portfolio: "",
-      motivation: "",
-      resume: null,
-    });
-  } catch (err) {
-    console.error("Submit error:", err);
-    setPopupMessage(" Something went wrong. Please try again.");
-  }
-};
+    try {
+      // Prepare FormData for API (since we’re sending a file)
+      const body = new FormData();
+      body.append("fullName", formData.fullName);
+      body.append("email", formData.email);
+      body.append("position", formData.position);
+      if (formData.portfolio) body.append("portfolio", formData.portfolio);
+      if (formData.motivation) body.append("motivation", formData.motivation);
+      if (formData.resume) body.append("resume", formData.resume);
+
+      // Send request to backend API
+      const res = await fetch("/api/careerApi", {
+        method: "POST",
+        body,
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        setPopupMessage(` Failed: ${result.error || "Something went wrong."}`);
+        return;
+      }
+
+      // Show success popup
+      setPopupMessage(
+        ` Thank you ${formData.fullName}, your application for ${formData.position} has been submitted!`
+      );
+
+      // Reset form
+      setFormData({
+        fullName: "",
+        email: "",
+        position: "",
+        portfolio: "",
+        motivation: "",
+        resume: null,
+      });
+    } catch (err) {
+      console.error("Submit error:", err);
+      setPopupMessage(" Something went wrong. Please try again.");
+    }
+  };
 
   return (
     <div className="w-full min-h-screen bg-white">
@@ -114,8 +113,12 @@ const handleSubmit = async (e: React.FormEvent) => {
           className="object-cover object-[30%_10%] z-10 absolute"
         />
         <div className="inset-0 bg-black/70 z-20 absolute" />
-        <div className="absolute z-30 text-2xl text-white font-bold">Career</div>
+        <div className="absolute z-30 text-2xl text-white font-bold">
+          Career
+        </div>
       </div>
+
+
 
       {/* Heading */}
       <div className="flex w-full p-5 justify-center items-center flex-col mt-7">
@@ -132,9 +135,51 @@ const handleSubmit = async (e: React.FormEvent) => {
         </p>
       </div>
 
+
+<div className="h-[1px] w-full bg-gray-200 mt-5 md:mt-15"/>
+            <div className="flex w-full flex-col md:flex-row py-5 md:py-10 px-5 md:px-20 mt-5 md:mt-5">
+        {/* Image Section */}
+        <div className="flex-1 w-full relative h-[16rem] md:h-[20rem]">
+          <div className="w-full relative h-[16rem] md:h-[20rem]">
+            <Image
+              src="/skill1.jpg"
+              alt="join community"
+              fill
+              className="object-cover "
+            />
+          </div>
+        </div>
+
+        {/* Text Section */}
+        <div className="flex-1 mt-10 md:mt-0 ">
+          <div className="w-full flex justify-start items-center px-5 py-5 flex-col ">
+            <h1 className="text-2xl font-bold text-blue-950 w-full mb-5">
+              Do You Have a Skill?
+            </h1>
+            <p className="text-xs  font-light text-gray-500 text-justify  first-letter:text-3xl first-letter:font-bold first-letter:float-left first-letter:mr-1 first-letter:leading-[0.8]">
+              Every skill has value, whether in design, development,
+              communication, or leadership. At our organization, we believe that
+              passion and creativity, combined with the drive to grow, are just
+              as important as experience. We are building a team where diverse
+              talents come together to achieve remarkable results. If you have a
+              skill, we invite you to bring it. If you are still refining your
+              expertise, we will provide the support and opportunities to help
+              you excel.
+              <span className="block mt-4">
+                In the world of today, skills open doors and create
+                opportunities for growth and impact. At our organization, we
+                value talent, dedication, and innovation, and we provide the
+                right environment for individuals to thrive. Together, we turn
+                skills into results that make a lasting difference.
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Flex Section */}
       <div className="flex flex-col md:flex-row mt-15 p-10">
-       {/* Job Roles */}
+        {/* Job Roles */}
         <div className="xl:flex-1/2 flex-1 md:mr-10 mb-10 md:mt-0">
           <div className="flex flex-col gap-4 bg-gray-100 p-4 rounded-lg">
             {/* UI/UX */}
@@ -241,7 +286,9 @@ const handleSubmit = async (e: React.FormEvent) => {
                     Full Name
                   </label>
                   {errors.fullName && (
-                    <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>
+                    <p className="text-red-500 text-xs mt-1">
+                      {errors.fullName}
+                    </p>
                   )}
                 </div>
 
@@ -277,7 +324,9 @@ const handleSubmit = async (e: React.FormEvent) => {
                     Position Applying For
                   </label>
                   {errors.position && (
-                    <p className="text-red-500 text-xs mt-1">{errors.position}</p>
+                    <p className="text-red-500 text-xs mt-1">
+                      {errors.position}
+                    </p>
                   )}
                 </div>
 
@@ -295,7 +344,9 @@ const handleSubmit = async (e: React.FormEvent) => {
                     Portfolio / LinkedIn / GitHub
                   </label>
                   {errors.portfolio && (
-                    <p className="text-red-500 text-xs mt-1">{errors.portfolio}</p>
+                    <p className="text-red-500 text-xs mt-1">
+                      {errors.portfolio}
+                    </p>
                   )}
                 </div>
 
@@ -313,7 +364,9 @@ const handleSubmit = async (e: React.FormEvent) => {
                     Why do you want to join our team?
                   </label>
                   {errors.motivation && (
-                    <p className="text-red-500 text-xs mt-1">{errors.motivation}</p>
+                    <p className="text-red-500 text-xs mt-1">
+                      {errors.motivation}
+                    </p>
                   )}
                 </div>
 
@@ -361,6 +414,8 @@ const handleSubmit = async (e: React.FormEvent) => {
           </div>
         </div>
       </div>
+
+
 
       {/* Popup */}
       <AnimatePresence>

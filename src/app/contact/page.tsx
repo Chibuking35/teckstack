@@ -23,6 +23,9 @@ const Contact = () => {
       <div className="py-10 pt-30 md:pt-5 px-3 md:px-10 bg-gray-100">
         <GoogleMap />
       </div>
+
+
+      
     </div>
   );
 };

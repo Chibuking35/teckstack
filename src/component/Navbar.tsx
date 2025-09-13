@@ -16,7 +16,7 @@ const Navbar = () => {
     { name: "Services", href: "/services" },
     { name: "Contact", href: "/contact" },
     { name: "Career", href: "/career" },
-    { name: "Join Community", href: "/community" },
+    { name: "Join Community", href: "/join-community" },
     { name: "Learning", href: "/learning" },
     { name: "About", href: "/about" },
   ];
@@ -48,13 +48,18 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 shadow bg-blue-950 px-5 py-2 md:px-10">
       <div className="flex justify-between items-center">
         {/* Logo */}
-   <div className="flex flex-row gap-2 justify-center items-baseline">
-  <Image src="/teckwhite.png" alt="Tech Hike Logo" width={30} height={30} />
-  <h1 className="text-xl font-semibold text-white flex items-baseline gap-1">
-    Tech 
-    <span className="text-base font-light">Hike</span>
-  </h1>
-</div>
+        <div className="flex flex-row gap-2 justify-center items-baseline">
+          <Image
+            src="/teckwhite.png"
+            alt="Tech Hike Logo"
+            width={30}
+            height={30}
+          />
+          <h1 className="text-xl font-semibold text-white flex items-baseline gap-1">
+            Tech
+            <span className="text-base font-light">Hike</span>
+          </h1>
+        </div>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6">
@@ -67,7 +72,7 @@ const Navbar = () => {
               >
                 <Link
                   href={link.href}
-                  className="transition duration-300 ease-in-out text-white text-sm"
+                  className="transition duration-300 ease-in-out text-gray-400 text-sm font-light"
                 >
                   {link.name}
                 </Link>
@@ -131,7 +136,6 @@ const Navbar = () => {
                       }`}
                     >
                       {link.name}
-                      
                     </Link>
                   );
                 })}
