@@ -5,7 +5,7 @@ import { IoMdArrowDropright } from "react-icons/io";
 type EventOfTechprops = {
   imageSrc: string;
   headerEvent: string;
-  description: String;
+  description: string;
   dateOfEvent: string;
   readMore: string;
 };
