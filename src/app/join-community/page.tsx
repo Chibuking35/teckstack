@@ -1,4 +1,5 @@
 import EventOfTech from "@/component/Events";
+import Gallery from "@/component/Gallery";
 import Image from "next/image";
 import Link from "next/link";
 import { IoMdArrowDropright } from "react-icons/io";
@@ -212,6 +213,10 @@ const JoinCommunity = () => {
           </div>
         </div>
       </div>
+
+
+
+       <Gallery/>
     </div>
   );
 };
