@@ -66,7 +66,7 @@ const JoinCommunity = () => {
       </div>
 
       <div className="py-5 px-5  lg:px-10 md:py-10 w-full flex flex-col md:flex-row md:my-5 lg:my-10">
-        <h1 className="lg:w-[50] text-base lg:text-2xl font-bold text-blue-950 md:py-0 p-3">
+        <h1 className=" text-base lg:text-2xl font-bold text-blue-950 md:py-0 p-3">
           Unlock Opportunity to Connect Learn Grow and Shape the Future of
           Technology
         </h1>
