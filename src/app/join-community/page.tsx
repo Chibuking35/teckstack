@@ -200,7 +200,7 @@ const JoinCommunity = () => {
           </div>
           <div className="flex-1 ">
             <div
-              className=" px-7 py-15 md:py-0 grid  grid-cols-2 md:grid-cols-1 lg:grid-cols-2  gap-5 ml-3
+              className=" px-7 py-15 md:py-0 grid  grid-cols-1 md:grid-cols-1 lg:grid-cols-2  gap-5 ml-3
               "
             >
               {FeaturedEvents.map((event, index) => (
