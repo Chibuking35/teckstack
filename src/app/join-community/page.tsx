@@ -1,8 +1,40 @@
+import EventOfTech from "@/component/Events";
 import Image from "next/image";
 import Link from "next/link";
 import { IoMdArrowDropright } from "react-icons/io";
 
 const JoinCommunity = () => {
+  const FeaturedEvents = [
+    {
+      imageSrc: "/event1.jpg",
+      headerEvent: "AI & Innovation Summit",
+      description:
+        "A global conference on Artificial Intelligence, featuring keynotes, workshops, and networking opportunities for developers, researchers, and entrepreneurs.",
+      dateOfEvent: "March 10, 2026",
+      readMore: "https://www.aiinnovationsummit.in/?utm_source=chatgpt.com",
+    },
+    {
+      imageSrc: "/event2.jpg",
+      headerEvent: "Global Hackathon",
+      description: "A 48-hour coding competition where developers and innovators come together in teams to design and build creative software solutions.",
+      dateOfEvent: "July 18, 2026",
+      readMore: "https://raise.mit.edu/events/global-ai-hackathon-2025/?utm_source=chatgpt.com",
+    },
+    {
+      imageSrc: "/event3.jpg",
+      headerEvent: "Tech Convergence 2.0",
+      description: "A one-day event in Abuja bringing together Nigeria's tech leaders to discuss digital growth. Focused on the .ng domain, DNS, and local platforms ",
+      dateOfEvent: "October 14, 2025",
+      readMore: "https://nira.org.ng/techconvergence/?utm_source=chatgpt.com",
+    },
+    {
+      imageSrc: "/event4.jpg",
+      headerEvent: "Africa Technology Expo (ATE) 2025",
+      description: "The Africa Technology Expo (ATE) is an enterprise-first event bringing together senior executives and innovators to showcase advancements in hardware.",
+      dateOfEvent: "June 21, 2025",
+      readMore: "https://www.africatechnologyexpo.com/?utm_source=chatgpt.com",
+    },
+  ];
   return (
     <div className="bg-white min-h-screen w-full ">
       <div className="relative w-full h-[30rem]">
@@ -108,6 +140,75 @@ const JoinCommunity = () => {
               create a space where every voice matters and every idea has the
               potential to make an impact.
             </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="p-2 bg-gray-100 md:p-10">
+        <div className="my-10 ">
+          <h1 className="font-bold text-2xl text-blue-950 ">
+            What&#39;s happening?
+          </h1>
+          <p className="text-sm text-blue-950 opacity-50">
+            Our featured events
+          </p>
+        </div>
+
+        <div className="flex flex-col md:flex-row ">
+          <div className="flex-1">
+            <div className=" flex flex-col items-center bg-white rounded overflow-hidden ">
+              <div className="relative w-full h-90 ">
+                <Image
+                  src="/techevent.jpg"
+                  fill
+                  alt="event image"
+                  className="absolute z-0 object-cover"
+                />
+              </div>
+
+              <div className="mt  z-20  p-5">
+                <h1 className="text-2xl font-bold my-4">Google I/O</h1>
+                <p className="text-sm text-gray-400 text-justify">
+                  It&#39;s Google&#39;s annual developer conference where they
+                  showcase new technologies, launch products, and hold sessions
+                  on topics like artificial intelligence, cloud computing,
+                  Android development, and web technologies. Developers,
+                  engineers, and tech enthusiasts from around the world join to
+                  learn, network, and explore the latest innovations.
+                </p>
+              </div>
+
+              <div className="flex flex-row justify-between w-full px-10 items-center py-5">
+                <h1 className="text-blue-950 font-bold  text-sm">
+                  May 20, 2026.
+                </h1>
+                <Link
+                  href="https://io.google/2025/"
+                  target="_blank"
+                  className="flex flex-row  justify-start items-center cursor-pointer"
+                >
+                  <h3 className="font-bold  text-blue-950 flex  text-sm">
+                    Read More
+                  </h3>{" "}
+                  <IoMdArrowDropright
+                    className="flex  text-blue-950"
+                    size={13}
+                  />
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="flex-1 ">
+            <div
+              className=" px-7 py-15 md:py-0 grid  grid-cols-2 md:grid-cols-1 lg:grid-cols-2  gap-5 ml-3
+              "
+            >
+              {FeaturedEvents.map((event, index) => (
+                <div className="shadow bg-white" key={index}>
+                  <EventOfTech key={index} {...event} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

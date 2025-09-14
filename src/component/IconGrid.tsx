@@ -17,7 +17,7 @@ const IconGrid = ({ items }: IconGridProps) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-6 gap-15 md:gap-10 ">
       {items.map((item, index) => (
-        <div className="shadow-2xl h-[]" key={index}> 
+        <div className="shadow-2xl bg-white" key={index}> 
         <GridCard key={index} {...item} /></div>
       ))}
     </div>
