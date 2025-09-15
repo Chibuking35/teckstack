@@ -146,7 +146,7 @@ const JoinCommunity = () => {
       </div>
 
       <div className="p-2 bg-gray-100 md:p-10">
-        <div className="my-10 ">
+        <div className="my-10 px-5">
           <h1 className="font-bold text-2xl text-blue-950 ">
             What&#39;s happening?
           </h1>
