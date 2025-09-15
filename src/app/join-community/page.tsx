@@ -59,7 +59,7 @@ const JoinCommunity = () => {
             together.
           </p>
           <div className="w-full flex mt-3 ">
-            <button className="to-blue-950 hover:bg-blue-900 px-5 py-2 bg-blue-950 text-gray-400 text-sm rounded-full">
+            <button className="to-blue-950 hover:bg-blue-900 px-5 py-2 bg-blue-950 text-white text-sm rounded">
               Join Now
             </button>
           </div>
@@ -71,7 +71,7 @@ const JoinCommunity = () => {
           Unlock Opportunity to Connect Learn Grow and Shape the Future of
           Technology
         </h1>
-        <p className="lg:w-[40%] md:w-[50%] text-xs pr-4 text-justify text-gray-500">
+        <p className="lg:w-[40%] md:w-[50%] text-sm pr-4 text-justify text-gray-500">
           Connecting with the right people opens doors to knowledge,
           collaboration, and growth. Our WhatsApp group brings together
           innovators, developers, and tech enthusiasts who share ideas, inspire
@@ -82,9 +82,9 @@ const JoinCommunity = () => {
         </p>
         <Link
           href=""
-          className="lg:w-[10%] flex justify-start items-start px-4 py-5 md:py-0"
+          className="lg:w-[10%] flex justify-start items-start  py-5 md:py-0"
         >
-          <button className="px-5 py-2 text-sm bg-blue-950 text-gray-300 cursor-pointer rounded-full md:rounded hover:bg-blue-900 ">
+          <button className="px-5 py-2 text-sm bg-blue-950 text-white cursor-pointer rounded md:rounded hover:bg-blue-900 ">
             Join On WhatsApp
           </button>
         </Link>

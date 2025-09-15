@@ -1,5 +1,4 @@
-
-'use client'
+"use client";
 
 import { useSpring, animated } from "@react-spring/web";
 import { useGesture } from "@use-gesture/react";
@@ -7,7 +6,20 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 
-const Images = ["/skill.jpg", "/plan.jpg", "/aii.jpg", "/cloudS.jpg"];
+const Images = [
+  "/event1 (2).jpg",
+  "/event2 (2).jpg",
+  "/event3 (2).jpg",
+  "/event4 (2).jpg",
+  "/event5.jpg",
+  "/event6 (2).jpg",
+  "/event7.jpg",
+  "/event8.jpg",
+  "/event9.jpg",
+  "/event10.jpg",
+  "/event11.png",
+
+];
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -95,13 +107,15 @@ const Gallery = () => {
   }, [selectedImage, currentIndex]);
 
   return (
-    <div className="p-6 ">
-      <h2 className="text-2xl font-bold mb-6 text-center ">Events </h2>
+    <div className="p-6 py-20 md:py-30 ">
+      <h2 className="text-2xl font-bold mb-6 text-center italic text-gray-500">
+        Events{" "}
+      </h2>
 
-      <div className="columns-1 sm:columns-2 md:columns-3  gap-4 space-y-4">
+      <div className="columns-1 sm:columns-2 md:columns-3 md:gap-6 gap-5 space-y-4">
         {Images.map((img, index) => (
           <div
-            className="cursor-pointer  overflow-hidden rounded-lg shadow-md hover:opacity-90"
+            className="cursor-pointer  overflow-hidden rounded shadow-md hover:opacity-90"
             key={index}
             onClick={() => openImage(img, index)}
           >
@@ -110,7 +124,7 @@ const Gallery = () => {
               alt=""
               width={500}
               height={400}
-              className="w-full rounded-lg object-cover"
+              className="w-full  object-cover"
             />
           </div>
         ))}
@@ -145,7 +159,12 @@ const Gallery = () => {
               />
             </animated.div>
 
-            <button onClick={closeModal} className="cursor-pointer absolute top-3 right-4 text-white bg-red-600 px-3 py-1 rounded "><MdOutlineCancel size={20} /></button>
+            <button
+              onClick={closeModal}
+              className="cursor-pointer absolute top-3 right-4 text-white bg-red-600 px-3 py-1 rounded "
+            >
+              <MdOutlineCancel size={20} />
+            </button>
           </div>
         </div>
       )}

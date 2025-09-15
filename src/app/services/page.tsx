@@ -216,7 +216,7 @@ const Services = () => {
 
         <div className="flex justify-center flex-col items-center p-4">
           <h1 className="font-bold  text-xl text-blue-950 ">Why Choose us?</h1>
-          <p className="font-light text-sm md:w-120 mt-3 text-gray-400 text-center">
+          <p className="font-light text-sm md:w-120 mt-3 text-gray-500 text-center">
             Creativity is at the heart of everything we do. By combining fresh
             ideas with innovative technology, we design solutions that inspire,
             engage, and drive real business growth.
@@ -236,7 +236,7 @@ const Services = () => {
                 <h3 className="text-lg font-bold text-blue-950">
                   Creative and Responsive Software
                 </h3>
-                <p className="text-gray-400 text-xs">
+                <p className="text-gray-500 text-xs">
                   We build creative and responsive software solutions tailored
                   to your business needs, ensuring seamless performance,
                   scalability, and an engaging user experience.
@@ -250,7 +250,7 @@ const Services = () => {
                 <h3 className="text-lg font-bold text-blue-950">
                   Advanced Security Solutions
                 </h3>
-                <p className="text-gray-400 text-xs ">
+                <p className="text-gray-500 text-xs ">
                   We embed cybersecurity into every stage of our process,
                   delivering enterprise-grade solutions that protect sensitive
                   data, defend against evolving threats, safeguard critical
@@ -264,7 +264,7 @@ const Services = () => {
               <h1 className="mr-4 font-bold text-2xl text-blue-950">03</h1>
               <div className="flex flex-col justify-start items-start">
                 <h3 className="text-lg font-bold text-blue-950">Professional & Detailed</h3>
-                <p className="text-gray-400 text-xs">
+                <p className="text-gray-500 text-xs">
                   We deliver software development solutions that combine
                   creativity, innovation, and technical expertise to build
                   applications that enhance productivity, streamline operations,

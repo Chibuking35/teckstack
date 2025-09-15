@@ -12,7 +12,7 @@ type GridCardprops = {
 const GridCard = ({ imageSrc, header, description, icons, url }: GridCardprops) => {
   return (
     <Link href={url} className="block">
-    <div className="relative flex flex-col items-center bg-white rounded-lg overflow-hidden">
+    <div className="relative flex flex-col items-center  overflow-hidden">
       <div className="w-full h-40 relative">
         <Image src={imageSrc} alt={header} fill className="object-cover" />
       </div>

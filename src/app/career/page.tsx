@@ -126,7 +126,7 @@ const Career = () => {
           <span className="font-bold text-3xl text-blue-950">Join</span> Our
           Team
         </h1>
-        <p className="text-xs text-center mt-2 max-w-lg text-gray-500">
+        <p className="text-sm text-center mt-2 max-w-lg text-gray-500">
           Be part of a team that values excellence, collaboration, and
           innovation. At Tech-Hike, we provide an environment where your skills
           are nurtured, your ideas are heard, and your contributions drive real
@@ -152,11 +152,11 @@ const Career = () => {
 
         {/* Text Section */}
         <div className="flex-1 mt-10 md:mt-0 ">
-          <div className="w-full flex justify-start items-center px-5 py-5 flex-col ">
+          <div className="w-full flex justify-start items-center px-3 md:px-5 py-5 flex-col ">
             <h1 className="text-2xl font-bold text-blue-950 w-full mb-5">
               Do You Have a Skill?
             </h1>
-            <p className="text-xs  font-light text-gray-500 text-justify  first-letter:text-3xl first-letter:font-bold first-letter:float-left first-letter:mr-1 first-letter:leading-[0.8]">
+            <p className="text-sm  font-light text-gray-500 text-justify  first-letter:text-3xl first-letter:font-bold first-letter:float-left first-letter:mr-1 first-letter:leading-[0.8]">
               Every skill has value, whether in design, development,
               communication, or leadership. At our organization, we believe that
               passion and creativity, combined with the drive to grow, are just
