@@ -111,7 +111,7 @@ const Gallery = () => {
       <h2 className="text-2xl font-bold mb-2 md:mb-0 text-center italic text-gray-500">
         Events{" "}
       </h2>
-      <p className="text-sm text-gray-500 italic text-center px-5 pb-10 md:px-20 font-thin md:py-10">
+      <p className="text-sm text-gray-500 italic text-center px-5 pb-10 md:px-20  md:py-10">
         From inspiring hackathons to hands-on workshops and vibrant community
         meetups, our events bring together innovators, creators, and tech
         enthusiasts. Each moment captured reflects collaboration, learning, and
