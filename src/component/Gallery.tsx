@@ -2,6 +2,7 @@
 
 import { useSpring, animated } from "@react-spring/web";
 import { useGesture } from "@use-gesture/react";
+import { X } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { MdOutlineCancel } from "react-icons/md";
@@ -161,9 +162,10 @@ const Gallery = () => {
 
             <button
               onClick={closeModal}
-              className="cursor-pointer absolute top-3 right-4 text-white bg-red-600 px-3 py-1 rounded "
+              className="cursor-pointer absolute top-3 right-4 text-white bg-black/70  px-3 py-3 rounded-full "
             >
-              <MdOutlineCancel size={20} />
+                 <X />
+         
             </button>
           </div>
         </div>
