@@ -24,6 +24,7 @@ const Career = () => {
     resume: null as File | null,
   });
 
+    const [loading, setLoading] = useState(false);
   const [popupMessage, setPopupMessage] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -58,6 +59,7 @@ const Career = () => {
 
     // Clear errors if validation passes
     setErrors({});
+    setLoading(true)
 
     try {
       // Prepare FormData for API (since we’re sending a file)
@@ -99,7 +101,7 @@ const Career = () => {
     } catch (err) {
       console.error("Submit error:", err);
       setPopupMessage(" Something went wrong. Please try again.");
-    }
+    }finally {setLoading(false)}
   };
 
   return (
@@ -282,7 +284,7 @@ const Career = () => {
                     placeholder=" "
                     className="peer w-full border-b-2 border-gray-300 bg-transparent py-2 px-1 text-sm focus:border-blue-500 focus:outline-none"
                   />
-                  <label className="absolute left-1 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-3 peer-focus:text-xs peer-focus:text-blue-600 peer-[&:not(:placeholder-shown)]:-top-3 peer-[&:not(:placeholder-shown)]:text-xs">
+                  <label className="absolute left-1 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-3 peer-focus:text-xs peer-focus:text-blue-600 peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-xs">
                     Full Name
                   </label>
                   {errors.fullName && (
@@ -302,7 +304,7 @@ const Career = () => {
                     placeholder=" "
                     className="peer w-full border-b-2 border-gray-300 bg-transparent py-2 px-1 text-sm focus:border-blue-500 focus:outline-none"
                   />
-                  <label className="absolute left-1 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-3 peer-focus:text-xs peer-focus:text-blue-600 peer-[&:not(:placeholder-shown)]:-top-3 peer-[&:not(:placeholder-shown)]:text-xs">
+                  <label className="absolute left-1 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-3 peer-focus:text-xs peer-focus:text-blue-600 peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-xs">
                     Email Address
                   </label>
                   {errors.email && (
@@ -320,7 +322,7 @@ const Career = () => {
                     placeholder=" "
                     className="peer w-full border-b-2 border-gray-300 bg-transparent py-2 px-1 text-sm focus:border-blue-500 focus:outline-none"
                   />
-                  <label className="absolute left-1 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-3 peer-focus:text-xs peer-focus:text-blue-600 peer-[&:not(:placeholder-shown)]:-top-3 peer-[&:not(:placeholder-shown)]:text-xs">
+                  <label className="absolute left-1 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-3 peer-focus:text-xs peer-focus:text-blue-600 peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-xs">
                     Position Applying For
                   </label>
                   {errors.position && (
@@ -340,7 +342,7 @@ const Career = () => {
                     placeholder=" "
                     className="peer w-full border-b-2 border-gray-300 bg-transparent py-2 px-1 text-sm focus:border-blue-500 focus:outline-none"
                   />
-                  <label className="absolute left-1 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-3 peer-focus:text-xs peer-focus:text-blue-600 peer-[&:not(:placeholder-shown)]:-top-3 peer-[&:not(:placeholder-shown)]:text-xs">
+                  <label className="absolute left-1 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-3 peer-focus:text-xs peer-focus:text-blue-600 peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-xs">
                     Portfolio / LinkedIn / GitHub
                   </label>
                   {errors.portfolio && (
@@ -360,7 +362,7 @@ const Career = () => {
                     placeholder=" "
                     className="peer w-full border-b-2 border-gray-300 bg-transparent py-2 px-1 text-sm focus:border-blue-500 focus:outline-none"
                   />
-                  <label className="absolute left-1 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-3 peer-focus:text-[11px] peer-focus:text-blue-600 peer-[&:not(:placeholder-shown)]:-top-3 peer-[&:not(:placeholder-shown)]:text-[11px]">
+                  <label className="absolute left-1 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm peer-focus:-top-3 peer-focus:text-[11px] peer-focus:text-blue-600 peer-[&:not(:placeholder-shown)]:-top-5 peer-[&:not(:placeholder-shown)]:text-[11px]">
                     Why do you want to join our team?
                   </label>
                   {errors.motivation && (
@@ -404,10 +406,13 @@ const Career = () => {
 
                 {/* Submit */}
                 <button
+
+              
                   type="submit"
+                  disabled= {loading}
                   className="w-full bg-blue-900 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-800 transition"
                 >
-                  Submit
+                {loading ? 'Submitting...' : 'Submit'}
                 </button>
               </form>
             </div>
