@@ -81,7 +81,7 @@ const JoinCommunity = () => {
           reach.
         </p>
         <Link
-          href=""
+          href="https://chat.whatsapp.com/InEvl7es8Eg89sc5SY3aJV?mode=ems_wa_t "
           className="lg:w-[10%] flex justify-start items-start  py-5 md:py-0"
         >
           <button className="px-5 py-2 text-sm bg-blue-950 text-white cursor-pointer rounded md:rounded hover:bg-blue-900 ">
