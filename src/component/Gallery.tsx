@@ -19,7 +19,6 @@ const Images = [
   "/event9.jpg",
   "/event10.jpg",
   "/event11.png",
-
 ];
 
 const Gallery = () => {
@@ -109,9 +108,16 @@ const Gallery = () => {
 
   return (
     <div className="p-6 py-20 md:py-30 ">
-      <h2 className="text-2xl font-bold mb-6 text-center italic text-gray-500">
+      <h2 className="text-2xl font-bold mb-2 md:mb-0 text-center italic text-gray-500">
         Events{" "}
       </h2>
+      <p className="text-sm text-gray-500 italic text-center px-5 pb-10 md:px-20 font-thin md:py-10">
+        From inspiring hackathons to hands-on workshops and vibrant community
+        meetups, our events bring together innovators, creators, and tech
+        enthusiasts. Each moment captured reflects collaboration, learning, and
+        the passion that drives our community forward. Explore snapshots of our
+        past events and see the energy that fuels our journey.
+       </p>
 
       <div className="columns-1 sm:columns-2 md:columns-3 md:gap-6 gap-5 space-y-4">
         {Images.map((img, index) => (
@@ -164,8 +170,7 @@ const Gallery = () => {
               onClick={closeModal}
               className="cursor-pointer absolute top-3 right-4 text-white bg-black/70  px-3 py-3 rounded-full "
             >
-                 <X />
-         
+              <X />
             </button>
           </div>
         </div>
