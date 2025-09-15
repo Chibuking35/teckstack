@@ -14,15 +14,12 @@ export async function POST(req: Request) {
     const motivation = formData.get("motivation") as string | null;
     const resume = formData.get("resume") as File | null;
 
-    if (!fullName || !email || !position) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
-      );
-    }
-
     // ✅ Convert resume file to Base64 for email attachment
-    const attachments: { filename: string; content: string; encoding: string }[] = [];
+    const attachments: {
+      filename: string;
+      content: string;
+      encoding: string;
+    }[] = [];
     if (resume) {
       const buffer = Buffer.from(await resume.arrayBuffer());
       attachments.push({
@@ -34,8 +31,8 @@ export async function POST(req: Request) {
 
     // ✅ Send email with attachment
     const data = await resend.emails.send({
-      from: "Your Name <careers@yourdomain.com>", // ⚠️ must be a verified domain in Resend
-      to: "cnwigwe525@gmail.com", // test recipient
+      from: "Tech-hike <onboarding@resend.dev>",
+      to: "cnwigwe525@gmail.com",
       subject: `New Application for ${position}`,
       html: `
         <h2>New Application Received</h2>
@@ -48,11 +45,35 @@ export async function POST(req: Request) {
       attachments,
     });
 
+    // Send confirmation email to user
+    await resend.emails.send({
+      from: "Tech-hike <onboarding@resend.dev>",
+      to: email,
+      subject: "Quote Request Received",
+      html: `
+    <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #1a1a1a;"> 
+  <h2 style="color: #0D47A1;">Application Received</h2>
+  <p>Dear ${fullName},</p>
+  
+  <p>Thank you for applying to join our <strong>Tech Team</strong> for the role of <strong>${position}</strong>. 
+  We have successfully received your application and our recruitment team is currently reviewing your submission.</p> 
+  
+  <p>We will get back to you within 5-7 business days regarding the next steps in the selection process. 
+  Please note that only shortlisted candidates will be contacted for interviews.</p>
+  
+  <p>We truly appreciate your interest in being part of our team and look forward to the possibility of working together.</p>
+  
+  <p>Sincerely, <br/><strong>Tech-hike Team</strong></p>
+</div>
+
+      `,
+    });
+
     return NextResponse.json({ success: true, data });
   } catch (error) {
-    console.error("Resend error:", error);
+    console.error(error);
     return NextResponse.json(
-      { error: "Failed to send email", details: String(error) },
+      { success: false, error: "Failed to send email" },
       { status: 500 }
     );
   }

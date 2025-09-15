@@ -17,21 +17,25 @@ const JoinCommunity = () => {
     {
       imageSrc: "/event2.jpg",
       headerEvent: "Global Hackathon",
-      description: "A 48-hour coding competition where developers and innovators come together in teams to design and build creative software solutions.",
+      description:
+        "A 48-hour coding competition where developers and innovators come together in teams to design and build creative software solutions.",
       dateOfEvent: "July 18, 2026",
-      readMore: "https://raise.mit.edu/events/global-ai-hackathon-2025/?utm_source=chatgpt.com",
+      readMore:
+        "https://raise.mit.edu/events/global-ai-hackathon-2025/?utm_source=chatgpt.com",
     },
     {
       imageSrc: "/event3.jpg",
       headerEvent: "Tech Convergence 2.0",
-      description: "A one-day event in Abuja bringing together Nigeria's tech leaders to discuss digital growth. Focused on the .ng domain, DNS, and local platforms ",
+      description:
+        "A one-day event in Abuja bringing together Nigeria's tech leaders to discuss digital growth. Focused on the .ng domain, DNS, and local platforms ",
       dateOfEvent: "October 14, 2025",
       readMore: "https://nira.org.ng/techconvergence/?utm_source=chatgpt.com",
     },
     {
       imageSrc: "/event4.jpg",
       headerEvent: "Africa Technology Expo (ATE) 2025",
-      description: "The Africa Technology Expo (ATE) is an enterprise-first event bringing together senior executives and innovators to showcase advancements in hardware.",
+      description:
+        "The Africa Technology Expo (ATE) is an enterprise-first event bringing together senior executives and innovators to showcase advancements in hardware.",
       dateOfEvent: "June 21, 2025",
       readMore: "https://www.africatechnologyexpo.com/?utm_source=chatgpt.com",
     },
@@ -59,9 +63,14 @@ const JoinCommunity = () => {
             together.
           </p>
           <div className="w-full flex mt-3 ">
-            <button className="to-blue-950 hover:bg-blue-900 px-5 py-2 bg-blue-950 text-white text-sm rounded">
-              Join Now
-            </button>
+            <Link
+              href="https://chat.whatsapp.com/InEvl7es8Eg89sc5SY3aJV?mode=ems_wa_t "
+              target="_blank"
+            >
+              <button className="to-blue-950 hover:bg-blue-900 px-5 py-2 bg-blue-950 text-white text-sm rounded">
+                Join Now
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -82,6 +91,7 @@ const JoinCommunity = () => {
         </p>
         <Link
           href="https://chat.whatsapp.com/InEvl7es8Eg89sc5SY3aJV?mode=ems_wa_t "
+          target="_blank"
           className="lg:w-[10%] flex justify-start items-start  py-5 md:py-0"
         >
           <button className="px-5 py-2 text-sm bg-blue-950 text-white cursor-pointer rounded md:rounded hover:bg-blue-900 ">
@@ -214,9 +224,7 @@ const JoinCommunity = () => {
         </div>
       </div>
 
-
-
-       <Gallery/>
+      <Gallery />
     </div>
   );
 };
