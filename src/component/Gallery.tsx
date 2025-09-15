@@ -134,7 +134,7 @@ const Gallery = () => {
       {/* Modal  */}
       {selectedImage && (
         <div
-          className="fixed inset-0  bg-black bg-opacity-80 flex items-center justify-center z-50"
+          className="fixed inset-0  bg-black/80 flex items-center justify-center z-50"
           onClick={closeModal}
         >
           <div
@@ -149,14 +149,14 @@ const Gallery = () => {
                 scale,
                 touchAction: "none",
               }}
-              className="w-full flex h-full items-center justify-center "
+              className="w-full  flex h-full items-center justify-center "
             >
               <Image
                 src={selectedImage}
                 alt="selected"
                 width={900}
                 height={700}
-                className="rounded-lg object-contain max-h-full max-w-full"
+                className=" object-contain max-h-full max-w-full"
               />
             </animated.div>
 
