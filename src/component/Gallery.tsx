@@ -117,7 +117,7 @@ const Gallery = () => {
         enthusiasts. Each moment captured reflects collaboration, learning, and
         the passion that drives our community forward. Explore snapshots of our
         past events and see the energy that fuels our journey.
-       </p>
+      </p>
 
       <div className="columns-1 sm:columns-2 md:columns-3 md:gap-6 gap-5 space-y-4">
         {Images.map((img, index) => (
