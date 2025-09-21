@@ -4,7 +4,7 @@ export const LearningSlides = [
     upperTitle: "Learn Coding",
     lowerTitle: "Step into Tech",
     description:
-      "Master coding step by step with real-world, hands-on projects. From beginner concepts to advanced applications, you'll gain the skills, confidence, and experience needed to build amazing digital solutions.",
+      "Master coding step by step with real-world, hands-on projects. From beginner concepts to advanced applications, you'll gain the skills, and experience needed to build  digital solutions.",
   },
   {
     imageurl: "/ui.jpg",
