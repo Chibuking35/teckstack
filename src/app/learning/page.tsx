@@ -5,6 +5,7 @@ import { LearningSlides } from "@/lib/learningSlider";
 import Image from "next/image";
 import Link from "next/link";
 import { FaCircle } from "react-icons/fa";
+import { GoDotFill } from "react-icons/go";
 import {
   MdIndeterminateCheckBox,
   MdOutlineKeyboardDoubleArrowRight,
@@ -266,7 +267,7 @@ const Learning = () => {
       {/* a few more fact about us */}
       <div className="py-5 md:py-10 px-3 md:px-10 mt-3 w-full flex flex-col justify-center items-center">
         <h1 className="text-2xl md:text-3xl text-blue-950 ">Facts about Us </h1>
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-4 md:px-5 py-5 md:py-10 mt-3">
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-10 px-4 md:px-5 py-5 md:py-10 mt-3">
           <CounterCard label="Hours of training" suffix="+" endNumber={12000} />
           <CounterCard label="Student's Attention" suffix="%" endNumber={88} />
           <CounterCard label="Active mentors" suffix="+" endNumber={300} />
@@ -278,7 +279,7 @@ const Learning = () => {
 
       {/* another detail  */}
 
-      <div className="flex flex-col md:flex-row w-full py-5 px-5 gap-10 md:gap-5 ">
+      <div className="flex flex-col md:flex-row w-full py-5 md:mb-15 px-5 gap-15 md:gap-5 ">
         <div className="flex-1">
           <div className="flex-col flex  items-start">
             <Link href="/services" className="flex">
@@ -328,6 +329,37 @@ const Learning = () => {
         <div className="flex-1">
           <LearningSlider LearningSlides={LearningSlides} />
         </div>
+      </div>
+
+
+      <div className="py-5 md:py-20 px-3 md:px-5 flex w-full flex-col md:flex-row bg-gray-200">
+        <div className="flex-1/4">
+        <div className="flex w-full flex-col gap-2 justify-center items-center   h-[10rem] px-6 py-12  rounded-2xl bg-blue-500  ">
+
+    
+             <h1 className="  rounded-full px-5   text-sm text-blue-950 py-1 bg-white/50 backdrop-blur-sm self-start">
+              Get into tech
+              </h1> 
+              <div className="w-full flex flex-row justify-between my-2">
+                <h1 className="text-white text-2xl">Pro mentorship</h1>
+                <h1 className="text-white text-2xl">50$  <span className="text-xs">month </span></h1>
+              </div>
+              <div className="w-full flex flex-row justify-between">
+                <h1 className="ring-1 px-4 py-1 ring-white rounded-full flex flex-row gap-3 items-center text-white text-sm"><GoDotFill />Personalized Guidance</h1>
+                <h1 className="ring-1 px-4 py-1 ring-white rounded-full flex flex-row gap-3 items-center text-white text-sm"><GoDotFill />Faster Growth</h1>
+                <h1 className="ring-1 px-4 py-1 ring-white rounded-full flex flex-row gap-3 items-center text-white text-sm"><GoDotFill />Accountability</h1>
+                <h1 className="ring-1 px-4 py-1 ring-white rounded-full flex flex-row gap-3 items-center text-white text-sm"><GoDotFill />Confidence Boost</h1>
+            
+              </div>
+          
+        </div>
+        </div>
+        <div className="flex-1">
+          <div className="">
+
+          </div>
+        </div>
+          
       </div>
     </div>
   );

@@ -84,7 +84,7 @@ const LearningSlider = ({ LearningSlides }: LearningSliderprops) => {
             </h1>
           </div>
           <div className="flex flex-col items-start justify-center p-4 w-full">
-            <p className="mt-2 md:text-[9px] text-[11px] lg:text-[10px] ">{slide.description}</p>
+            <p className="mt-2 md:text-[9px] text-[11px] lg:text-[10px] text-gray-500">{slide.description}</p>
           </div>
         </div>
       ))}
