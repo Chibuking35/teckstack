@@ -11,7 +11,7 @@ export const Slides = [
     title: "Advanced Cybersecurity Solutions",
     description:
       "Protect your data and systems with proactive cybersecurity strategies and threat prevention.",
-    link: "/cybersecurity", 
+    link: "/cybersecurity",
   },
   {
     image: "/networkk.jpg",

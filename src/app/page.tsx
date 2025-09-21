@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import CounterCard from "@/component/counterCard";
-import  { GridItem } from "@/component/IconGrid";
+import { GridItem } from "@/component/IconGrid";
 import RequestQuoteForm from "@/component/RequestQuote";
 import TestimonialCarousel from "@/component/TestimonialCarousel";
 import TeamMembers from "@/component/TeamMembers";
@@ -27,73 +27,6 @@ import Link from "next/link";
 import Services from "@/component/Service";
 
 const Home = () => {
-  const features: GridItem[] = [
-    {
-      imageSrc: "/softwareS.jpg",
-      header: "Software Development",
-      description:
-        "Custom software solutions that streamline processes, boost efficiency, and bring your ideas to life.",
-      icons: <AppWindow className="flex" />,
-      url: "/software-development",
-    },
-    {
-      imageSrc: "/cyberS.jpg",
-      header: "Cybersecurity Solutions",
-      description:
-        "Advanced cybersecurity solutions that safeguard your data, protect your systems, and keep your business safe.",
-      icons: <ShieldCheck />,
-      url: "/cybersecurity",
-    },
-    {
-      imageSrc: "/networkS.jpg",
-      header: "Networking",
-      description:
-        "Reliable networking solutions that keep your business connected, fast, and secure",
-      icons: <EthernetPort />,
-      url: "/networking-services",
-    },
-    {
-      imageSrc: "/dataS.jpg",
-      header: "Data Analytics",
-      description:
-        "Data analytics solutions that turn raw information into actionable insights for smarter decisions.",
-      icons: <ChartNoAxesCombined />,
-      url: "/data-analytics",
-    },
-    {
-      imageSrc: "/cloudS.jpg",
-      header: "Cloud Computing",
-      description:
-        "Cloud computing solutions that enhance flexibility, improve scalability, and keep your business connected anywhere.",
-      icons: <Cloudy />,
-      url: "/cloud-computing",
-    },
-    {
-      imageSrc: "/machineS.jpg",
-      header: "Machine Learning",
-      description:
-        "Machine learning solutions that unlock patterns, automate processes, and drive smarter business outcomes.",
-      icons: <Bot />,
-      url: "/machine-learning",
-    },
-    {
-      imageSrc: "/digitalS.jpg",
-      header: "Digital Marketing",
-      description:
-        "Digital learning solutions that make knowledge accessible, engaging, and tailored to your growth.",
-      icons: <CirclePoundSterling />,
-      url: "/digital-marketing",
-    },
-    {
-      imageSrc: "/database.jpg",
-      header: "Database Management",
-      description:
-        "Database management solutions that organize, secure, and optimize your data for reliable access and performance.",
-      icons: <Database />,
-      url: "/database-management",
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-white text-gray-900  flex flex-col items-center md:py-8">
       <div className="w-full md:px-5">
@@ -258,9 +191,7 @@ const Home = () => {
         </div>
       </div>
 
-
-
-<Services/>
+      <Services />
 
       <TextFadeIn className="w-full m-0 mt-10 md:mt-20">
         <div className="relative h-96 md:h-[30rem] w-full overflow-hidden my-2 flex items-center justify-start">
@@ -294,18 +225,16 @@ const Home = () => {
 
       <div className="w-full px-4 py-10 bg-gray-200 h-fit justify-center items-center">
         <TextFadeIn className="  gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center">
-          <CounterCard endNumber={700} label="projects Completed" />
-          <CounterCard endNumber={250} label="Happy Clients" />
-          <CounterCard endNumber={20} label="Award" />
-          <CounterCard endNumber={13} label="Years of Experience" />
+          <CounterCard endNumber={700} label="projects Completed" suffix="+" />
+          <CounterCard endNumber={250} label="Happy Clients" suffix="+" />
+          <CounterCard endNumber={20} label="Award" suffix="+" />
+          <CounterCard endNumber={13} label="Years of Experience" suffix="+" />
         </TextFadeIn>
       </div>
 
       {/* <div className="absoulte">
       <div className="oluaka">Oluaka</div>
     </div> */}
-
-   
 
       <div className="w-full py-20 md:py-20 bg-white h-fit justify-center items-center">
         <TextFadeIn>
@@ -364,10 +293,11 @@ const Home = () => {
               innovation.
             </p>
             <div className="flex justify-start">
-              <Link href='/contact'>
-              <button className="px-4 py-2 bg-blue-950 flex rounded  text-white text-sm cursor-pointer">
-                Join Our team
-              </button></Link>
+              <Link href="/contact">
+                <button className="px-4 py-2 bg-blue-950 flex rounded  text-white text-sm cursor-pointer">
+                  Join Our team
+                </button>
+              </Link>
             </div>
           </div>
         </div>
