@@ -345,11 +345,11 @@ const Learning = () => {
                 <h1 className="text-white text-2xl">50$  <span className="text-xs">month </span></h1>
               </div>
               <div className="w-full flex flex-row justify-between">
-                <h1 className="ring-1 px-4 py-1 ring-white rounded-full flex flex-row gap-3 items-center text-white text-sm"><GoDotFill />Personalized Guidance</h1>
-                <h1 className="ring-1 px-4 py-1 ring-white rounded-full flex flex-row gap-3 items-center text-white text-sm"><GoDotFill />Faster Growth</h1>
-                <h1 className="ring-1 px-4 py-1 ring-white rounded-full flex flex-row gap-3 items-center text-white text-sm"><GoDotFill />Accountability</h1>
-                <h1 className="ring-1 px-4 py-1 ring-white rounded-full flex flex-row gap-3 items-center text-white text-sm"><GoDotFill />Confidence Boost</h1>
-            
+                <h1 className="ring-1  md:px-2 px-1 py-1 ring-white rounded-full flex flex-row gap-3 items-center text-white text-[9px] md:text-sm"><GoDotFill />Personalized Guidance</h1>
+                <h1 className="ring-1  md:px-2 px-1 py-1 ring-white rounded-full flex flex-row gap-1 md:gap-3 items-center text-white text-[9px] md:text-sm"><GoDotFill />Faster Growth</h1>
+                <h1 className="ring-1  md:px-2 px-1 py-1 ring-white rounded-full flex flex-row gap-1 md:gap-3 items-center text-white text-[9px] md:text-sm"><GoDotFill />Accountability</h1>
+                <h1 className="ring-1  md:px-2 px-1 py-1 ring-white rounded-full flex flex-row gap-1 md:gap-3 items-center text-white text-[9px] md:text-sm"><GoDotFill />Confidence Boost</h1>
+
               </div>
           
         </div>
