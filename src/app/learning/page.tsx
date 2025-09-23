@@ -4,6 +4,7 @@ import LearningSlider from "@/component/LearningSlider";
 import { LearningSlides } from "@/lib/learningSlider";
 import Image from "next/image";
 import Link from "next/link";
+import { BsBoxArrowInUpRight } from "react-icons/bs";
 import { FaCircle } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
 import {
@@ -51,7 +52,7 @@ const Learning = () => {
               href="/applyForSkill"
               className="flex w-full justify-center items-center mt-10"
             >
-              <button className="px-10 cursor-pointer py-1 md:py-2 rounded-md bg-white text-gr text-blue-950">
+              <button className="px-10 cursor-pointer py-1 md:py-2 rounded-md bg-white hover:bg-gray-200 text-blue-950">
                 {" "}
                 Apply Now
               </button>
@@ -110,7 +111,7 @@ const Learning = () => {
             href="/applyForSkill"
             className="flex w-full justify-center items-center mt-7"
           >
-            <button className="px-10 text-sm cursor-pointer py-2 md:py-2 rounded-md bg-blue-950 text-gr text-gray-300">
+            <button className="px-10 text-sm cursor-pointer py-2 md:py-2 rounded-md hover:bg-blue-800 bg-blue-950 text-gr text-gray-300">
               {" "}
               Apply Now
             </button>
@@ -331,17 +332,16 @@ const Learning = () => {
         </div>
       </div>
 
-
       <div className="py-5 md:py-20 px-3 md:px-5 flex w-full flex-col md:flex-row bg-gray-200">
-        <div className="flex-1/4">
-        <div className="flex w-full flex-col gap-2 justify-center items-center   h-[10rem] px-6 py-12  rounded-2xl bg-blue-500  ">
+        <div className="flex-1/4 md:px-10">
+          {/* <div className="flex w-full flex-col gap-2 justify-center items-center   h-[10rem] px-6 py-12  rounded-2xl bg-blue-500  ">
 
     
              <h1 className="  rounded-full px-5   text-sm text-blue-950 py-1 bg-white/50 backdrop-blur-sm self-start">
               Get into tech
               </h1> 
               <div className="w-full flex flex-row justify-between my-2">
-                <h1 className="text-white text-2xl">Pro mentorship</h1>
+                <h1 className="text-white text-2xl">Pro membership</h1>
                 <h1 className="text-white text-2xl">50$  <span className="text-xs">month </span></h1>
               </div>
               <div className="w-full flex flex-row justify-between">
@@ -352,14 +352,74 @@ const Learning = () => {
 
               </div>
           
-        </div>
-        </div>
-        <div className="flex-1">
-          <div className="">
+        </div> */}
 
+          <div className="flex w-full flex-col py-10 md:py-0">
+            <h1 className="text-2xl font-light mb-2">
+              <span className="text-3xl font-bold">Get </span> into Tech
+            </h1>
+            <p className="text-[11px] text-gray-500 text-justify mb-6">
+              Everyone has a place in tech, whether you are just beginning your
+              journey, strengthening your skills at the intermediate level, or
+              advancing to new professional heights. Our tutorship program is
+              designed to provide personalized guidance, practical training, and
+              continuous support to help you grow. With the right mentorship,
+              you can build confidence, achieve your goals, and step boldly into
+              the world of technology with the skills and knowledge needed to
+              succeed.
+            </p>
+
+            <Link
+              className="w-full bg-gray-300 mt-4  hover:bg-gray-400 text-gray-600 flex flex-row justify-between  hover:text-white px-3 md:px-5 py-2 md:mt-3 rounded"
+              href="/Beginners"
+            >
+              <h1>Beginner</h1> <BsBoxArrowInUpRight />{" "}
+            </Link>
+            <Link
+              className="w-full bg-gray-300 hover:bg-gray-400 text-gray-600 flex flex-row justify-between  hover:text-white px-3 md:px-5 py-2 mt-3 rounded"
+              href="/Intermediate"
+            >
+              <h1>Intermediate</h1> <BsBoxArrowInUpRight />{" "}
+            </Link>
+            <Link
+              className="w-full bg-gray-300 hover:bg-gray-400 text-gray-600 flex flex-row justify-between  hover:text-white px-3 md:px-5 py-2 mt-3 rounded"
+              href="/Advanced"
+            >
+              <h1>Advanced</h1> <BsBoxArrowInUpRight />{" "}
+            </Link>
+
+            <Link
+              href="/applyForSkill"
+              className="flex w-full justify-center items-center mt-7"
+            >
+              <button className="px-10 text-sm cursor-pointer py-2 md:py-2 rounded-md hover:bg-blue-800 bg-blue-950 text-gr text-gray-300">
+                {" "}
+                Apply Now
+              </button>
+            </Link>
           </div>
         </div>
-          
+        <div className="flex-1 p-5 md:p-7">
+          <div className="bg-white rounded-2xl p-6 w-full flex flex-col">
+            <h1 className="font-bold text-blue-950 text-2xl text-center mb-3">
+              Don't Stop Growing
+            </h1>
+            <p className="text-[11px] text-gray-500 mb-4">
+              Every step you take in tech brings you closer to new
+              opportunities. No matter your current level, there is always more
+              to learn, more to create, and more to achieve. Keep pushing
+              forward, stay curious, and let our tutorship program guide you
+              toward your next milestone.
+            </p>
+
+            <Image  src='/complb.jpg'
+            className="opacity-80 rounded-2xl"
+            alt=""
+            width={500}
+            height={400}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
