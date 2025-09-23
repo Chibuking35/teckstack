@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { BsBoxArrowInUpRight } from "react-icons/bs";
 import { FaCircle } from "react-icons/fa";
-import { GoDotFill } from "react-icons/go";
 import {
   MdIndeterminateCheckBox,
   MdOutlineKeyboardDoubleArrowRight,
