@@ -401,7 +401,7 @@ const Learning = () => {
         </div>
         <div className="flex-1 p-5 md:p-7">
           <div className="bg-white rounded-2xl p-6 w-full flex flex-col">
-            <h1 className="font-bold text-blue-950 text-2xl text-center mb-3">
+            <h1 className=" text-blue-950 text-2xl text-center mb-3">
               Don't Stop Growing
             </h1>
             <p className="text-[11px] text-gray-500 mb-4">
