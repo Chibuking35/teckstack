@@ -64,7 +64,7 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = pathname === link.href || pathname.startsWith(link.href+'/');
             return (
               <div
                 key={link.name}
@@ -125,7 +125,7 @@ const Navbar = () => {
                 className="absolute top-10 right-0 bg-blue-950 py-4 rounded flex flex-col gap-2 w-48 text-center shadow-md z-50"
               >
                 {navLinks.map((link) => {
-                  const isActive = pathname === link.href;
+                  const isActive = pathname === link.href || pathname.startsWith(link.href+'/');
                   return (
                     <Link
                       key={link.name}

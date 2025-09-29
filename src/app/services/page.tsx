@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { BsBoxArrowInUpRight } from "react-icons/bs";
 import { IoMdArrowDropright } from "react-icons/io";
 
 const Services = () => {
@@ -99,6 +100,12 @@ const Services = () => {
           </h1>
         </div>
       </div>
+
+      <div className="flex w-full justify-center items-center flex-col my-10 md:hidden">
+       
+        <h1 className="text-blue-950 text-3xl  font-light  md:p-10 px-10">Turning Your Ideas into Reality with Creativity and Technology.
+           <BsBoxArrowInUpRight className="mt-5  text-gray-500" /></h1>
+      </div>
       {/* <div className=" p-4 text-center md:px-40 mt-9">
         <h1 className=" text-2xl md:text-4xl  text-blue-950 font-bold text-center">
           Transform your business now with{" "}
@@ -108,7 +115,7 @@ const Services = () => {
           </span>
         </h1>
       </div> */}
-      <div className="flex w-full p-6 py-30 mt-20 md:p-10 flex-col md:flex-row ">
+      <div className="flex w-full p-6 py-5 md:py-20 md:mt-10 md:p-10 flex-col md:flex-row ">
         <div className="flex-1 ">
           <div className="relative flex p-4 w-full h-[22rem] ">
             <Image

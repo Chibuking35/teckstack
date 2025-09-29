@@ -48,7 +48,7 @@ const Learning = () => {
             </p>
 
             <Link
-              href="/applyForSkill"
+              href="/learning/applyForSkill"
               className="flex w-full justify-center items-center mt-10"
             >
               <button className="px-10 cursor-pointer py-1 md:py-2 rounded-md bg-white hover:bg-gray-200 text-blue-950">
@@ -107,7 +107,7 @@ const Learning = () => {
           </p>
 
           <Link
-            href="/applyForSkill"
+            href="/learning/applyForSkill"
             className="flex w-full justify-center items-center mt-7"
           >
             <button className="px-10 text-sm cursor-pointer py-2 md:py-2 rounded-md hover:bg-blue-800 bg-blue-950 text-gr text-gray-300">
@@ -370,25 +370,25 @@ const Learning = () => {
 
             <Link
               className="w-full bg-gray-300 mt-4  hover:bg-gray-400 text-gray-600 flex flex-row justify-between  hover:text-white px-3 md:px-5 py-2 md:mt-3 rounded"
-              href="/Beginners"
+              href="/learning/applyForSkill/beginner"
             >
               <h1>Beginner</h1> <BsBoxArrowInUpRight />{" "}
             </Link>
             <Link
               className="w-full bg-gray-300 hover:bg-gray-400 text-gray-600 flex flex-row justify-between  hover:text-white px-3 md:px-5 py-2 mt-3 rounded"
-              href="/Intermediate"
+              href="/learning/applyForSkill/intermediate"
             >
               <h1>Intermediate</h1> <BsBoxArrowInUpRight />{" "}
             </Link>
             <Link
               className="w-full bg-gray-300 hover:bg-gray-400 text-gray-600 flex flex-row justify-between  hover:text-white px-3 md:px-5 py-2 mt-3 rounded"
-              href="/Advanced"
+              href="/learning/applyForSkill/advanced"
             >
               <h1>Advanced</h1> <BsBoxArrowInUpRight />{" "}
             </Link>
 
             <Link
-              href="/applyForSkill"
+              href="/learning/applyForSkill"
               className="flex w-full justify-center items-center mt-7"
             >
               <button className="px-10 text-sm cursor-pointer py-2 md:py-2 rounded-md hover:bg-blue-800 bg-blue-950 text-gr text-gray-300">
@@ -398,7 +398,7 @@ const Learning = () => {
             </Link>
           </div>
         </div>
-        <div className="flex-1 p-5 md:p-7">
+        <div className="flex-1 p-5 md:px-7">
           <div className="bg-white rounded-2xl p-6 w-full flex flex-col">
             <h1 className=" text-blue-950 text-2xl text-center mb-3">
               Don&apos;t Stop Growing
@@ -411,11 +411,12 @@ const Learning = () => {
               toward your next milestone.
             </p>
 
-            <Image  src='/complb.jpg'
-            className="opacity-80 rounded-2xl"
-            alt=""
-            width={500}
-            height={400}
+            <Image
+              src="/complb.jpg"
+              className="opacity-80 rounded-2xl"
+              alt=""
+              width={500}
+              height={400}
             />
           </div>
         </div>
