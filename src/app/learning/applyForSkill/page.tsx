@@ -4,7 +4,7 @@ import { BsBoxArrowInUpRight } from "react-icons/bs";
 
 const AppyForSkill = () => {
   return (
-    <div className="min-h-screen w-full py-10">
+    <div className="min-h-screen w-full py-10 bg-white">
       {" "}
       <h1 className=" text-blue-950 text-2xl md:text-3xl text-center mb-3">
         Apply Your Skills
