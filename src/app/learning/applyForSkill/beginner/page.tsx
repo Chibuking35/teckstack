@@ -17,7 +17,7 @@ const schema = z.object({
 const Beginner = () => {
   return (
     <div className="min-h-screen w-full bg-white">
-      <h1 className=" text-blue-950 text-2xl md:text-3xl text-center my-5">
+      <h1 className=" text-blue-950 text-2xl md:text-3xl text-center py-5">
         Get into Tech
       </h1>
 
