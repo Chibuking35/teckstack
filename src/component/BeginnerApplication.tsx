@@ -7,6 +7,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Select from "react-select";
 import { ChevronDown } from "lucide-react";
+import { getNames } from "country-list"; // ✅ Import country-list
 
 // Zod Schema
 const learningFormSchema = z.object({
@@ -119,7 +120,10 @@ export default function LearningApplicationForm() {
 
   // Country select state
   const [country, setCountry] = useState<CountryOption | null>(null);
-  const countryOptions = countryList().getData();
+  const countryOptions: CountryOption[] = getNames().map((name) => ({
+    value: name,
+    label: name,
+  }));
 
   // Interest state for custom dropdown
   const [interest, setInterest] = useState<string>("");
@@ -314,7 +318,7 @@ export default function LearningApplicationForm() {
             <Select
               options={countryOptions}
               value={country}
-              onChange={(val) => setCountry(val)}
+              onChange={(val) => setCountry(val as CountryOption)}
               placeholder="Select your country"
               className="text-sm"
             />
@@ -329,7 +333,7 @@ export default function LearningApplicationForm() {
           <div className="relative w-full mb-6">
             <select
               name="mode"
-              defaultValue="Online"
+              defaultValue="online"
               disabled
               className="peer w-full border-b border-gray-300 text-gray-500 p-2 pt-6 focus:outline-none focus:border-blue-600 text-sm"
             >
