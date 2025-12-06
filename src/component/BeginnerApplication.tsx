@@ -6,7 +6,6 @@ import { z } from "zod";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Select from "react-select";
-import countryList from "react-select-country-list";
 import { ChevronDown } from "lucide-react";
 
 // Zod Schema
